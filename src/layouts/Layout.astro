@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+
+const title = 'Portfolio | Full-Stack Developer';
+const description = 'Full-stack developer crafting user-centric web solutions with React, Node.js, and modern technologies.';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d1117" />
+     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+   
+  </head>
+  <body class="bg-[#050f19] text-[#f1f5f9] font-sans">
+    <slot />
+    
+    <style is:global>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes fadeLeft {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes fadeRight {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      
+      .animate-fade-up {
+        animation: fadeUp 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      
+      .animate-fade-left {
+        animation: fadeLeft 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      
+      .animate-fade-right {
+        animation: fadeRight 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      
+      .animate-zoom-in {
+        animation: zoomIn 0.6s ease-out forwards;
+        opacity: 0;
+      }
+    </style>
+  </body>
+</html>
