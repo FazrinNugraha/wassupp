@@ -24,19 +24,12 @@ export default function Header() {
 return (
   <header
     className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'glass border-b border-[#2d3e4f] shadow-lg' : 'bg-transparent'
+      isScrolled ? 'glass border-b border-gray-700 shadow-lg' : 'bg-transparent'
     }`}
   >
     <nav className="max-w-7xl mx-auto px-6 lg:px-8">
-      <div className="flex items-center justify-between h-16">
-        {/* Logo */}
-        <a 
-          href="#home" 
-          className="text-xl font-bold text-[#3ecf8e] hover:text-[#2eb67d] transition-colors whitespace-nowrap"
-        >
-          Muhamad Fazrin Nugraha
-        </a>
-
+      <div className="flex items-center ml-60 justify-between h-16">
+        
         {/* Desktop Menu - Centered */}
         <div className="hidden md:flex items-center justify-center flex-1 ">
           <div className="flex items-center space-x-8">
@@ -44,7 +37,7 @@ return (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors duration-300 font-medium"
+                className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
               >
                 {item.label}
               </a>
@@ -58,7 +51,7 @@ return (
             href="https://github.com/FazrinNugraha"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+            className="text-gray-300 hover:text-white transition-colors"
             aria-label="GitHub"
           >
             <Github size={20} />
@@ -67,14 +60,14 @@ return (
             href="https://linkedin.com/in/muhamad-fazrin-nugraha"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+            className="text-gray-300 hover:text-white transition-colors"
             aria-label="LinkedIn"
           >
             <Linkedin size={20} />
           </a>
           <a
             href="mailto:nugrahafadzrin@gmail.com"
-            className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+            className="text-gray-300 hover:text-white transition-colors"
             aria-label="Email"
           >
             <Mail size={20} />
@@ -83,7 +76,7 @@ return (
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+          className="md:hidden text-gray-300 hover:text-white transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -93,12 +86,12 @@ return (
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden py-4 border-t border-[#2d3e4f] space-y-3">
+        <div className="md:hidden py-4 border-t border-gray-700 space-y-3">
           {menuItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="block px-4 py-2 text-[#94a3b8] hover:text-[#3ecf8e] hover:bg-[#1a1a2e] rounded transition-colors"
+              className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-900 rounded transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {item.label}
@@ -106,12 +99,12 @@ return (
           ))}
           
           {/* Mobile Social Icons */}
-          <div className="flex items-center justify-center space-x-6 pt-4 border-t border-[#2d3e4f]">
+          <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-700">
             <a
               href="https://github.com/FazrinNugraha"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+              className="text-gray-300 hover:text-white transition-colors"
               aria-label="GitHub"
             >
               <Github size={20} />
@@ -120,14 +113,14 @@ return (
               href="https://linkedin.com/in/muhamad-fazrin-nugraha"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+              className="text-gray-300 hover:text-white transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin size={20} />
             </a>
             <a
               href="mailto:nugrahafadzrin@gmail.com"
-              className="text-[#94a3b8] hover:text-[#3ecf8e] transition-colors"
+              className="text-gray-300 hover:text-white transition-colors"
               aria-label="Email"
             >
               <Mail size={20} />

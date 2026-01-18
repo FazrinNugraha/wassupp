@@ -1,126 +1,213 @@
-import React, { useEffect, useRef } from "react";
-import Typed from "typed.js";
-import { ArrowRight, Download } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowRight, FileText } from "lucide-react";
 
-export default function Hero() {
-  const typedElement = useRef(null);
-  
+export default function Portfolio() {
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(50);
+
+  const strings = [
+    "Transforming Ideas into Powerful Web Applications",
+    "Building Scalable & User-Centric Solutions",
+    "Creating Amazing Digital Experiences",
+  ];
 
   useEffect(() => {
-    if (typedElement.current) {
-      const typed = new Typed(typedElement.current, {
-        strings: [
-          "Transforming Ideas into Powerful Web Applications",
-          "Building Scalable & User-Centric Solutions",
-          "Creating Amazing Digital Experiences",
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 2000,
-        loop: true,
-        showCursor: true,
-        cursorChar: "|",
-      });
+    const handleTyping = () => {
+      const i = loopNum % strings.length;
+      const fullText = strings[i];
 
-      return () => typed.destroy();
-    }
-  }, []);
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 30 : 50);
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && text === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[#050f19] overflow-hidden"
-    >
-      {/* Geometric Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" preserveAspectRatio="none">
-          <defs>
-            <pattern id="grid-hero" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3ecf8e" strokeWidth="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid-hero)" />
-        </svg>
-      </div>
+    <div className="min-h-screen bg-[#141414]">
+      {/* Hero Section */}
+      <section id="home" className=" w-full px-6 pt-32 pb-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+            {/* Left Column - Main Content */}
+            <div className="lg:col-span-2 space-y-8 flex flex-col justify-start">
+              {/* Main Headline */}
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#FAFAFA] leading-tight tracking-tight">
+                  I don't just ship projects. I document decisions, trade-offs, and outcomes.
+                </h2>
+                <p className="text-base md:text-lg text-[#A3A3A3] leading-relaxed">
+                  A portfolio built around case studies — not screenshots.
+                </p>
+              </div>
 
-      {/* Decorative Lines */}
-      <div className="absolute top-0 left-0 w-96 h-96 opacity-5">
-        <svg viewBox="0 0 400 400" fill="none">
-          <line x1="0" y1="0" x2="400" y2="400" stroke="#3ecf8e" strokeWidth="2"/>
-          <line x1="400" y1="0" x2="0" y2="400" stroke="#3ecf8e" strokeWidth="2"/>
-          <circle cx="200" cy="200" r="150" stroke="#3ecf8e" strokeWidth="2"/>
-          <circle cx="200" cy="200" r="200" stroke="#3ecf8e" strokeWidth="1"/>
-        </svg>
-      </div>
+              {/* Profile */}
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-full border-2 border-[#262626] overflow-hidden flex-shrink-0">
+                  <img
+                    src="public/pp.jpeg"
+                    alt="Firyan Fatih Fadilah"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <p className="font-semibold text-[#FAFAFA] text-sm">Erland</p>
+                  <p className="text-[#A3A3A3] text-xs">Senior Software Engineer</p>
+                </div>
+              </div>
 
-      <div className="absolute bottom-0 right-0 w-96 h-96 opacity-5">
-        <svg viewBox="0 0 400 400" fill="none">
-          <polygon points="200,50 350,200 200,350 50,200" stroke="#3ecf8e" strokeWidth="2"/>
-          <polygon points="200,100 300,200 200,300 100,200" stroke="#3ecf8e" strokeWidth="1"/>
-          <line x1="200" y1="50" x2="200" y2="350" stroke="#3ecf8e" strokeWidth="1"/>
-          <line x1="50" y1="200" x2="350" y2="200" stroke="#3ecf8e" strokeWidth="1"/>
-        </svg>
-      </div>
+              {/* Typing Animation */}
+              <div className="min-h-[24px] flex items-center">
+                <p className="text-base text-[#A3A3A3] leading-relaxed">
+                  {text}
+                  <span className="animate-pulse">|</span>
+                </p>
+              </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Avatar */}
-        <div className="mb-8 inline-block">
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#3ecf8e] overflow-hidden mx-auto">
-            <div>
-              <img
-                src="public/pp.jpeg"
-                alt="Avatar"
-                className="w-48 h-48 rounded-full border-1 border-[#3ecf8e] shadow-lg object-cover"
-                loading="lazy"
-              />
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#FFFFFF] text-[#141414] font-medium rounded hover:bg-[#FAFAFA] transition-colors text-sm"
+                >
+                  Explore Case Studies
+                  <ArrowRight size={16} />
+                </a>
+                <a
+                  href="#decisions"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2 border border-[#262626] text-[#FAFAFA] font-medium rounded hover:bg-[#1A1A1A] transition-colors text-sm"
+                >
+                  How I Make Decisions
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column - Featured Projects */}
+            <div className="lg:col-span-2 space-y-5">
+              <a
+                href="#project-1"
+                className="block p-4 bg-[#1A1A1A] border border-[#262626] rounded-lg hover:border-[#FFFFFF] hover:bg-[#202020] transition-all group"
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <span className="text-xs font-medium text-[#A3A3A3] uppercase tracking-wider">
+                    Case · Lead Engineer
+                  </span>
+                  <ArrowRight
+                    size={16}
+                    className="text-[#A3A3A3] group-hover:text-[#FFFFFF] group-hover:translate-x-1 transition-all flex-shrink-0"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#FAFAFA] mb-2">
+                  Rebuilding the Payment System
+                </h3>
+                <p className="text-xs text-[#A3A3A3] leading-relaxed">
+                  Reduced payment processing time by 60% and improved reliability to 99.9% uptime
+                </p>
+              </a>
+
+              <a
+                href="#project-2"
+                className="block p-4 bg-[#1A1A1A] border border-[#262626] rounded-lg hover:border-[#FFFFFF] hover:bg-[#202020] transition-all group"
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <span className="text-xs font-medium text-[#A3A3A3] uppercase tracking-wider">
+                    Case · Full-Stack Engineer
+                  </span>
+                  <ArrowRight
+                    size={16}
+                    className="text-[#A3A3A3] group-hover:text-[#FFFFFF] group-hover:translate-x-1 transition-all flex-shrink-0"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#FAFAFA] mb-2">
+                  Real-Time Analytics Dashboard
+                </h3>
+                <p className="text-xs text-[#A3A3A3] leading-relaxed">
+                  Built a real-time analytics platform processing 100K+ events per second with sub-second latency
+                </p>
+              </a>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Title */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-          Welcome to My Portfolio
-        </h1>
+      {/* Featured Projects - removed duplicate section */}
 
-        {/* Typing Text */}
-        <div className="h-20 mb-8 flex items-center justify-center">
-          <p className="text-lg md:text-2xl text-[#94a3b8]">
-            <span ref={typedElement}></span>
+      {/* About Section */}
+      <section className="max-w-4xl mx-auto px-6 py-16 ">
+        <div className="space-y-6 border-t-2 border-[#262626] pt-12">
+          <p className="text-xl text-[#FAFAFA] leading-relaxed">
+            I'm <strong>Firyan</strong>, product engineer focused on building systems that move real business metrics.
           </p>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <p className="text-xl text-[#A3A3A3] leading-relaxed">
+            Every major decision is documented—because great engineers don't just build things, they explain why.
+          </p>
           <a
-            href="#projects"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#3ecf8e] text-[#050f19] font-semibold rounded-lg hover:bg-[#5edeb3] transition-all duration-300 hover:scale-105"
+            href="#journey"
+            className="inline-flex items-center gap-2 text-[#FAFAFA] font-medium hover:underline"
           >
-            View Projects
-            <ArrowRight size={20} />
-          </a>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[#3ecf8e] text-[#3ecf8e] font-semibold rounded-lg hover:bg-[#3ecf8e] hover:text-[#050f19] transition-all duration-300"
-          >
-            <Download size={20} />
-            Download CV
+            Read my journey
+            <ArrowRight size={18} />
           </a>
         </div>
-      </div>
+      </section>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-15 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce z-10">
-        {/* Mouse Icon */}
-        <div className="w-6 h-10 border-2 border-[#3ecf8e] rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-[#3ecf8e] rounded-full"></div>
+
+      {/* Recent Decisions */}
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-bold text-[#FAFAFA]">Recent Decisions</h2>
+          <a
+            href="#all-decisions"
+            className="text-[#A3A3A3] hover:text-[#FAFAFA] font-medium hover:underline"
+          >
+            View all
+          </a>
         </div>
 
-        {/* Scroll Text */}
-        <span className="text-xs tracking-widest text-[#3ecf8e] uppercase">
-          Scroll Me
-        </span>
-      </div>
-    </section>
+        <div className="space-y-8">
+          {/* Decision 1 */}
+          <div className="space-y-3">
+            <p className="text-sm font-medium text-[#A3A3A3] uppercase tracking-wide">
+              Jun 2024
+            </p>
+            <h3 className="text-2xl font-bold text-[#FAFAFA]">
+              Transitioning to Remote-First Team Structure
+            </h3>
+            <p className="text-[#A3A3A3] leading-relaxed">
+              Post-pandemic, our team was split between office and remote workers. The hybrid model created two classes of employees and made collaboration inconsistent. We needed to decide on a deliberate approach.
+            </p>
+          </div>
+
+
+          {/* Decision 2 */}
+          <div className="space-y-3 pt-8 border-t-2 border-[#262626]">
+            <p className="text-sm font-medium text-[#A3A3A3] uppercase tracking-wide">
+              Mar 2024
+            </p>
+            <h3 className="text-2xl font-bold text-[#FAFAFA]">
+              Adopting Event-Driven Architecture for Order Processing
+            </h3>
+            <p className="text-[#A3A3A3] leading-relaxed">
+              Our synchronous order processing pipeline was becoming a bottleneck. Long-running operations blocked the checkout flow, and failures in downstream services caused cascading issues.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

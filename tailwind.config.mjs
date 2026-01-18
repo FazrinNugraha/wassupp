@@ -11,19 +11,18 @@ export default {
         mono: ['Geist Mono', 'JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
 
-      colors: {
-        supabase: {
-          dark: '#050f19',
-          surface: '#0f172a',
-          surface_light: '#1a2332',
-          border: '#2d3e4f',
-          text: '#f1f5f9',
-          text_muted: '#94a3b8',
-          accent: '#3ecf8e',
-          accent_light: '#5edeb3',
-          accent_dark: '#2ab47d',
-        },
-      },
+ colors: {
+  supabase: {
+    dark: '#141414',        // bukan pure black
+    surface: '#1A1A1A',     // card utama
+    surface_light: '#202020', // hover / elevated
+    border: '#262626',      // lebih soft
+    text: '#FAFAFA',
+    text_muted: '#A3A3A3',
+    accent: '#FFFFFF',
+  },
+},
+
 
       animation: {
         'bounce-slow': 'bounce 2s infinite',
