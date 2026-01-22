@@ -13,7 +13,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700 py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#141414] border-t border-gray-200 dark:border-gray-700 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
@@ -72,9 +72,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              &copy; {currentYear} All rights reserved. Made with{' '}
-              <Heart className="inline w-4 h-4 text-black dark:text-white" /> using{' '}
-              <span className="text-black dark:text-white font-semibold">Astro.js</span>
+              &copy; {currentYear} All rights reserved build with <strong>Astro.Js</strong>
             </p>
 
             {/* Back to Top */}

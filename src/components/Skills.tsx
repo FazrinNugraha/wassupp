@@ -43,7 +43,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-20 px-4 bg-supabase-dark text-supabase-text"
+      className="relative py-20 px-4 bg-[#141414] text-supabase-text"
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}

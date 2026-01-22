@@ -1,236 +1,217 @@
 import React, { useState, useMemo } from 'react';
-import { Search, ExternalLink, Github } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const projects = [
   {
     id: 1,
-    title: 'Learning Management System',
-    category: 'Web Apps',
+    phase: 'PHASE 1: JAN 2026',
+    phaseColor: 'text-blue-500',
+    title: 'Rebuilding the Payment System',
+    role: 'LEAD ENGINEER · 2026',
+    status: 'FEATURED',
+    statusColor: 'bg-blue-500',
     description:
-      'Interactive platform untuk 1000+ students dengan AI-powered course recommendations dan progress tracking real-time',
-    image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=280&fit=crop',
-    tech: ['React', 'Node.js', 'MongoDB', 'TailwindCSS'],
-    links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
-    },
+      'Reduced payment processing time by 60% and improved reliability to 99.9% uptime',
+    problem: 'Kami memulai dengan sistem payment yang lambat dan sering gagal. Timeout terjadi pada 15% transaksi, menyebabkan customer frustration dan revenue loss.',
+    solution: 'Redesign arsitektur dengan event-driven pattern, implement circuit breaker, dan optimasi database queries. Hasilnya? Processing time turun 60% dan uptime naik ke 99.9%.',
+    tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis'],
+    thumbnail: '', // Paste image URL here
+    link: '#project-1',
+    side: 'left'
   },
   {
     id: 2,
-    title: 'GlucoCheck',
-    category: 'Mobile',
+    phase: 'PHASE 2: NOV 2025',
+    phaseColor: 'text-emerald-500',
+    title: 'Real-Time Analytics Dashboard',
+    role: 'FULL-STACK ENGINEER · 2025',
+    status: 'ONGOING',
+    statusColor: 'bg-emerald-500',
     description:
-      'Mobile health app untuk diabetes management dengan real-time blood sugar tracking dan medication reminders',
-    image:
-      'https://images.unsplash.com/photo-1576091160550-112173f7f869?w=500&h=280&fit=crop',
-    tech: ['React Native', 'Firebase', 'Express'],
-    links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
-    },
+      'Built a real-time analytics platform processing 100K+ events per second with sub-second latency',
+    problem: 'Business team membutuhkan insight real-time untuk decision making, tapi existing dashboard hanya update setiap 15 menit dan tidak scalable.',
+    solution: 'Build event streaming pipeline dengan Kafka dan WebSocket untuk real-time updates. Implement ClickHouse untuk fast analytical queries. Dashboard sekarang update sub-second dengan 100K+ events/sec.',
+    tech: ['React', 'WebSocket', 'ClickHouse', 'Kafka'],
+    thumbnail: '', // Paste image URL here
+    link: '#project-2',
+    side: 'right'
   },
   {
     id: 3,
-    title: 'E-Commerce Platform',
-    category: 'Web Apps',
+    phase: 'PHASE 3: AUG 2025',
+    phaseColor: 'text-orange-500',
+    title: 'Microservices Migration',
+    role: 'SENIOR ENGINEER · 2025',
+    status: 'COMPLETED',
+    statusColor: 'bg-gray-500',
     description:
-      'Fully functional e-commerce platform dengan payment integration, inventory management, dan 50K+ monthly users',
-    image:
-      'https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=500&h=280&fit=crop',
-    tech: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-    links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
-    },
+      'Led migration from monolith to microservices architecture, reducing deployment time by 75%',
+    problem: 'Monolithic architecture membuat deployment lambat (2 jam per release) dan team dependencies tinggi. Satu bug bisa down seluruh sistem.',
+    solution: 'Gradual migration ke microservices dengan strangler pattern. Implement service mesh untuk observability. Deployment time turun ke 30 menit, zero-downtime deployments achieved.',
+    tech: ['Docker', 'Kubernetes', 'GraphQL', 'Go'],
+    thumbnail: '', // Paste image URL here
+    link: '#project-3',
+    side: 'left'
   },
   {
     id: 4,
-    title: 'Portfolio Website',
-    category: 'Web Apps',
+    phase: 'PHASE 4: MAY 2024',
+    phaseColor: 'text-orange-500',
+    title: 'API Gateway Redesign',
+    role: 'BACKEND ENGINEER · 2024',
+    status: 'COMPLETED',
+    statusColor: 'bg-gray-500',
     description:
-      'Modern responsive portfolio dengan Astro, React, dan Tailwind untuk showcase professional projects',
-    image:
-      'https://images.unsplash.com/photo-1647014260404-26900b2b9770?w=500&h=280&fit=crop',
-    tech: ['Astro', 'React', 'TailwindCSS', 'EmailJS'],
-    links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
-    },
-  },
-  {
-    id: 5,
-    title: 'Task Management App',
-    category: 'Web Apps',
-    description:
-      'Collaborative task manager dengan real-time updates, team collaboration features, dan productivity insights',
-    image:
-      'https://images.unsplash.com/photo-1516534775068-bb6baad4c105?w=500&h=280&fit=crop',
-    tech: ['React', 'Firebase', 'Redux', 'Material-UI'],
-    links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
-    },
-  },
-  {
-    id: 6,
-    title: 'Weather Dashboard',
-    category: 'Web Apps',
-    description:
-      'Real-time weather dashboard dengan 7-day forecast, weather alerts, dan beautiful data visualization',
-    image:
-      'https://images.unsplash.com/photo-1559589689-577888ab6a4f?w=500&h=280&fit=crop',
-    tech: ['React', 'OpenWeather API', 'Chart.js', 'CSS'],
-    links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
-    },
-  },
+      'Redesigned API gateway to handle 10M+ requests daily with improved caching and rate limiting',
+    problem: 'API gateway menjadi bottleneck dengan response time >500ms pada peak hours. Rate limiting tidak efektif dan caching strategy buruk.',
+    solution: 'Redesign dengan Redis cluster untuk distributed caching, implement token bucket algorithm untuk rate limiting, dan optimize routing logic. Response time turun ke <100ms.',
+    tech: ['Node.js', 'Redis', 'AWS', 'Nginx'],
+    thumbnail: '', // Paste image URL here
+    link: '#project-4',
+    side: 'right'
+  }
 ];
 
 export default function Projects() {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredProjects = useMemo(() => {
-    return projects.filter(
-      (p) =>
-        p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.description.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [searchTerm]);
-
   return (
-    <section
-      id="projects"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-supabase-dark"
-    >
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#141414]">
+      <section className="max-w-6xl mx-auto py-24 px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-supabase-text">
-            Featured Projects
-          </h2>
-          <p className="text-supabase-text_muted max-w-2xl mx-auto">
-            Explore my latest work showcasing expertise in full-stack
-            development and modern web technologies
+        <div className="mb-16 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            Projects
+          </h1>
+          <p className="text-xl text-[#A3A3A3] mb-6 max-w-4xl mx-auto leading-relaxed">
+            Case studies that demonstrate how I approach complex problems, make technical
+            decisions, and deliver measurable impact. Each project tells the story of the challenge,
+            the constraints, the decisions made, and the outcomes achieved.
+          </p>
+          <p className="text-sm text-[#737373]">
+            {projects.length} projects · {projects.filter(p => p.status === 'FEATURED').length} featured
           </p>
         </div>
 
-        {/* Search */}
-        <div className="mb-10 relative max-w-2xl mx-auto">
-          <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-supabase-text_muted"
-            size={20}
-          />
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="
-              w-full pl-12 pr-4 py-3
-              bg-supabase-surface
-              border border-supabase-border
-              rounded-lg
-              text-supabase-text
-              placeholder:text-supabase-text_muted
-              focus:outline-none focus:border-supabase-text
-            "
-          />
-        </div>
+        {/* Timeline Container */}
+        <div className="relative">
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="
-                group
-                bg-[#121211]
-                border border-supabase-border
-                rounded-xl
-                overflow-hidden
-                transition
-                hover:bg-supabase-surface_light
-              "
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
-              </div>
+          {/* Projects */}
+          <div className="space-y-24">
+            {projects.map((project, index) => (
+              <div key={project.id} className="relative">
+                {/* Content */}
+                <div className={`md:grid md:grid-cols-2 md:gap-12 md:items-start relative`}>
+                  {/* Center Dot - positioned between two columns */}
+                  <div className={`hidden md:block absolute left-1/2 top-0 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4 border-[#141414]`}></div>
+                  
+                  {/* Vertical Line from dot */}
+                  {index < projects.length - 1 && (
+                    <div className="hidden md:block absolute left-1/2 top-4 w-0.5 h-[calc(100%+96px)] bg-[#262626] -translate-x-1/2"></div>
+                  )}
 
-              {/* Content */}
-              <div className="p-6">
-                <span className="inline-block mb-3 px-3 py-1 bg-white text-black text-xs font-semibold rounded-full">
-                  {project.category}
-                </span>
+                  {/* Thumbnail - left side for left projects, right side for right projects */}
+                  <div className={`mb-6 md:mb-0 ${project.side === 'left' ? 'md:order-2' : 'md:order-1'}`}>
+                    <div className="h-[500px] bg-[#1A1A1A] border border-[#262626] rounded-lg overflow-hidden hover:border-[#404040] transition-colors">
+                      {project.thumbnail ? (
+                        <img 
+                          src={project.thumbnail} 
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-20 h-20 mx-auto mb-4 bg-[#262626] rounded-full flex items-center justify-center">
+                              <span className="text-4xl">📊</span>
+                            </div>
+                            <p className="text-sm text-[#737373] font-medium">Project Screenshot</p>
+                            <p className="text-xs text-[#525252] mt-1">Coming soon</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
 
-                <h3 className="text-xl font-bold text-supabase-text mb-2">
-                  {project.title}
-                </h3>
-
-                <p className="text-supabase-text_muted text-sm mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs bg-supabase-dark border border-supabase-border text-supabase-text_muted px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Buttons */}
-                <div className="flex gap-3">
+                  {/* Project Card */}
                   <a
-                    href={project.links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      flex-1 flex items-center justify-center gap-2
-                      px-4 py-2
-                      bg-white text-black
-                      font-semibold rounded-lg
-                      hover:bg-gray-200
-                      transition
-                    "
+                    href={project.link}
+                    className={`block p-6 bg-[#1A1A1A] border border-[#262626] rounded-lg hover:border-white hover:bg-[#202020] transition-all group ${project.side === 'left' ? 'md:order-1' : 'md:order-2'}`}
                   >
-                    <ExternalLink size={16} />
-                    <span>Demo</span>
-                  </a>
+                    {/* Phase Label */}
+                    <div className="mb-4">
+                      <span className={`text-xs font-bold ${project.phaseColor} uppercase tracking-wider`}>
+                        {project.phase}
+                      </span>
+                    </div>
+                    {/* Badges */}
+                    <div className="flex items-center gap-3 mb-4">
+                      {project.status === 'FEATURED' && (
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-blue-500 border border-blue-500 px-2.5 py-1 rounded">
+                          ★ FEATURED
+                        </span>
+                      )}
+                      {project.status === 'ONGOING' && (
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-500 border border-emerald-500 px-2.5 py-1 rounded">
+                          ONGOING
+                        </span>
+                      )}
+                      {project.status === 'COMPLETED' && (
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-orange-500 border border-orange-500 px-2.5 py-1 rounded">
+                          COMPLETED
+                        </span>
+                      )}
+                    </div>
 
-                  <a
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      flex-1 flex items-center justify-center gap-2
-                      px-4 py-2
-                      border border-white
-                      text-white
-                      font-semibold rounded-lg
-                      hover:bg-white hover:text-black
-                      transition
-                    "
-                  >
-                    <Github size={16} />
-                    <span>Code</span>
+                    {/* Role */}
+                    <p className="text-xs font-medium text-[#737373] uppercase tracking-wider mb-3">
+                      {project.role}
+                    </p>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#E5E5E5] transition-colors">
+                      {project.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[#A3A3A3] mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Problem */}
+                    <div className="mb-4 p-4 bg-[#141414] border-l-2 border-red-500 rounded">
+                      <p className="text-sm font-semibold text-red-400 mb-2">Problem:</p>
+                      <p className="text-sm text-[#A3A3A3] leading-relaxed">{project.problem}</p>
+                    </div>
+
+                    {/* Solution */}
+                    <div className="mb-5 p-4 bg-[#141414] border-l-2 border-emerald-500 rounded">
+                      <p className="text-sm font-semibold text-emerald-400 mb-2">Solution:</p>
+                      <p className="text-sm text-[#A3A3A3] leading-relaxed">{project.solution}</p>
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {project.tech.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs px-3 py-1.5 bg-[#141414] border border-[#262626] text-[#A3A3A3] rounded hover:border-[#404040] hover:text-white transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* View Link */}
+                    <div className="flex items-center gap-2 text-blue-500 text-sm font-medium group-hover:text-blue-400 transition-colors">
+                      Source Code
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </a>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

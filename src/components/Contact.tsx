@@ -17,7 +17,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-20 px-4 bg-white dark:bg-black overflow-hidden">
+    <section id="contact" className="relative py-20 px-4 bg-[#141414] overflow-hidden">
       {/* Geometric Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" preserveAspectRatio="none">
