@@ -4,18 +4,18 @@ import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    phase: 'PHASE 1: JAN 2026',
+    phase: 'PHASE : SEPT 2025',
     phaseColor: 'text-blue-500',
-    title: 'Rebuilding the Payment System',
-    role: 'LEAD ENGINEER · 2026',
+    title: 'Hackaton x Amartha 2025',
+    role: 'FRONTEND ENGINEER · 2025',
     status: 'FEATURED',
     statusColor: 'bg-blue-500',
     description:
-      'Reduced payment processing time by 60% and improved reliability to 99.9% uptime',
-    problem: 'Kami memulai dengan sistem payment yang lambat dan sering gagal. Timeout terjadi pada 15% transaksi, menyebabkan customer frustration dan revenue loss.',
-    solution: 'Redesign arsitektur dengan event-driven pattern, implement circuit breaker, dan optimasi database queries. Hasilnya? Processing time turun 60% dan uptime naik ke 99.9%.',
-    tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis'],
-    thumbnails: ['test.jpg'], // Add multiple images here
+      'This project introduces "Jaringan Amanah", a system that transforms qualitative social assets into a quantitative Group Trust Score Social Graph Engine. The system calculates Group Trust Scores by integrating graph analysis, natural language processing (NLP) powered by Google Gemini, and Computer Vision ',
+    tech: [ 'TypeScript', 'Tailwind','React', 'Sigma js','Chart js','Python','FastAPI','Google Cloud','Google Gemini' ],
+    thumbnails: ['amarta.jpg','amarta2.jpg','amarta3.jpg','mvp1.jpg','mvp 2.jpg'],
+    sourceCode: 'https://github.com/SocialCollateralAI',
+    liveDemo: 'https://socialcollateral-landingpage.vercel.app/',
     link: '#project-1',
     side: 'right'
   },
@@ -32,7 +32,9 @@ const projects = [
     problem: 'Business team membutuhkan insight real-time untuk decision making, tapi existing dashboard hanya update setiap 15 menit dan tidak scalable.',
     solution: 'Build event streaming pipeline dengan Kafka dan WebSocket untuk real-time updates. Implement ClickHouse untuk fast analytical queries. Dashboard sekarang update sub-second dengan 100K+ events/sec.',
     tech: ['React', 'WebSocket', 'ClickHouse', 'Kafka'],
-    thumbnails: [], // Add multiple images here
+    thumbnails: [],
+    sourceCode: '#',
+    liveDemo: '#',
     link: '#project-2',
     side: 'left'
   },
@@ -49,7 +51,9 @@ const projects = [
     problem: 'Monolithic architecture membuat deployment lambat (2 jam per release) dan team dependencies tinggi. Satu bug bisa down seluruh sistem.',
     solution: 'Gradual migration ke microservices dengan strangler pattern. Implement service mesh untuk observability. Deployment time turun ke 30 menit, zero-downtime deployments achieved.',
     tech: ['Docker', 'Kubernetes', 'GraphQL', 'Go'],
-    thumbnails: [], // Add multiple images here
+    thumbnails: [],
+    sourceCode: '#',
+    liveDemo: '#',
     link: '#project-3',
     side: 'right'
   },
@@ -66,7 +70,9 @@ const projects = [
     problem: 'API gateway menjadi bottleneck dengan response time >500ms pada peak hours. Rate limiting tidak efektif dan caching strategy buruk.',
     solution: 'Redesign dengan Redis cluster untuk distributed caching, implement token bucket algorithm untuk rate limiting, dan optimize routing logic. Response time turun ke <100ms.',
     tech: ['Node.js', 'Redis', 'AWS', 'Nginx'],
-    thumbnails: [], // Add multiple images here
+    thumbnails: [],
+    sourceCode: '#',
+    liveDemo: '#',
     link: '#project-4',
     side: 'left'
   }
@@ -76,6 +82,17 @@ const projects = [
 const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isFullscreen]);
 
   if (!thumbnails || thumbnails.length === 0) {
     return (
@@ -171,10 +188,10 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
             {/* Close Button */}
             <button
               onClick={() => setIsFullscreen(false)}
-              className="absolute top-6 right-6 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+              className="absolute top-6 right-6 z-[60] p-4 bg-gray-700 hover:bg-gray-600 rounded-full transition-colors"
               aria-label="Close fullscreen"
             >
-              <X className="w-8 h-8 text-white" />
+              <X className="w-7 h-7 text-white" strokeWidth={3} />
             </button>
 
             {/* Fullscreen Image */}
@@ -192,7 +209,7 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
                     e.stopPropagation();
                     handlePrev();
                   }}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                  className="absolute left-6 top-1/2 -translate-y-1/2 p-3 bg-gray-700 hover:bg-gray-600 rounded-full transition-colors"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft className="w-8 h-8 text-white" />
@@ -202,7 +219,7 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
                     e.stopPropagation();
                     handleNext();
                   }}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                  className="absolute right-6 top-1/2 -translate-y-1/2 p-3 bg-gray-700 hover:bg-gray-600 rounded-full transition-colors"
                   aria-label="Next photo"
                 >
                   <ChevronRight className="w-8 h-8 text-white" />
@@ -259,15 +276,15 @@ export default function Projects() {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical Timeline Line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#262626] -translate-x-1/2"></div>
+          {/* Vertical Timeline Line (limited height so it doesn't stretch full page) */}
+          <div className="hidden md:block absolute left-1/2 top-24 bottom-24 w-0.5 bg-[#262626] -translate-x-1/2"></div>
 
           {/* Projects */}
-          <div className="space-y-12">
+          <div className="space-y-20">
             {projects.map((project, index) => (
               <div key={project.id} className="relative">
                 {/* Timeline Dot */}
-                <div className={`hidden md:block absolute left-1/2 top-16 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4 border-[#141414]`}></div>
+                <div className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4 border-[#141414]`}></div>
                 
                 {/* Content - Compact Layout */}
                 <div className={`grid md:grid-cols-2 gap-6 md:gap-10 items-center max-w-4xl mx-auto`}>
@@ -276,87 +293,58 @@ export default function Projects() {
                     <PhotoCarousel thumbnails={project.thumbnails} />
                   </div>
 
-                  {/* Project Card - Compact */}
-                  <a
-                    href={project.link}
-                    className={`block p-7 bg-[#1A1A1A] border border-[#262626] rounded-lg hover:border-white hover:bg-[#202020] transition-all group ${project.side === 'left' ? 'md:order-2' : 'md:order-1'}`}
-                  >
+                  {/* Project Card - Minimal (match thumbnail height) */}
+                  <div className={`block min-h-[320px] flex flex-col justify-center ${project.side === 'left' ? 'md:order-2' : 'md:order-1'}`}>
                     {/* Phase Label */}
-                    <div className="mb-3">
+                    <div className="mb-2">
                       <span className={`text-xs font-bold ${project.phaseColor} uppercase tracking-wider`}>
                         {project.phase}
                       </span>
                     </div>
-                    {/* Badges */}
-                    <div className="flex items-center gap-3 mb-3">
-                      {project.status === 'FEATURED' && (
-                        <span className="flex items-center gap-1.5 text-xs font-semibold text-blue-500 border border-blue-500 px-2.5 py-1 rounded">
-                          ★ FEATURED
-                        </span>
-                      )}
-                      {project.status === 'ONGOING' && (
-                        <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-500 border border-emerald-500 px-2.5 py-1 rounded">
-                          ONGOING
-                        </span>
-                      )}
-                      {project.status === 'COMPLETED' && (
-                        <span className="flex items-center gap-1.5 text-xs font-semibold text-orange-500 border border-orange-500 px-2.5 py-1 rounded">
-                          COMPLETED
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Role */}
-                    <p className="text-xs font-medium text-[#737373] uppercase tracking-wider mb-2">
-                      {project.role}
-                    </p>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#E5E5E5] transition-colors">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                       {project.title}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-sm text-[#A3A3A3] mb-3 leading-relaxed">
+                    {/* Short Description (primary content) */}
+                    <p className="text-base text-[#A3A3A3] mb-4 leading-relaxed">
                       {project.description}
                     </p>
 
-                    {/* Problem */}
-                    <div className="mb-3 p-3 bg-[#141414] border-l-2 border-red-500 rounded">
-                      <p className="text-xs font-semibold text-red-400 mb-1">Problem:</p>
-                      <p className="text-xs text-[#A3A3A3] leading-relaxed">{project.problem}</p>
-                    </div>
-
-                    {/* Solution */}
-                    <div className="mb-3 p-3 bg-[#141414] border-l-2 border-emerald-500 rounded">
-                      <p className="text-xs font-semibold text-emerald-400 mb-1">Solution:</p>
-                      <p className="text-xs text-[#A3A3A3] leading-relaxed">{project.solution}</p>
-                    </div>
-
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech, idx) => (
+                    {/* Compact pills (max 3) + status pill */}
+                    <div className="flex flex-wrap gap-2 mb-3 items-center">
+                      {project.tech.slice(0, 10).map((tech, idx) => (
                         <span
                           key={idx}
-                          className="text-xs px-2.5 py-1 bg-[#141414] border border-[#262626] text-[#A3A3A3] rounded hover:border-[#404040] hover:text-white transition-colors"
+                          className="text-xs px-2 py-1 bg-transparent border border-[#e6e6e6]/6 text-[#A3A3A3] rounded"
                         >
                           {tech}
                         </span>
                       ))}
+
+                      {/* Status pills */}
+                      {project.status === 'FEATURED' && (
+                        <span className="text-xs px-2 py-1 bg-blue-500 text-white rounded">Featured</span>
+                      )}
+                      {project.status === 'ONGOING' && (
+                        <span className="text-xs px-2 py-1 bg-emerald-500 text-white rounded">Ongoing</span>
+                      )}
+                      {project.status === 'COMPLETED' && (
+                        <span className="text-xs px-2 py-1 bg-orange-500 text-white rounded">Completed</span>
+                      )}
                     </div>
 
-                    {/* View Link */}
-                    <div className="flex items-center gap-6">
-                      <div className="flex items-center gap-2 text-blue-500 text-sm font-medium group-hover:text-blue-400 transition-colors">
-                        Source Code
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                      </div>
-                      <div className="flex items-center gap-2 text-blue-500 text-sm font-medium group-hover:text-blue-400 transition-colors">
-                        Live Demo
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                      </div>
+                    {/* View Links (simple) */}
+                    <div className="flex gap-6 text-blue-500 text-sm font-medium">
+                      {project.sourceCode !== '#' && (
+                        <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-2">Source Code <ArrowRight size={14} /></a>
+                      )}
+                      {project.liveDemo !== '#' && (
+                        <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-2">Live Demo <ArrowRight size={14} /></a>
+                      )}
                     </div>
-                  </a>
+                  </div>
                 </div>
               </div>
             ))}

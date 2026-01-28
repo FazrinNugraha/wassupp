@@ -2,46 +2,12 @@ import React, { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 
 export default function HomePage() {
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(50);
-
-  const strings = [
-    "Transforming Ideas into Powerful Web Applications",
-    "Building Scalable & User-Centric Solutions",
-    "Creating Amazing Digital Experiences",
-  ];
-
-  useEffect(() => {
-    const handleTyping = () => {
-      const i = loopNum % strings.length;
-      const fullText = strings[i];
-
-      setText(
-        isDeleting
-          ? fullText.substring(0, text.length - 1)
-          : fullText.substring(0, text.length + 1)
-      );
-
-      setTypingSpeed(isDeleting ? 30 : 50);
-
-      if (!isDeleting && text === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed]);
+  const [expandAbout, setExpandAbout] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#141414]">
       {/* Hero Section */}
-      <section id="home" className="w-full px-6 pt-32 pb-20">
+      <section id="home" className="max-w-7xl mx-auto px-5 py-16 pt-32 ">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Left Column - Main Content */}
@@ -51,11 +17,11 @@ export default function HomePage() {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#FAFAFA] leading-tight tracking-tight">
                   I don't just ship projects. I document decisions, trade-offs, and outcomes.
                 </h2>
-                <p className="text-base md:text-lg text-[#A3A3A3] leading-relaxed">
+                <p className="text-xl md:text-lg text-[#A3A3A3] leading-relaxed">
                   A portfolio built around case studies — not screenshots.
                 </p>
-                <p className="text-base text-[#A3A3A3] leading-relaxed">
-                  Erland · Senior Software Engineer
+                <p className="text-xl text-[#A3A3A3] leading-relaxed">
+                  Muhamad Fazrin Nugraha · Senior Software Engineer
                 </p>
               </div>
 
@@ -136,7 +102,7 @@ export default function HomePage() {
           </p>
           <a
             href="/journey"
-            className="inline-flex items-center gap-2 text-[#FAFAFA] font-medium hover:underline mb-8"
+            className="hover-text inline-flex items-center gap-2 text-[#FAFAFA] font-medium hover:underline mb-8"
           >
             Read my journey
             <ArrowRight size={18} />
@@ -145,25 +111,39 @@ export default function HomePage() {
 
         {/* Bio Section */}
         <div className="space-y-6 border-t-2 border-[#262626] pt-12">
-          <p className="text-2xl font-bold text-white  leading-relaxed">
-            About Me</p>
-          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            I'm a full-stack developer passionate about crafting user-centric solutions
-            that solve real-world problems. With expertise in modern web technologies and
-            a keen eye for design, I create applications that are both beautiful and
-            functional.
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-[#FAFAFA]">About</h2>
+            <button
+              onClick={() => setExpandAbout(!expandAbout)}
+              className="text-[#A3A3A3] hover:text-[#FAFAFA] font-medium text-sm transition-colors border-b border-transparent hover:border-[#A3A3A3] pb-1 "
+            >
+              {expandAbout ? "Show Less" : "Full Version"}
+            </button>
+          </div>
+
+          <p className="text-xl text-gray-300 leading-relaxed">
+            I'm a full-stack developer passionate about crafting user-centric solutions that solve real-world problems. With expertise in modern web technologies, I create applications that are both beautiful and functional.
           </p>
-          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            My journey in tech started with curiosity about how websites work, which evolved
-            into a deep passion for building scalable applications. I love collaborating with
-            teams and continuously learning new technologies to stay ahead of the curve.
+          <p className="text-xl text-gray-300 leading-relaxed">
+            My journey in tech started with curiosity about how websites work, which evolved into a deep passion for building scalable applications. I love collaborating with teams and continuously learning new technologies to stay ahead of the curve.
           </p>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            When I'm not coding, you can find me exploring new design trends, contributing to
-            open-source projects, or sharing knowledge with the developer community.
+          <p className="text-xl text-gray-300 leading-relaxed">
+            When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or sharing knowledge with the developer community.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Expanded content */}
+          {expandAbout && (
+            <div className="space-y-4  ">
+              <p className="text-xl text-gray-300 leading-relaxed">
+                Throughout my career, I've worked on diverse projects ranging from payment systems to real-time analytics platforms. Each project taught me something valuable about system design, user experience, and the importance of clear documentation.
+              </p>
+              <p className="text-xl text-gray-300 leading-relaxed">
+                I believe in writing code that's not just functional, but also maintainable and well-documented. I'm a strong advocate for best practices and continuous improvement in engineering teams.
+              </p>
+            </div>
+          )}
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <a
               href="/projects"
               className="px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300 hover:scale-105 text-center"
@@ -184,19 +164,19 @@ export default function HomePage() {
       <section id="decisions" className="max-w-7xl mx-auto px-6 py-16 scroll-mt-20">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-[#FAFAFA]">Recent Decisions</h2>
-          <a
+          {/* <a
             href="#all-decisions"
             className="text-[#A3A3A3] hover:text-[#FAFAFA] font-medium hover:underline"
           >
             View all
-          </a>
+          </a> */}
         </div>
 
         <div className="space-y-8">
           {/* Decision 1 */}
           <div className="space-y-3">
             <p className="text-sm font-medium text-[#A3A3A3] uppercase tracking-wide">
-              Jun 2024
+              PHASE : Jun 2024
             </p>
             <h2 className="text-2xl font-bold text-[#FAFAFA]">
               Transitioning to Remote-First Team Structure

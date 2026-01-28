@@ -71,61 +71,68 @@ export default function JourneyPage() {
           thinking, and the skills I've developed along the way.
         </p>
 
-        <div className="space-y-0">
-          {timeline.map((item, index) => (
-            <div
-              key={item.date}
-              className="relative pl-12 pb-12"
-            >
-              {/* Timeline dot */}
-              <div className={`absolute left-0 top-1 w-3 h-3 ${item.dotColor} rounded-full`}></div>
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-[7px] top-0 bottom-0 w-0.5 bg-[#262626]"></div>
 
-              {/* Timeline line - connects to next item */}
-              {index < timeline.length - 1 && (
-                <div className="absolute left-[5px] top-4 w-0.5 bottom-0 bg-[#262626]"></div>
-              )}
+          <div className="space-y-6">
+            {timeline.map((item, index) => (
+              <div
+                key={item.date}
+                className="relative pl-8 group"
+              >
+                {/* Timeline dot */}
+                <div className={`absolute left-0 top-3 w-4 h-4 ${item.dotColor} rounded-full transition-transform group-hover:scale-125`}></div>
 
-              {/* Content */}
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#A3A3A3] text-sm font-medium">{item.date}</span>
-                  <span className={`text-xs font-semibold border px-2.5 py-1 rounded ${item.typeColor}`}>
-                    {item.type}
-                  </span>
-                </div>
-
-                <h4 className="text-2xl font-bold text-white mb-3">{item.title}</h4>
-
-                <p className="text-[#A3A3A3] mb-4 leading-relaxed">
-                  {item.description}
-                </p>
-
-                <div className="mb-4">
-                  <p className="text-xs font-semibold text-[#A3A3A3] uppercase tracking-wide mb-3">
-                    Skills:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="text-xs px-3 py-1.5 bg-[#1A1A1A] border border-[#262626] text-[#A3A3A3] rounded hover:border-white hover:text-white transition-colors"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                {/* Card Content */}
+                <div className="border border-[#262626] rounded-lg p-6 bg-[#1A1A1A] hover:border-[#404040] transition-all duration-300">
+                  {/* Date and Type Badge */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[#A3A3A3] text-xs font-medium uppercase tracking-wider">{item.date}</span>
+                    <span className={`text-xs font-semibold border px-2.5 py-1 rounded ${item.typeColor}`}>
+                      {item.type}
+                    </span>
                   </div>
-                </div>
 
-                <a
-                  href="#"
-                  className="text-blue-500 text-sm font-medium hover:text-blue-400 transition-colors inline-flex items-center gap-1"
-                >
-                  Read more
-                  <span>↓</span>
-                </a>
+                  {/* Title */}
+                  <h4 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+                    {item.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p className="text-[#A3A3A3] mb-4 leading-relaxed text-sm md:text-base">
+                    {item.description}
+                  </p>
+
+                  {/* Skills */}
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold text-[#A3A3A3] uppercase tracking-wide mb-3">
+                      Skills:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="text-xs px-3 py-1.5 bg-[#1A1A1A] border border-[#262626] text-[#A3A3A3] rounded hover:border-blue-500 hover:text-blue-300 transition-all"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Read More Link */}
+                  <a
+                    href="#"
+                    className="text-blue-500 text-sm font-medium hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                  >
+                    Read more
+                    <span>→</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </div>
