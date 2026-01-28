@@ -3,13 +3,13 @@ import React from 'react';
 export default function JourneyPage() {
   const timeline = [
     {
-      date: 'January 2026',
+      date: 'September 2024',
       type: 'LEARNING',
       typeColor: 'border-emerald-500 text-emerald-500',
       dotColor: 'bg-emerald-500',
-      title: 'Leveling Up System Design Skills',
-      description: 'Dedicated focused effort to improve system design skills after struggling in senior engineer interviews. Studied real-world architectures, practiced with peers, and started documenting design decisions systematically.',
-      skills: ['System Design', 'Architecture', 'Technical Documentation', 'Trade-off Analysis'],
+      title: 'Bootcamp Revou Fundamental Course',
+      description: 'Joined an intensive software engineering bootcamp for 2 weeks focused on learning the basics of web development. I practiced building responsive and user-friendly websites using HTML, CSS, and JavaScript. The program also introduced Git for version control and modern development workflows, helping me understand how real-world web applications are built from development to deployment.',
+      skills: ['HTML', 'CSS', 'Java Script', 'Git','Responsive Design' ],
     },
     {
       date: 'October 2025',
@@ -113,7 +113,7 @@ export default function JourneyPage() {
                       {item.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="text-xs px-3 py-1.5 bg-[#1A1A1A] border border-[#262626] text-[#A3A3A3] rounded hover:border-blue-500 hover:text-blue-300 transition-all"
+                          className="text-xs px-3 py-1.5 bg-[#1A1A1A] border border-[#262626] text-white rounded hover:border-blue-500 hover:text-blue-300 transition-all"
                         >
                           {skill}
                         </span>
