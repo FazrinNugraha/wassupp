@@ -20,7 +20,7 @@ export default function HomePage() {
                 <p className="text-xl md:text-lg text-[#A3A3A3] leading-relaxed">
                   A portfolio built around case studies — not screenshots.
                 </p>
-                <p className="text-xl text-[#A3A3A3] leading-relaxed">
+                <p className="text-base text-[#A3A3A3] leading-relaxed">
                   Muhamad Fazrin Nugraha · Senior Software Engineer
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function HomePage() {
           <p className="text-xl text-[#FAFAFA] leading-relaxed">
             I'm <strong>Fazrin</strong>, Software Engineer focused on building systems that move real business metrics.
           </p>
-          <p className="text-xl text-[#A3A3A3] leading-relaxed">
+          <p className="text-lg text-[#A3A3A3] leading-relaxed">
             Every major decision is documented—because great engineers don't just build things, they explain why.
           </p>
           <a
