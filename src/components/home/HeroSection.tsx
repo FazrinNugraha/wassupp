@@ -34,7 +34,8 @@ export default function HeroSection() {
                                 href="#decisions"
                                 className="inline-flex items-center justify-center gap-2 px-5 py-2 border border-[#262626] text-[#FAFAFA] font-medium rounded hover:bg-[#1A1A1A] transition-colors text-sm"
                             >
-                                How I Make Decisions
+                                Recent Activities
+                                <ArrowRight size={16} />
                             </a>
                         </div>
                     </div>
@@ -50,24 +51,24 @@ export default function HeroSection() {
                             <div className="space-y-3">
                                 {/* Category & Meta */}
                                 <div className="flex items-center gap-2 text-sm">
-                                    <span className="text-md text-[#3B82F6] uppercase tracking-wide">
+                                    {/* <span className="text-md text-[#3B82F6] uppercase tracking-wide">
                                         ENGINEERING
-                                    </span>
-                                    <span className="text-[#A3A3A3]">•</span>
+                                    </span> */}
+                                    {/* <span className="text-[#A3A3A3]">•</span>
                                     <span className="text-[#A3A3A3]">Jan 15, 2026</span>
                                     <span className="text-[#A3A3A3]">•</span>
-                                    <span className="text-[#A3A3A3]">5 min read</span>
+                                    <span className="text-[#A3A3A3]">5 min read</span> */}
                                 </div>
 
                                 {/* Title */}
                                 <h3 className="text-xl font-bold text-[#FAFAFA] leading-tight">
-                                    Building Scalable Microservices with Node.js
+                                    ARTICLES COMING SOON
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-sm text-justify text-[#A3A3A3] leading-relaxed">
+                                {/* <p className="text-sm text-justify text-[#A3A3A3] leading-relaxed">
                                     Exploring best practices and architectural patterns for creating maintainable microservices that can handle millions of requests.
-                                </p>
+                                </p> */}
 
                                 {/* Read More Link */}
                                 <a
@@ -85,22 +86,22 @@ export default function HeroSection() {
                             <div className="space-y-3">
                                 {/* Category & Meta */}
                                 <div className="flex items-center gap-2 text-sm">
-                                    <span className="text-md text-[#3B82F6] uppercase tracking-wide">
+                                    {/* <span className="text-md text-[#3B82F6] uppercase tracking-wide">
                                         DESIGN
-                                    </span>
-                                    <span className="text-[#A3A3A3]">•</span>
+                                    </span> */}
+                                    {/* <span className="text-[#A3A3A3]">•</span>
                                     <span className="text-[#A3A3A3]">Jan 12, 2026</span>
                                     <span className="text-[#A3A3A3]">•</span>
-                                    <span className="text-[#A3A3A3]">7 min read</span>
+                                    <span className="text-[#A3A3A3]">7 min read</span> */}
                                 </div>
 
                                 {/* Title */}
                                 <h3 className="text-xl font-bold text-[#FAFAFA] leading-tight">
-                                    The Psychology Behind Modern UI Design
+                                    ARTICLES COMING SOON
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-sm  text-justify text-[#A3A3A3] leading-relaxed">
+                                {/* <p className="text-sm  text-justify text-[#A3A3A3] leading-relaxed">
                                     Understanding how cognitive psychology principles influence user interface design and improve user experience.
                                 </p>
 
