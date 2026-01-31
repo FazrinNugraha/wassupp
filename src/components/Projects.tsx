@@ -36,8 +36,8 @@ const projects = [
     side: "right",
   },
   {
-    id: 2,
-    phase: "PHASE : JAN 2026",
+    id: 3,
+    phase: "PHASE : DES 2025",
     phaseColor: "text-emerald-500",
     title: "Gluco Check",
     role: "FULL-STACK ENGINEER · 2025",
@@ -45,15 +45,21 @@ const projects = [
     statusColor: "bg-emerald-500",
     description:
       "GlucoCheck is an AI-powered web platform that provides personalized diabetes risk analysis through an accessible digital interface. Users complete a simple biodata form and health questionnaire covering lifestyle patterns, dietary habits, and physical activities. The AI engine then generates comprehensive risk assessments with detailed explanations in Bahasa Indonesia, categorizing users into risk levels while delivering personalized care recommendations.",
-    tech: ["React", "Tailwind", "Lucide-React", "Groq-AI"],
-    thumbnails: [],
+    tech: ["React", "Tailwind", "React-Query", "Groq-AI"],
+    thumbnails: [
+      "/project 2/glu1.jpg",
+      "/project 2/glu2.jpg",
+      "/project 2/glu3.jpg",
+      "/project 2/glu5.jpg",
+      "/project 2/glu6.jpg",
+    ],
     sourceCode: "https://github.com/FazrinNugraha/GlucoCheck",
     liveDemo: "https://gluco-blue.vercel.app/",
     link: "#project-2",
     side: "left",
   },
   {
-    id: 3,
+    id: 2,
     phase: "PHASE : AUG 2025",
     phaseColor: "text-orange-500",
     title: "Learning Management System ",
@@ -183,9 +189,8 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
                     e.stopPropagation();
                     setCurrentIndex(idx);
                   }}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    idx === currentIndex ? "bg-white" : "bg-white/40"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex ? "bg-white" : "bg-white/40"
+                    }`}
                   aria-label={`Go to photo ${idx + 1}`}
                 />
               ))}
@@ -258,9 +263,8 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
                         e.stopPropagation();
                         setCurrentIndex(idx);
                       }}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        idx === currentIndex ? "bg-white" : "bg-white/40"
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex ? "bg-white" : "bg-white/40"
+                        }`}
                       aria-label={`Go to photo ${idx + 1}`}
                     />
                   ))}
