@@ -1,78 +1,74 @@
-import React from 'react';
-import { Heart } from 'lucide-react';
+import React from "react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
+  const socialLinks = [
+    { label: "github", url: "https://github.com/FazrinNugraha" },
+    {
+      label: "linkedin",
+      url: "https://www.linkedin.com/in/muhamad-fazrin-nugraha-968733333/",
+    },
+    {
+      label: "gmail",
+      url: "/contact",
+    },
   ];
 
   return (
-    <footer className="bg-[#141414] border-t border-gray-200 dark:border-gray-700 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <footer className="bg-[#141414] text-gray-600 dark:text-gray-300">
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="border-t-2 border-[#262626] pt-8"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-5 py-16 pt-4">
         {/* Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
           {/* Brand */}
           <div>
-            <h3 className="text-2xl text-black dark:text-white font-bold  mb-2 ">
-              Portfolio
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Full-stack developer creating amazing web experiences with modern technologies.
+            <h2 className="text-xl text-black dark:text-white font-bold mb-4">
+              Let's Connect
+            </h2>
+
+            <p className="text-[#A3A3A3] dark:text-gray-300 mb-6">
+              If you want to get in touch with me about something or just to say hi,
+              reach out on social media or send me an email.
             </p>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-black dark:text-white font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
+            {/* Social Links */}
+            <div className="flex flex-wrap items-center gap-2 text-[#A3A3A3] dark:text-gray-300">
+              {socialLinks.map((social, index) => (
+                <React.Fragment key={social.label}>
+
                   <a
-                    href={link.href}
-                    className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300"
+                    href={social.url}
+                    target={social.url.startsWith('/') ? '_self' : '_blank'}
+                    rel="noopener noreferrer"
+                    className="border-b border-gray-400 dark:border-gray-500 hover:border-white dark:hover:border-white hover:text-white dark:hover:text-white transition-all duration-300 pb-[1px]"
                   >
-                    {link.label}
+                    {social.label}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          {/* Social Links */}
-          <div>
-            <h4 className="text-black dark:text-white font-semibold mb-4">Social</h4>
-            <div className="flex gap-4">
-              {[
-                { label: 'GitHub', url: 'https://github.com/FazrinNugraha' },
-                { label: 'LinkedIn', url: 'https://www.linkedin.com/in/muhamad-fazrin-nugraha-968733333/' },
-                { label: 'Email', url: 'nugrahafadzrin@gmail.com' },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300"
-                >
-                  {social.label}
-                </a>
+                  {index !== socialLinks.length - 1 && (
+                    <span className="mx-1">/</span>
+                  )}
+
+                </React.Fragment>
               ))}
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200 dark:border-gray-700 py-8">
+        <div className="border-t-2 border-[#262626] pt-12">
+
           {/* Copyright */}
           <div className="flex flex-col md:flex-row items-center justify-between">
+
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              &copy; {currentYear} All rights reserved build with <strong>Astro.Js</strong>
+              &copy; {currentYear} All rights reserved build with{" "}
+              <strong>Astro.Js</strong>
             </p>
 
             {/* Back to Top */}
@@ -82,6 +78,7 @@ export default function Footer() {
             >
               ↑ Back to top
             </a>
+
           </div>
         </div>
       </div>

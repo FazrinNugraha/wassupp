@@ -51,7 +51,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-20 px-4 bg-[#141414] text-supabase-text"
+      className="relative py-24 px-6 bg-[#141414] text-gray-100"
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
@@ -59,7 +59,7 @@ export default function Skills() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Skills & Expertise
           </h2>
-          <p className="text-supabase-text_muted max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Proficient in modern technologies for building scalable web applications
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function Skills() {
         <div className="space-y-12">
           {techStackCategories.map((category) => (
             <div key={category.category}>
-              <h3 className="text-xl font-semibold mb-6 border-l-2 border-supabase-border pl-4">
+              <h3 className="text-xl font-semibold mb-6 border-l-2 border-gray-700 pl-4">
                 {category.category}
               </h3>
 
@@ -77,17 +77,17 @@ export default function Skills() {
                   <div
                     key={tech.name}
                     className="
-                      bg-supabase-surface
-                      border border-supabase-border
+                      bg-zinc-900
+                      border border-gray-800
                       rounded-xl
                       p-6
                       flex items-center justify-center
                       transition-all duration-300
-                      hover:bg-supabase-surface_light
+                      hover:bg-zinc-800
                       hover:-translate-y-2
                       hover:scale-105
-                      hover:shadow-lg hover:shadow-white-500/20
-                      hover:border-white-500/50
+                      hover:shadow-lg hover:shadow-white/10
+                      hover:border-white/50
                     "
                   >
                     <div className="text-center">

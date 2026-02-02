@@ -37,6 +37,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -47,6 +48,7 @@ body {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
@@ -56,9 +58,11 @@ body {
   0% {
     box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 10px rgba(88, 166, 255, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(88, 166, 255, 0);
   }
@@ -98,6 +102,7 @@ body {
 }
 
 /* Smooth transitions */
-a, button {
+a,
+button {
   transition: all 0.3s ease;
 }

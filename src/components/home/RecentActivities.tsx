@@ -16,8 +16,8 @@ export default function RecentActivities() {
             <div className="space-y-8">
                 {/* Decision 1 */}
                 <div className="space-y-3">
-                    <p className="text-sm text-blue-500 font-medium text-[#A3A3A3] uppercase tracking-wide">
-                        PHASE : FEB 2026
+                    <p className="text-sm text-[#A3A3A3] font-medium text-[#A3A3A3] uppercase tracking-wide">
+                        PHASE : FEB 2026 - JUN 2026
                     </p>
                     <h2 className="text-2xl font-bold text-[#FAFAFA]">
                         Coding Camp 2026 powered by DBS Foundation
@@ -27,18 +27,21 @@ export default function RecentActivities() {
                     </p>
                 </div>
 
+                
+
                 {/* Decision 2 */}
                 <div className="space-y-3 pt-8 border-t-2 border-[#262626]">
-                    <p className="text-sm text-blue-500 font-medium text-[#A3A3A3] uppercase tracking-wide">
+                    <p className="text-sm text-[#A3A3A3] font-medium text-[#A3A3A3] uppercase tracking-wide">
                         PHASE : SEPT 2025
                     </p>
                     <h3 className="text-2xl font-bold text-[#FAFAFA]">
                         Finalist Hackaton x Amartha 2025
                     </h3>
                     <p className="text-[#A3A3A3] text-justify leading-relaxed">
-                        "My first hackathon—made it to top 15 out of 200+ teams. Spent 24 hours building SocialCollateral AI as the frontend dev in a 5-person team. We created a system that uses graph analytics, NLP, and computer vision to help microfinance lenders assess group trust.
+                        My first hackathon—made it to top 15 out of 200+ teams. Spent 24 hours building SocialCollateral AI as the frontend dev in a 5-person team. We created a system that uses graph analytics, NLP, and computer vision to help microfinance lenders assess group trust.
                     </p>
                 </div>
+                
             </div>
         </section>
     );

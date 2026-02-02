@@ -291,14 +291,11 @@ export default function Projects() {
           {/* Header */}
           <div className="mb-16 text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Projects
+              Selected Project
             </h1>
             <p className="text-xl text-[#A3A3A3] mb-6 max-w-4xl mx-auto leading-relaxed">
-              A collection of projects that showcase my work and learning
-              journey. Each project highlights the idea behind it, the approach
-              taken, and the results delivered, from concept to implementation.
-              These projects reflect my experience in building practical
-              solutions and turning ideas into real, usable products.
+              Here's a collection of projects I've worked on. Each project tells a story—why I built it,
+              how I approached it, and what came out of it. Together, they show my experience in building practical solutions that people can actually use.
             </p>
             <p className="text-sm text-[#737373]">
               {projects.length} projects ·{" "}
@@ -359,7 +356,15 @@ export default function Projects() {
                         {project.tech.slice(0, 10).map((tech, idx) => (
                           <span
                             key={idx}
-                            className="text-xs px-2 py-1 bg-transparent border border-[#e6e6e6]/13 text-white-500 rounded"
+                            className="text-xs px-2 
+                            py-1 bg-transparent border border-[#e6e6e6]/13 
+                            text-white-500 rounded 
+                            transition-all duration-300
+                            hover:bg-supabase-surface_light
+                            hover:-translate-y-2
+                            hover:scale-105
+                            hover:shadow-lg hover:shadow-white-500/20
+                            hover:border-white-500/50"
                           >
                             {tech}
                           </span>
@@ -412,8 +417,8 @@ export default function Projects() {
               ))}
             </div>
           </div>
-        </section>
-      </main>
-    </div>
+        </section >
+      </main >
+    </div >
   );
 }
