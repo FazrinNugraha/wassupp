@@ -1,10 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Skills from "../components/Skills.tsx";
+import AppWrapper from "../components/AppWrapper.tsx";
 ---
 
 <Layout>
-    <Header client:load />
-    <Skills client:load />
+    <AppWrapper client:load page="skills" />
 </Layout>

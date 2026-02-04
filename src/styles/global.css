@@ -4,13 +4,50 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* Theme CSS Variables */
+:root {
+  --bg-primary: #141414;
+  --bg-secondary: #1A1A1A;
+  --bg-card: #1A1A1A;
+  --text-primary: #FAFAFA;
+  --text-secondary: #A3A3A3;
+  --border-color: #262626;
+  --border-hover: #404040;
+}
+
+.light-theme {
+  --bg-primary: #F9FAFB;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  --border-hover: #D1D5DB;
+}
+
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme scrollbar */
+.light-theme ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
 
 /* Custom scrollbar */
@@ -29,6 +66,16 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #606060;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Animations */
@@ -105,4 +152,64 @@ body {
 a,
 button {
   transition: all 0.3s ease;
+}
+
+/* Responsive breakpoints improvement */
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  html {
+    font-size: 14px;
+  }
+
+  .text-4xl {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+
+  .text-5xl {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+
+  .text-6xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .card-hover:hover {
+    transform: none;
+  }
+
+  a:active,
+  button:active {
+    opacity: 0.7;
+  }
+}
+
+/* Safe area insets for mobile devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-inset-top {
+    padding-top: max(0px, env(safe-area-inset-top));
+  }
+
+  .safe-area-inset-bottom {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
 }

@@ -1,10 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Contact from "../components/Contact.tsx";
+import AppWrapper from "../components/AppWrapper.tsx";
 ---
 
 <Layout>
-    <Header client:load />
-    <Contact client:load />
+    <AppWrapper client:load page="contact" />
 </Layout>

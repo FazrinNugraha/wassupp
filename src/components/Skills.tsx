@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Skills() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   const techStackCategories = [
     {
       category: 'Frontend',
@@ -51,15 +55,15 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-24 px-6 bg-[#141414] text-gray-100"
+      className={`relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-5 md:px-6 transition-colors duration-300 ${isDark ? 'text-gray-100' : 'text-gray-900'}`}
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Skills & Expertise
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className={`max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Proficient in modern technologies for building scalable web applications
           </p>
         </div>
@@ -76,19 +80,15 @@ export default function Skills() {
                 {category.techs.map((tech) => (
                   <div
                     key={tech.name}
-                    className="
-                      bg-zinc-900
-                      border border-gray-800
-                      rounded-xl
-                      p-6
-                      flex items-center justify-center
+                    className={`
+                      border rounded-xl p-6 flex items-center justify-center
                       transition-all duration-300
-                      hover:bg-zinc-800
-                      hover:-translate-y-2
-                      hover:scale-105
-                      hover:shadow-lg hover:shadow-white/10
-                      hover:border-white/50
-                    "
+                      hover:-translate-y-2 hover:scale-105
+                      ${isDark
+                        ? 'bg-zinc-900 border-gray-800 hover:bg-zinc-800 hover:shadow-white/10 hover:border-white/50'
+                        : 'bg-white border-gray-200 hover:bg-gray-50 hover:shadow-md hover:border-gray-300'
+                      }
+                    `}
                   >
                     <div className="text-center">
                       <img

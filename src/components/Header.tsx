@@ -1,42 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeItem, setActiveItem] = useState('/');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Set active item based on current path
+    if (typeof window !== 'undefined') {
+      setActiveItem(window.location.pathname);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const menuItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Journey', href: '/journey' },
-    { label: 'Projects', href: '/projects' },
-    { label: 'Skills', href: '/skills' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'HOME', href: '/' },
+    { label: 'PROJECTS', href: '/projects' },
+    { label: 'JOURNEY', href: '/journey' },
+    { label: 'SKILLS', href: '/skills' },
+    { label: 'CONTACT', href: '/contact' },
   ];
+
+  const handleNavClick = (href: string) => {
+    setActiveItem(href);
+  };
+
+  const isDark = theme === 'dark';
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass border-b border-gray-700 shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? isDark
+          ? 'glass border-b border-gray-800 shadow-lg'
+          : 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
+        : isDark
+          ? 'bg-[#1A1A1A]/95 backdrop-blur-sm'
+          : 'bg-gray-50/95 backdrop-blur-sm'
         }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center ml-0 md:ml-60 justify-between h-16">
-
+      {/* Desktop Navigation */}
+      <nav className="hidden md:block max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-center h-16">
           {/* Desktop Menu - Centered */}
-          <div className="hidden md:flex items-center justify-center flex-1 ">
+          <div className="flex items-center justify-center flex-1">
             <div className="flex items-center space-x-8">
               {menuItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+                  onClick={() => handleNavClick(item.href)}
+                  className={`text-sm font-medium tracking-wide transition-colors duration-300 ${activeItem === item.href
+                    ? isDark ? 'text-white' : 'text-gray-900'
+                    : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'
+                    }`}
                 >
                   {item.label}
                 </a>
@@ -44,91 +69,58 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Social Icons (Desktop) */}
-          <div className="hidden md:flex items-center justify-end space-x-4 w-64">
-            <a
-              href="https://github.com/FazrinNugraha"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition-colors"
-              aria-label="GitHub"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/muhamad-fazrin-nugraha-968733333/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-              href="/contact"
-              className="text-gray-300 hover:text-white transition-colors"
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4 md:hidden">
+          {/* Dark Mode Toggle (Desktop) */}
+          <div className="flex items-center space-x-4">
             <button
-              className="text-gray-300 hover:text-white transition-colors"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              onClick={toggleTheme}
+              className={`transition-colors p-1 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+              aria-label="Toggle dark mode"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-700 space-y-3">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-900 rounded transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-
-            {/* Mobile Social Icons */}
-            <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-700">
-              <a
-                href="https://github.com/FazrinNugraha"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href="https://linkedin.com/in/muhamad-fazrin-nugraha"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="mailto:nugrahafazrin@gmail.com"
-                className="text-gray-300 hover:text-white transition-colors"
-                aria-label="Email"
-              >
-                <Mail size={20} />
-              </a>
+      {/* Mobile Navigation - Horizontal Scrollable */}
+      <nav className="md:hidden">
+        <div className={`flex items-center justify-between h-14 px-4 ${isDark ? 'border-b border-gray-800/50' : 'border-b border-gray-200'}`}>
+          {/* Scrollable Menu Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex-1 overflow-x-auto scrollbar-hide"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            <div className="flex items-center space-x-6 px-1 min-w-max">
+              {menuItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`text-sm font-medium tracking-wide whitespace-nowrap py-4 transition-all duration-300 ${activeItem === item.href
+                    ? isDark ? 'text-white' : 'text-gray-900'
+                    : isDark ? 'text-gray-500 hover:text-gray-300' : 'text-gray-400 hover:text-gray-700'
+                    }`}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
-        )}
+
+          {/* Dark Mode Toggle (Mobile) */}
+          <button
+            onClick={toggleTheme}
+            className={`transition-colors p-2 ml-2 flex-shrink-0 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
       </nav>
     </header>
   );

@@ -1,6 +1,10 @@
 import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function JourneyPage() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   const timeline = [
     {
       date: "September 2024",
@@ -73,13 +77,13 @@ export default function JourneyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#141414]">
+    <div className="min-h-screen">
       {/* Journey Timeline */}
-      <section className="max-w-4xl mx-auto px-6 py-24">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+      <section className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24">
+        <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
           Journey
         </h2>
-        <p className="text-[#A3A3A3] mb-16 max-w-3xl mx-auto text-center text-lg">
+        <p className={`mb-16 max-w-3xl mx-auto text-center text-lg ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
           A timeline of my professional growth and learning progression. This
           isn't a resume—it's a story of how I've evolved as an engineer, the
           pivotal moments that shaped my thinking, and the skills I've developed
@@ -88,7 +92,7 @@ export default function JourneyPage() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-[7px] top-0 bottom-0 w-0.5 bg-[#262626]"></div>
+          <div className={`absolute left-[7px] top-0 bottom-0 w-0.5 ${isDark ? 'bg-[#262626]' : 'bg-gray-200'}`}></div>
 
           <div className="space-y-6">
             {timeline.map((item, index) => (
@@ -99,10 +103,13 @@ export default function JourneyPage() {
                 ></div>
 
                 {/* Card Content */}
-                <div className="border border-[#262626] rounded-lg p-6 bg-[#1A1A1A] hover:border-[#404040] transition-all duration-300">
+                <div className={`border rounded-lg p-6 transition-all duration-300 ${isDark
+                  ? 'border-[#262626] bg-[#1A1A1A] hover:border-[#404040]'
+                  : 'border-gray-200 bg-white hover:border-gray-300 shadow-sm'
+                  }`}>
                   {/* Date and Type Badge */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[#A3A3A3] text-xs font-medium uppercase tracking-wider">
+                    <span className={`text-xs font-medium uppercase tracking-wider ${isDark ? 'text-[#A3A3A3]' : 'text-gray-500'}`}>
                       {item.date}
                     </span>
                     <span
@@ -113,25 +120,31 @@ export default function JourneyPage() {
                   </div>
 
                   {/* Title */}
-                  <h4 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+                  <h4 className={`text-xl md:text-2xl font-bold mb-3 transition-colors ${isDark
+                    ? 'text-white group-hover:text-blue-300'
+                    : 'text-gray-900 group-hover:text-blue-600'
+                    }`}>
                     {item.title}
                   </h4>
 
                   {/* Description */}
-                  <p className="text-[#A3A3A3] text-justify mb-4 leading-relaxed text-sm md:text-base">
+                  <p className={`text-justify mb-4 leading-relaxed text-sm md:text-base ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
                     {item.description}
                   </p>
 
                   {/* Skills */}
                   <div className="mb-4">
-                    <p className="text-xs font-semibold text-[#A3A3A3] uppercase tracking-wide mb-3">
+                    <p className={`text-xs font-semibold uppercase tracking-wide mb-3 ${isDark ? 'text-[#A3A3A3]' : 'text-gray-500'}`}>
                       Skills:
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {item.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="text-xs px-3 py-1.5 bg-[#1A1A1A] border border-[#262626] text-white rounded hover:border-blue-500 hover:text-blue-300 transition-all"
+                          className={`text-xs px-3 py-1.5 border rounded transition-all ${isDark
+                            ? 'bg-[#1A1A1A] border-[#262626] text-white hover:border-blue-500 hover:text-blue-300'
+                            : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-blue-500 hover:text-blue-600'
+                            }`}
                         >
                           {skill}
                         </span>

@@ -1,13 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-import Header from "../components/Header.tsx";
-import HomePage from "../components/HomePage.tsx";
-import Footer from "../components/Footer.tsx";
+import AppWrapper from "../components/AppWrapper.tsx";
 ---
 
 <Layout>
-    <Header client:load />
-    <HomePage client:load />
-    <Footer client:load />
+    <AppWrapper client:load page="home" />
 </Layout>

@@ -1,10 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import JourneyPage from "../components/JourneyPage.tsx";
+import AppWrapper from "../components/AppWrapper.tsx";
 ---
 
 <Layout>
-    <Header client:load />
-    <JourneyPage client:load />
+    <AppWrapper client:load page="journey" />
 </Layout>

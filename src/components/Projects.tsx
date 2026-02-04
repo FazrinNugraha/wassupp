@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 const projects = [
   {
@@ -107,6 +108,8 @@ const projects = [
 const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   React.useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -121,15 +124,15 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
 
   if (!thumbnails || thumbnails.length === 0) {
     return (
-      <div className="h-[320px] bg-[#1A1A1A] border border-[#262626] rounded-lg overflow-hidden flex items-center justify-center">
+      <div className={`h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden flex items-center justify-center border ${isDark ? 'bg-[#1A1A1A] border-[#262626]' : 'bg-gray-100 border-gray-200'}`}>
         <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-4 bg-[#262626] rounded-full flex items-center justify-center">
+          <div className={`w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center ${isDark ? 'bg-[#262626]' : 'bg-gray-200'}`}>
             <span className="text-4xl">📸</span>
           </div>
-          <p className="text-sm text-[#737373] font-medium">
+          <p className={`text-sm font-medium ${isDark ? 'text-[#737373]' : 'text-gray-500'}`}>
             Project Screenshot
           </p>
-          <p className="text-xs text-[#525252] mt-1">Coming soon</p>
+          <p className={`text-xs mt-1 ${isDark ? 'text-[#525252]' : 'text-gray-400'}`}>Coming soon</p>
         </div>
       </div>
     );
@@ -147,7 +150,10 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
     <div className="relative w-full">
       {/* Image Container */}
       <div
-        className="relative h-[320px] bg-[#1A1A1A] border border-[#262626] rounded-lg overflow-hidden cursor-pointer hover:border-white transition-colors"
+        className={`relative h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden cursor-pointer transition-colors border ${isDark
+          ? 'bg-[#1A1A1A] border-[#262626] hover:border-white'
+          : 'bg-gray-100 border-gray-300 hover:border-gray-500'
+          }`}
         onClick={() => setIsFullscreen(true)}
       >
         <img
@@ -284,20 +290,23 @@ const PhotoCarousel = ({ thumbnails }: { thumbnails: string[] }) => {
 };
 
 export default function Projects() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
-    <div className="min-h-screen bg-[#141414]">
+    <div className="min-h-screen">
       <main>
-        <section className="max-w-6xl mx-auto py-24 px-6">
+        <section className="max-w-6xl mx-auto pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-5 md:px-6">
           {/* Header */}
           <div className="mb-16 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Selected Project
             </h1>
-            <p className="text-xl text-[#A3A3A3] mb-6 max-w-4xl mx-auto leading-relaxed">
+            <p className={`text-[#A3A3A3] mb-16 max-w-3xl mx-auto text-center text-lg ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
               Here's a collection of projects I've worked on. Each project tells a story—why I built it,
               how I approached it, and what came out of it. Together, they show my experience in building practical solutions that people can actually use.
             </p>
-            <p className="text-sm text-[#737373]">
+            <p className={`text-sm text-[#737373] ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
               {projects.length} projects ·{" "}
               {projects.filter((p) => p.status === "FEATURED").length} featured
             </p>
@@ -306,7 +315,7 @@ export default function Projects() {
           {/* Timeline Container */}
           <div className="relative">
             {/* Vertical Timeline Line (limited height so it doesn't stretch full page) */}
-            <div className="hidden md:block absolute left-1/2 top-24 bottom-24 w-0.5 bg-[#262626] -translate-x-1/2"></div>
+            <div className={`hidden md:block absolute left-1/2 top-24 bottom-24 w-0.5 -translate-x-1/2 ${isDark ? 'bg-[#262626]' : 'bg-gray-200'}`}></div>
 
             {/* Projects */}
             <div className="space-y-20">
@@ -314,12 +323,12 @@ export default function Projects() {
                 <div key={project.id} className="relative">
                   {/* Timeline Dot */}
                   <div
-                    className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4 border-[#141414]`}
+                    className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4 ${isDark ? 'border-[#141414]' : 'border-white'}`}
                   ></div>
 
                   {/* Content - Compact Layout */}
                   <div
-                    className={`grid md:grid-cols-2 gap-6 md:gap-10 items-center max-w-4xl mx-auto`}
+                    className={`grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10 items-center max-w-4xl mx-auto`}
                   >
                     {/* Thumbnail - Compact Size */}
                     <div
@@ -330,7 +339,7 @@ export default function Projects() {
 
                     {/* Project Card - Minimal (match thumbnail height) */}
                     <div
-                      className={`block min-h-[320px] flex flex-col justify-center ${project.side === "left" ? "md:order-2" : "md:order-1"}`}
+                      className={`block min-h-0 sm:min-h-[250px] md:min-h-[320px] flex flex-col justify-center ${project.side === "left" ? "md:order-2" : "md:order-1"}`}
                     >
                       {/* Phase Label */}
                       <div className="mb-2">
@@ -342,12 +351,12 @@ export default function Projects() {
                       </div>
 
                       {/* Title */}
-                      <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                      <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         {project.title}
                       </h2>
 
                       {/* Short Description (primary content) */}
-                      <p className="text-base text-justify text-[#A3A3A3] mb-4 leading-relaxed">
+                      <p className={`text-sm sm:text-base text-justify mb-3 sm:mb-4 leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
                         {project.description}
                       </p>
 
@@ -356,15 +365,10 @@ export default function Projects() {
                         {project.tech.slice(0, 10).map((tech, idx) => (
                           <span
                             key={idx}
-                            className="text-xs px-2 
-                            py-1 bg-transparent border border-[#e6e6e6]/13 
-                            text-white-500 rounded 
-                            transition-all duration-300
-                            hover:bg-supabase-surface_light
-                            hover:-translate-y-2
-                            hover:scale-105
-                            hover:shadow-lg hover:shadow-white-500/20
-                            hover:border-white-500/50"
+                            className={`text-xs px-2 py-1 bg-transparent border rounded transition-all duration-300 hover:-translate-y-2 hover:scale-105 ${isDark
+                              ? 'border-[#e6e6e6]/13 text-gray-400 hover:bg-white/10 hover:shadow-lg hover:shadow-white/10 hover:border-white/50'
+                              : 'border-gray-300 text-gray-600 hover:bg-gray-100 hover:shadow-lg hover:shadow-gray-200 hover:border-gray-400'
+                              }`}
                           >
                             {tech}
                           </span>
