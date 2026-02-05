@@ -20,7 +20,7 @@ export default function AppWrapper({ page }: AppWrapperProps) {
             {/* Background color handled by global.css (body/html) to prevent flash */}
             <div className="min-h-screen transition-colors duration-300">
                 <Header />
-                <main className="flex-grow">
+                <main className="grow">
                     {page === 'home' && <HomePage />}
                     {page === 'projects' && <Projects />}
                     {page === 'journey' && <JourneyPage />}

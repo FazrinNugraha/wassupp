@@ -115,7 +115,7 @@ export default function Header() {
           {/* Dark Mode Toggle (Mobile) */}
           <button
             onClick={toggleTheme}
-            className={`transition-colors p-2 ml-2 flex-shrink-0 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+            className={`transition-colors p-2 ml-2 shrink-0 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
             aria-label="Toggle dark mode"
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}

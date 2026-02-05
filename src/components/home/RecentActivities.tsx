@@ -7,7 +7,7 @@ export default function RecentActivities() {
 
     return (
         <section id="decisions" className={`max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-12 sm:py-16 scroll-mt-20 transition-colors duration-300 ${isDark ? '' : 'bg-gray-50'}`}>
-            <div className={`border-t-2 mb-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}></div>
+            <div className={`border-t-2 mb-12 pt-8 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}></div>
             <div className="flex items-center justify-between mb-8">
                 <h2 className={`text-2xl font-bold ${isDark ? 'text-[#FAFAFA]' : 'text-gray-900'}`}>Recent Activities</h2>
             </div>

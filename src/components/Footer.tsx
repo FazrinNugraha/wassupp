@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer className={`transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
-        <div className={`border-t-2 pt-8 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}></div>
+        <div className={`border-t-2 pt-6 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-12 sm:py-14 md:py-16 pt-4">
@@ -48,7 +48,7 @@ export default function Footer() {
                     href={social.url}
                     target={social.url.startsWith('/') ? '_self' : '_blank'}
                     rel="noopener noreferrer"
-                    className={`border-b transition-all duration-300 pb-[1px] ${isDark
+                    className={`border-b transition-all duration-300 pb-px ${isDark
                       ? 'border-gray-500 hover:border-white hover:text-white'
                       : 'border-gray-400 hover:border-black hover:text-black'
                       }`}

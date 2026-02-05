@@ -92,7 +92,7 @@ export default function JourneyPage() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className={`absolute left-[7px] top-0 bottom-0 w-0.5 ${isDark ? 'bg-[#262626]' : 'bg-gray-200'}`}></div>
+          <div className={`absolute left-1.75 top-0 bottom-0 w-0.5 ${isDark ? 'bg-[#262626]' : 'bg-gray-200'}`}></div>
 
           <div className="space-y-6">
             {timeline.map((item, index) => (
