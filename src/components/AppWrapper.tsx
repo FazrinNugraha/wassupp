@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { ThemeProvider } from '../context/ThemeContext';
 import Header from './Header';
 import Footer from './Footer';
-import HomePage from './HomePage';
-import Projects from './Projects';
-import JourneyPage from './JourneyPage';
-import Skills from './Skills';
-import Contact from './Contact';
+
+// Lazy load page components to reduce initial bundle size
+const HomePage = lazy(() => import('./HomePage'));
+const Projects = lazy(() => import('./Projects'));
+const JourneyPage = lazy(() => import('./JourneyPage'));
+const Skills = lazy(() => import('./Skills'));
+const Contact = lazy(() => import('./Contact'));
 
 type PageType = 'home' | 'projects' | 'journey' | 'skills' | 'contact';
 
@@ -21,11 +23,13 @@ export default function AppWrapper({ page }: AppWrapperProps) {
             <div className="min-h-screen transition-colors duration-300">
                 <Header />
                 <main className="grow">
-                    {page === 'home' && <HomePage />}
-                    {page === 'projects' && <Projects />}
-                    {page === 'journey' && <JourneyPage />}
-                    {page === 'skills' && <Skills />}
-                    {page === 'contact' && <Contact />}
+                    <Suspense fallback={<div className="min-h-screen"></div>}>
+                        {page === 'home' && <HomePage />}
+                        {page === 'projects' && <Projects />}
+                        {page === 'journey' && <JourneyPage />}
+                        {page === 'skills' && <Skills />}
+                        {page === 'contact' && <Contact />}
+                    </Suspense>
                 </main>
                 {page === 'home' && <Footer />}
             </div>
