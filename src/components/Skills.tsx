@@ -94,6 +94,8 @@ export default function Skills() {
                       <img
                         src={tech.icon}
                         alt={tech.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-12 h-12 mx-auto mb-3 object-contain"
                         onError={(e) => (e.currentTarget.style.display = 'none')}
                       />
