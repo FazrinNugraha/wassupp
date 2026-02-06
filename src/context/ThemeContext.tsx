@@ -10,15 +10,18 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>('dark');
-
-    useEffect(() => {
-        // Check localStorage for saved theme
-        const savedTheme = localStorage.getItem('theme') as Theme;
-        if (savedTheme) {
-            setTheme(savedTheme);
+    // Use lazy initializer to read localStorage SYNCHRONOUSLY during initial render
+    // This prevents the flash where theme defaults to 'dark' before useEffect runs
+    const [theme, setTheme] = useState<Theme>(() => {
+        // Check if we're in browser environment
+        if (typeof window !== 'undefined') {
+            const savedTheme = localStorage.getItem('theme') as Theme;
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                return savedTheme;
+            }
         }
-    }, []);
+        return 'dark'; // Default to dark if no saved preference
+    });
 
     useEffect(() => {
         // Apply theme to document
