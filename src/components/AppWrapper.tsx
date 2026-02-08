@@ -1,14 +1,14 @@
 import React, { Suspense, lazy } from 'react';
 import { ThemeProvider } from '../context/ThemeContext';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './common/Header';
+import Footer from './common/Footer';
 
 // Lazy load page components to reduce initial bundle size
-const HomePage = lazy(() => import('./HomePage'));
-const Projects = lazy(() => import('./Projects'));
-const JourneyPage = lazy(() => import('./JourneyPage'));
-const Skills = lazy(() => import('./Skills'));
-const Contact = lazy(() => import('./Contact'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const Projects = lazy(() => import('./projects'));
+const JourneyPage = lazy(() => import('./pages/JourneyPage'));
+const Skills = lazy(() => import('./pages/Skills'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 type PageType = 'home' | 'projects' | 'journey' | 'skills' | 'contact';
 

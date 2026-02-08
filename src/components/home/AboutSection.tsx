@@ -128,11 +128,11 @@ export default function AboutSection() {
               only when wrapped in the right experience.
             </p>
             <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              That curiosity led to my first hackathon.
+              I jumped into my first hackathon.
             </p>
             <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
               I joined a 24-hour competition with four teammates—most of us
-              first-timers. Out of 200+ teams, we made it to the top 15 with
+              first-timers. Out of 150+ teams, we made it to the Finalist Top 15 with
               SocialCollateral AI, a platform that helps microfinance lenders
               assess group trust using graph analytics, NLP, and computer
               vision. I handled the frontend: building dashboards to visualize
@@ -143,10 +143,10 @@ export default function AboutSection() {
               can actually interact with.
             </p>
             <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              That experience changed my direction entirely.
+              My trajectory took a total turn.
             </p>
             <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-              I realized I'm more excited about building intelligent systems
+              I realized I'm excited about building intelligent systems
               than just web apps. So I applied to Coding Camp 2026 by DBS
               Foundation and got accepted into the AI Engineer track—a 900+ hour
               intensive program covering machine learning, deep learning, and
@@ -161,13 +161,7 @@ export default function AboutSection() {
               I document my work because context matters.
             </p>
             <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-              Every project in my portfolio comes with decisions, trade-offs,
-              and lessons learned—not just polished screenshots. I believe good
-              engineering isn't just about shipping features; it's about leaving
-              a clear record so future teams (or future me) can understand why
-              things were built a certain way. I'm still early in this journey,
-              but I'm committed to building things that matter and documenting
-              the process along the way.
+              What you see in my portfolio isn't just pretty interfaces—it's a record of choices, compromises, and hard-earned lessons. I think good engineering requires more than shipping features. It demands clarity for whoever touches the code next, whether that's a teammate or me six months later. I'm early in my career, but I'm focused on creating work that counts and writing down what I learn along the way.
             </p>
           </div>
         )}
@@ -180,7 +174,7 @@ export default function AboutSection() {
               : 'bg-black text-white hover:bg-gray-800'
               }`}
           >
-            See My Work
+            Check My Work
           </a>
           <a
             href="/contact"

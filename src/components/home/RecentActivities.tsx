@@ -35,7 +35,7 @@ export default function RecentActivities() {
                         Finalist Hackaton x Amartha 2025
                     </h3>
                     <p className={`text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-                        My first hackathon—made it to top 15 out of 200+ teams. Spent 24 hours building SocialCollateral AI as the frontend dev in a 5-person team. We created a system that uses graph analytics, NLP, and computer vision to help microfinance lenders assess group trust.
+                        My first hackathon - made it to Finalist Top 15 out of 150+ teams. Spent 24 hours building SocialCollateral AI as the frontend dev in a 5-person team. We created a system that uses graph analytics, NLP, and computer vision to help microfinance lenders assess group trust.
                     </p>
                 </div>
 

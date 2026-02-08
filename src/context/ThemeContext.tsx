@@ -10,11 +10,21 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    // Use lazy initializer to read localStorage SYNCHRONOUSLY during initial render
-    // This prevents the flash where theme defaults to 'dark' before useEffect runs
+    // Read initial theme from DOM class that Astro already set
+    // This prevents hydration mismatch - React must match what Astro rendered
     const [theme, setTheme] = useState<Theme>(() => {
         // Check if we're in browser environment
         if (typeof window !== 'undefined') {
+            // First, check what class Astro already applied to <html>
+            // This ensures React's initial state matches the server-rendered HTML
+            const root = document.documentElement;
+            if (root.classList.contains('light-theme')) {
+                return 'light';
+            }
+            if (root.classList.contains('dark-theme')) {
+                return 'dark';
+            }
+            // Fallback to localStorage if no class found
             const savedTheme = localStorage.getItem('theme') as Theme;
             if (savedTheme === 'light' || savedTheme === 'dark') {
                 return savedTheme;
