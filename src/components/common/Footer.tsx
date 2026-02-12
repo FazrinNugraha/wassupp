@@ -20,13 +20,9 @@ export default function Footer() {
 
     return (
         <footer className={`transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
-                <div className={`border-t-2 pt-6 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}></div>
-            </div>
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-12 sm:py-14 md:py-16 pt-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 pb-8">
                 {/* Footer Content */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
 
                     {/* Brand */}
                     <div>
@@ -67,7 +63,7 @@ export default function Footer() {
                 </div>
 
                 {/* Divider */}
-                <div className={`border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
+                <div className={`space-y-6 border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
 
                     {/* Copyright */}
                     <div className="flex flex-col md:flex-row items-center justify-between">

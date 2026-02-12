@@ -8,13 +8,13 @@ export default function AboutSection() {
   const isDark = theme === 'dark';
 
   return (
-    <section id="about" className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-12 sm:py-16">
-      <div className={`space-y-6 border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
-        <p className={`text-xl font-bold leading-relaxed ${isDark ? 'text-[#FAFAFA]' : 'text-gray-900'}`}>
+    <section id="about" className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 pb-12 sm:pb-16">
+      <div className={`border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
+        <p className={`text-xl font-bold leading-relaxed pb-4 ${isDark ? 'text-[#FAFAFA]' : 'text-gray-900'}`}>
           I'm <strong>Fazrin</strong>, a Fullstack Developer working
           with RaectJs and MongoDB. Currently diving deep into AI and Machine Learning
         </p>
-        <p className={`text-lg leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+        <p className={`text-lg leading-relaxed pb-4 ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
           Outside of coding, I enjoy watching movies and exploring new cafes in
           town.
         </p>
@@ -42,11 +42,11 @@ export default function AboutSection() {
         {!expandAbout ? (
           <div className="space-y-6">
             <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              I'm Fazrin, a 6th-semester Informatics student transitioning from{" "}
+              "Hi, I’m Fazrin. I’m an Informatics student focused on building functional web applications. {" "}
               <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                Full-Stack Development
+                Full-Stack Developer
               </strong>{" "}
-              to AI and Machine Learning.
+              transitioning into AI and Machine Learning."
             </p>
             <p className={`text-lg text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
               My journey began in{" "}
@@ -100,20 +100,14 @@ export default function AboutSection() {
               stopped building since.
             </p>
             <p className={`text-lg text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-              In early 2024, I joined RevoU's Software Engineering Bootcamp
-              knowing nothing about code. Two weeks of HTML, CSS, JavaScript,
-              and Git gave me just enough to realize I wanted more. So I kept
-              going.
+              My journey into tech began with a leap of faith: a 2-week bootcamp at RevoU. I started with zero knowledge of code, but those two weeks of HTML, CSS, and JavaScript were enough to hook me. I realized then that I didn't just want to use technology—I wanted to build it.
             </p>
             <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-              I taught myself MySQL—understanding how data is structured,
-              queried, and managed. From there, I jumped into full-stack
-              development by taking a MERN course and building an LMS (Learning
-              Management System) alongside it. I learned React, Express,
-              MongoDB, JWT authentication, file uploads, even payment gateway
-              integration. I didn't understand everything perfectly, but
-              building while learning made concepts stick faster than tutorials
-              alone.
+              I took a deep dive into Full-Stack Development, teaching myself to understand data structures before mastering the MERN Stack (MongoDB, Express, React, Node.js).
+
+              Key Achievement: Developed a Comprehensive Learning Management System (LMS) from scratch, integrating JWT authentication, file uploads, and payment gateways.
+
+              The Lesson: I learned that the best way to make concepts stick isn't just watching tutorials—it’s building through the "unknowns."
             </p>
             <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Then I got curious about AI.
@@ -131,16 +125,11 @@ export default function AboutSection() {
               I jumped into my first hackathon.
             </p>
             <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-              I joined a 24-hour competition with four teammates—most of us
-              first-timers. Out of 150+ teams, we made it to the Finalist Top 15 with
-              SocialCollateral AI, a platform that helps microfinance lenders
-              assess group trust using graph analytics, NLP, and computer
-              vision. I handled the frontend: building dashboards to visualize
-              borrower networks and displaying AI-generated insights in
-              real-time. We didn't win, but I learned more in that 24 hours than
-              weeks of solo coding: how to ship fast, collaborate under
-              pressure, and integrate complex AI outputs into something users
-              can actually interact with.
+              I recently put my skills to the test at a 24-hour national hackathon. As the Frontend Engineer for SocialCollateral AI, I collaborated with a data team to build a platform for microfinance trust-scoring.
+
+              The Result: Out of 150+ teams, we secured a spot in the Finalist Top 15.
+
+              The Takeaway: Beyond the tech stack (Graph Analytics, NLP, Computer Vision), I learned how to ship fast and translate complex AI outputs into intuitive real-time dashboards.
             </p>
             <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
               My trajectory took a total turn.
@@ -148,9 +137,8 @@ export default function AboutSection() {
             <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
               I realized I'm excited about building intelligent systems
               than just web apps. So I applied to Coding Camp 2026 by DBS
-              Foundation and got accepted into the AI Engineer track—a 900+ hour
-              intensive program covering machine learning, deep learning, and
-              MLOps. Right now, I'm learning how to build production-ready AI
+              Foundation and got accepted into the AI path.
+              Right now, I'm learning how to build production-ready AI
               systems: training models, tuning performance, deploying to cloud
               infrastructure, and monitoring them in the real world. I'm working
               toward a capstone project that combines everything I've learned so
