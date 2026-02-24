@@ -26,27 +26,28 @@ export default function PhotoCarousel({ thumbnails }: PhotoCarouselProps) {
     if (!thumbnails || thumbnails.length === 0) {
         return (
             <div
-                className={`h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden flex items-center justify-center border ${isDark
-                        ? "bg-[#1A1A1A] border-gray-700"
-                        : "bg-gray-100 border-gray-300"
-                    }`}
+                className="h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden flex items-center justify-center"
+                style={{
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card)',
+                }}
             >
                 <div className="text-center">
                     <div
-                        className={`w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center ${isDark ? "bg-[#262626]" : "bg-gray-200"
-                            }`}
+                        className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: 'var(--border-color)' }}
                     >
                         <span className="text-4xl">📸</span>
                     </div>
                     <p
-                        className={`text-sm font-medium ${isDark ? "text-[#737373]" : "text-gray-500"
-                            }`}
+                        className="text-sm font-medium"
+                        style={{ color: 'var(--text-muted)' }}
                     >
                         Project Screenshot
                     </p>
                     <p
-                        className={`text-xs mt-1 ${isDark ? "text-[#525252]" : "text-gray-400"
-                            }`}
+                        className="text-xs mt-1"
+                        style={{ color: 'var(--text-muted)' }}
                     >
                         Coming soon
                     </p>
@@ -67,10 +68,11 @@ export default function PhotoCarousel({ thumbnails }: PhotoCarouselProps) {
         <div className="relative w-full">
             {/* Image Container */}
             <div
-                className={`relative h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden cursor-pointer transition-colors border ${isDark
-                        ? "bg-[#1A1A1A] border-gray-700 hover:border-gray-500"
-                        : "bg-gray-100 border-gray-300 hover:border-gray-500"
-                    }`}
+                className="relative h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden cursor-pointer transition-colors"
+                style={{
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card)',
+                }}
                 onClick={() => setIsFullscreen(true)}
             >
                 <img

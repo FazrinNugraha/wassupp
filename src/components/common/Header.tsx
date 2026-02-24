@@ -25,9 +25,9 @@ export default function Header() {
     const menuItems = [
         { label: 'HOME', href: '/' },
         { label: 'PROJECTS', href: '/projects' },
+        { label: 'BLOG', href: '/blog' },
         { label: 'JOURNEY', href: '/journey' },
         { label: 'SKILLS', href: '/skills' },
-        { label: 'BLOG', href: '/blog' },
         { label: 'CONTACT', href: '/contact' },
     ];
 
@@ -39,14 +39,11 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? isDark
-                    ? 'glass border-b border-gray-800 shadow-lg'
-                    : 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
-                : isDark
-                    ? 'bg-[#1A1A1A]/95 backdrop-blur-sm'
-                    : 'bg-gray-50/95 backdrop-blur-sm'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm ${isScrolled ? 'shadow-lg' : ''}`}
+            style={{
+                backgroundColor: isScrolled ? 'var(--header-scrolled-bg)' : 'var(--header-bg)',
+                borderBottom: isScrolled ? '1px solid var(--header-scrolled-border)' : 'none',
+            }}
         >
             {/* Desktop Navigation */}
             <nav className="hidden md:block max-w-7xl mx-auto px-6 lg:px-8">
@@ -59,10 +56,22 @@ export default function Header() {
                                     key={item.label}
                                     href={item.href}
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`text-sm font-medium tracking-wide transition-colors duration-300 ${activeItem === item.href
-                                        ? isDark ? 'text-white' : 'text-gray-900'
-                                        : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'
-                                        }`}
+                                    className="text-sm font-medium tracking-wide transition-colors duration-300"
+                                    style={{
+                                        color: activeItem === item.href
+                                            ? 'var(--nav-text-active)'
+                                            : 'var(--nav-text)',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        if (activeItem !== item.href) {
+                                            e.currentTarget.style.color = 'var(--nav-text-hover)';
+                                        }
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        if (activeItem !== item.href) {
+                                            e.currentTarget.style.color = 'var(--nav-text)';
+                                        }
+                                    }}
                                 >
                                     {item.label}
                                 </a>
@@ -74,7 +83,10 @@ export default function Header() {
                     <div className="flex items-center space-x-4">
                         <button
                             onClick={toggleTheme}
-                            className={`transition-colors p-1 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+                            className="transition-colors p-1"
+                            style={{ color: 'var(--toggle-text)' }}
+                            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--toggle-hover)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--toggle-text)'; }}
                             aria-label="Toggle dark mode"
                         >
                             {isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -85,7 +97,10 @@ export default function Header() {
 
             {/* Mobile Navigation - Horizontal Scrollable */}
             <nav className="md:hidden">
-                <div className={`flex items-center justify-between h-14 px-4 ${isDark ? 'border-b border-gray-800/50' : 'border-b border-gray-200'}`}>
+                <div
+                    className="flex items-center justify-between h-14 px-4"
+                    style={{ borderBottom: '1px solid var(--border-color)' }}
+                >
                     {/* Scrollable Menu Container */}
                     <div
                         ref={scrollContainerRef}
@@ -102,10 +117,22 @@ export default function Header() {
                                     key={item.label}
                                     href={item.href}
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`text-sm font-medium tracking-wide whitespace-nowrap py-4 transition-all duration-300 ${activeItem === item.href
-                                        ? isDark ? 'text-white' : 'text-gray-900'
-                                        : isDark ? 'text-gray-500 hover:text-gray-300' : 'text-gray-400 hover:text-gray-700'
-                                        }`}
+                                    className="text-sm font-medium tracking-wide whitespace-nowrap py-4 transition-all duration-300"
+                                    style={{
+                                        color: activeItem === item.href
+                                            ? 'var(--nav-text-active)'
+                                            : 'var(--nav-text)',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        if (activeItem !== item.href) {
+                                            e.currentTarget.style.color = 'var(--nav-text-hover)';
+                                        }
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        if (activeItem !== item.href) {
+                                            e.currentTarget.style.color = 'var(--nav-text)';
+                                        }
+                                    }}
                                 >
                                     {item.label}
                                 </a>
@@ -116,7 +143,10 @@ export default function Header() {
                     {/* Dark Mode Toggle (Mobile) */}
                     <button
                         onClick={toggleTheme}
-                        className={`transition-colors p-2 ml-2 shrink-0 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+                        className="transition-colors p-2 ml-2 shrink-0"
+                        style={{ color: 'var(--toggle-text)' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--toggle-hover)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--toggle-text)'; }}
                         aria-label="Toggle dark mode"
                     >
                         {isDark ? <Sun size={18} /> : <Moon size={18} />}

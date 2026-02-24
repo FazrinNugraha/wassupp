@@ -9,18 +9,25 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 pb-12 sm:pb-16">
-      <div className={`border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
-        <p className={`text-xl font-bold leading-relaxed pb-4 ${isDark ? 'text-[#FAFAFA]' : 'text-gray-900'}`}>
+      <div className="pt-12" style={{ borderTop: '2px solid var(--border-color)' }}>
+        <p
+          className="text-xl font-bold leading-relaxed pb-4"
+          style={{ color: 'var(--text-primary)' }}
+        >
           I'm <strong>Fazrin</strong>, a Fullstack Developer working
           with RaectJs and MongoDB. Currently diving deep into AI and Machine Learning
         </p>
-        <p className={`text-lg leading-relaxed pb-4 ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+        <p
+          className="text-lg leading-relaxed pb-4"
+          style={{ color: 'var(--text-secondary)' }}
+        >
           Outside of coding, I enjoy watching movies and exploring new cafes in
           town.
         </p>
         <a
           href="/journey"
-          className={`hover-text inline-flex items-center gap-2 font-medium hover:underline mb-8 ${isDark ? 'text-[#FAFAFA]' : 'text-gray-900'}`}
+          className="hover-text inline-flex items-center gap-2 font-medium hover:underline mb-8"
+          style={{ color: 'var(--text-primary)' }}
         >
           Read my journey
           <ArrowRight size={18} />
@@ -28,12 +35,13 @@ export default function AboutSection() {
       </div>
 
       {/* Bio Section */}
-      <div className={`space-y-6 border-t-2 pt-12 ${isDark ? 'border-[#262626]' : 'border-gray-200'}`}>
+      <div className="space-y-6 pt-12" style={{ borderTop: '2px solid var(--border-color)' }}>
         <div className="flex items-center justify-between">
-          <h2 className={`text-2xl font-bold ${isDark ? 'text-[#FAFAFA]' : 'text-gray-900'}`}>About</h2>
+          <h2 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>About</h2>
           <button
             onClick={() => setExpandAbout(!expandAbout)}
-            className={`font-medium text-sm transition-colors border-b border-transparent pb-1 ${isDark ? 'text-[#A3A3A3] hover:text-[#FAFAFA] hover:border-[#A3A3A3]' : 'text-gray-500 hover:text-gray-900 hover:border-gray-500'}`}
+            className="font-medium text-sm transition-colors border-b border-transparent pb-1"
+            style={{ color: 'var(--text-secondary)' }}
           >
             {expandAbout ? "Show Less" : "Full Version"}
           </button>
@@ -41,53 +49,53 @@ export default function AboutSection() {
 
         {!expandAbout ? (
           <div className="space-y-6">
-            <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              "Hi, I’m Fazrin. I’m an Informatics student focused on building functional web applications. {" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <p className="text-xl font-bold text-justify leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+              "Hi, I'm Fazrin. I'm an Informatics student focused on building functional web applications. {" "}
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 Full-Stack Developer
               </strong>{" "}
               transitioning into AI and Machine Learning."
             </p>
-            <p className={`text-lg text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-lg text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               My journey began in{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 Full-Stack Development
               </strong>
               , where I focused on building functional applications using the{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN stack</strong>—one
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>MERN stack</strong>—one
               of my key projects being a Comprehensive{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 Learning Management System (LMS)
               </strong>
               . However, as I sought to solve more complex problems, I developed
               GlucoCheck. Integrating AI into web platform that provides
               personalized diabetes risk analysis was a turning point; it opened
-              up a new perspective for me, because it wasn’t just in building
+              up a new perspective for me, because it wasn't just in building
               interfaces, but in how a system 'thinks' and processes data.
             </p>
-            <p className={`text-lg text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
-              Since then, I’ve pivoted toward AI and Machine Learning. I
+            <p className="text-lg text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Since then, I've pivoted toward AI and Machine Learning. I
               recently applied this focus during a major{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Hackathon</strong>, where
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>Hackathon</strong>, where
               I served as the{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 Frontend Engineer
               </strong>{" "}
               for SocialCollateral AI, a microfinance platform. Collaborating
               closely with a Product Manager and data team, we successfully
               secured a spot in the{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 Top 15 out of 150+ teams.
               </strong>
             </p>
-            <p className={`text-lg text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-lg text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Today, as a 6th-semester Informatics student and a participant in
               the{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 DBS Foundation Coding Camp (AI Engineer Path)
               </strong>
               , I am leveraging my web development background to specialize in{" "}
-              <strong className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <strong className="font-bold" style={{ color: 'var(--text-primary)' }}>
                 Deep Learning and MLOps
               </strong>
               —aiming to build scalable, intelligent systems.
@@ -95,24 +103,24 @@ export default function AboutSection() {
           </div>
         ) : (
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <p className="text-xl font-bold text-justify leading-relaxed" style={{ color: 'var(--text-primary)' }}>
               My Journey into Tech started with a 2-week bootcamp—and I haven't
               stopped building since.
             </p>
-            <p className={`text-lg text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-lg text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               My journey into tech began with a leap of faith: a 2-week bootcamp at RevoU. I started with zero knowledge of code, but those two weeks of HTML, CSS, and JavaScript were enough to hook me. I realized then that I didn't just want to use technology—I wanted to build it.
             </p>
-            <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-xl text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               I took a deep dive into Full-Stack Development, teaching myself to understand data structures before mastering the MERN Stack (MongoDB, Express, React, Node.js).
 
               Key Achievement: Developed a Comprehensive Learning Management System (LMS) from scratch, integrating JWT authentication, file uploads, and payment gateways.
 
-              The Lesson: I learned that the best way to make concepts stick isn't just watching tutorials—it’s building through the "unknowns."
+              The Lesson: I learned that the best way to make concepts stick isn't just watching tutorials—it's building through the "unknowns."
             </p>
-            <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <p className="text-xl font-bold text-justify leading-relaxed" style={{ color: 'var(--text-primary)' }}>
               Then I got curious about AI.
             </p>
-            <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-xl text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               I built GlucoCheck—a web app where users answer health questions
               and AI generates personalized diabetes risk assessments in Bahasa
               Indonesia. It was my first real experience integrating AI into a
@@ -121,20 +129,20 @@ export default function AboutSection() {
               That project taught me something important: AI is powerful, but
               only when wrapped in the right experience.
             </p>
-            <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <p className="text-xl font-bold text-justify leading-relaxed" style={{ color: 'var(--text-primary)' }}>
               I jumped into my first hackathon.
             </p>
-            <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-xl text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               I recently put my skills to the test at a 24-hour national hackathon. As the Frontend Engineer for SocialCollateral AI, I collaborated with a data team to build a platform for microfinance trust-scoring.
 
               The Result: Out of 150+ teams, we secured a spot in the Finalist Top 15.
 
               The Takeaway: Beyond the tech stack (Graph Analytics, NLP, Computer Vision), I learned how to ship fast and translate complex AI outputs into intuitive real-time dashboards.
             </p>
-            <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <p className="text-xl font-bold text-justify leading-relaxed" style={{ color: 'var(--text-primary)' }}>
               My trajectory took a total turn.
             </p>
-            <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-xl text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               I realized I'm excited about building intelligent systems
               than just web apps. So I applied to Coding Camp 2026 by DBS
               Foundation and got accepted into the AI path.
@@ -145,10 +153,10 @@ export default function AboutSection() {
               far.
             </p>
 
-            <p className={`text-xl font-bold text-justify leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <p className="text-xl font-bold text-justify leading-relaxed" style={{ color: 'var(--text-primary)' }}>
               I document my work because context matters.
             </p>
-            <p className={`text-xl text-justify leading-relaxed ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+            <p className="text-xl text-justify leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               What you see in my portfolio isn't just pretty interfaces—it's a record of choices, compromises, and hard-earned lessons. I think good engineering requires more than shipping features. It demands clarity for whoever touches the code next, whether that's a teammate or me six months later. I'm early in my career, but I'm focused on creating work that counts and writing down what I learn along the way.
             </p>
           </div>
@@ -157,19 +165,22 @@ export default function AboutSection() {
         <div className="flex flex-col sm:flex-row gap-4 pt-4 ">
           <a
             href="/projects"
-            className={`px-8 py-3 font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-center ${isDark
-              ? 'bg-white text-black hover:bg-gray-200'
-              : 'bg-black text-white hover:bg-gray-800'
-              }`}
+            className="px-8 py-3 font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-center"
+            style={{
+              backgroundColor: 'var(--btn-primary-bg)',
+              color: 'var(--btn-primary-text)',
+            }}
           >
             Check My Work
           </a>
           <a
             href="/contact"
-            className={`px-8 py-3 border-2 font-semibold rounded-lg transition-all duration-300 text-center ${isDark
-              ? 'border-white text-white hover:bg-white hover:text-black'
-              : 'border-black text-gray-900 hover:bg-black hover:text-white'
-              }`}
+            className="px-8 py-3 font-semibold rounded-lg transition-all duration-300 text-center"
+            style={{
+              border: '2px solid var(--text-primary)',
+              color: 'var(--text-primary)',
+              backgroundColor: 'transparent',
+            }}
           >
             Know Me Better
           </a>

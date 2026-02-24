@@ -18,7 +18,8 @@ export default function Projects() {
                     <div className="relative">
                         {/* Vertical Timeline Line */}
                         <div
-                            className={`hidden md:block absolute left-1/2 top-24 bottom-24 w-0.5 -translate-x-1/2 ${isDark ? "bg-[#262626]" : "bg-gray-200"}`}
+                            className="hidden md:block absolute left-1/2 top-24 bottom-24 w-0.5 -translate-x-1/2"
+                            style={{ backgroundColor: 'var(--border-color)' }}
                         />
 
                         {/* Projects */}

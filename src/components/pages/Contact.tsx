@@ -23,7 +23,7 @@ export default function Contact() {
     return (
         <section id="contact" className="relative min-h-[calc(100vh)] flex flex-col justify-center pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-5 md:px-6 overflow-hidden transition-colors duration-300">
             {/* Geometric Background Pattern */}
-            <div className={`absolute inset-0 opacity-5 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <div className="absolute inset-0 opacity-5" style={{ color: 'var(--text-primary)' }}>
                 <svg className="w-full h-full" preserveAspectRatio="none">
                     <defs>
                         <pattern id="grid-contact" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -54,23 +54,35 @@ export default function Contact() {
             <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 w-full">
                 {/* Let's Talk */}
                 <div className="text-left mb-16 md:mb-20">
-                    <p className={`text-base md:text-lg mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Let's Talk</p>
-                    <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 break-all sm:break-words ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <p
+                        className="text-base md:text-lg mb-4"
+                        style={{ color: 'var(--text-secondary)' }}
+                    >Let's Talk</p>
+                    <h2
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 break-all sm:break-words"
+                        style={{ color: 'var(--text-primary)' }}
+                    >
                         <a className="hover:text-blue-500 transition-colors">
                             nugrahafadzrin@gmail.com
                         </a>
                     </h2>
-                    <p className={`text-base md:text-lg max-w-2xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <p
+                        className="text-base md:text-lg max-w-2xl"
+                        style={{ color: 'var(--text-secondary)' }}
+                    >
                         Send me a message and I'll reply within a few days
                     </p>
                 </div>
 
                 {/* Divider */}
-                <div className={`border-t mb-8 md:mb-12 ${isDark ? 'border-gray-700' : 'border-gray-300'}`} />
+                <div className="mb-8 md:mb-12" style={{ borderTop: '1px solid var(--border-color)' }} />
 
                 {/* Elsewhere */}
                 <div>
-                    <p className={`text-xs md:text-sm font-semibold uppercase tracking-wider mb-4 md:mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <p
+                        className="text-xs md:text-sm font-semibold uppercase tracking-wider mb-4 md:mb-6"
+                        style={{ color: 'var(--text-secondary)' }}
+                    >
                         Social Media
                     </p>
                     <div className="flex flex-wrap gap-3 md:gap-6">
@@ -80,10 +92,11 @@ export default function Contact() {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`transition-colors duration-300 text-base md:text-lg ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-black'}`}
+                                className="transition-colors duration-300 text-base md:text-lg"
+                                style={{ color: 'var(--text-secondary)' }}
                             >
                                 {link.name}
-                                {index < socialLinks.length - 1 && <span className={`hidden md:inline ml-6 ${isDark ? 'text-gray-700' : 'text-gray-300'}`}>|</span>}
+                                {index < socialLinks.length - 1 && <span className="hidden md:inline ml-6" style={{ color: 'var(--border-color)' }}>|</span>}
                             </a>
                         ))}
                     </div>

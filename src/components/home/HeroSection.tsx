@@ -19,29 +19,19 @@ export default function HeroSection() {
           {/* ================= LEFT COLUMN ================= */}
           <div className="space-y-8 flex flex-col justify-start">
 
-            {/* Badge */}
-            {/* <span
-              className={`inline-flex items-center self-start text-xs font-semibold px-3 py-1.5 rounded-full border ${isDark
-                  ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                  : "border-emerald-500/30 bg-emerald-50 text-emerald-600"
-                }`}
-            >
-              Portfolio
-            </span> */}
-
             {/* Headline */}
             <div className="space-y-6">
               <h2
-                className={`max-w-3xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight ${isDark ? "text-[#FAFAFA]" : "text-gray-900"
-                  }`}
+                className="max-w-3xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight"
+                style={{ color: 'var(--text-primary)' }}
               >
                 Great work deserves great documentation. I make sure every
                 decision is captured.
               </h2>
 
               <p
-                className={`text-xl md:text-lg leading-relaxed ${isDark ? "text-[#A3A3A3]" : "text-gray-600"
-                  }`}
+                className="text-xl md:text-lg leading-relaxed"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Process and context, not just pretty pictures.
               </p>
@@ -49,10 +39,12 @@ export default function HeroSection() {
               {/* Avatar */}
               <div className="flex items-center">
                 <div
-                  className={`inline-flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 ${isDark
-                    ? "border-[#262626] bg-[#1A1A1A] hover:border-[#404040]"
-                    : "border-gray-200 bg-white hover:border-gray-400 shadow-sm"
-                    }`}
+                  className="inline-flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-300"
+                  style={{
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card)',
+                    boxShadow: 'var(--card-shadow)',
+                  }}
                 >
                   <img
                     src="/public/profile/pepe.jpeg"
@@ -61,15 +53,15 @@ export default function HeroSection() {
                   />
 
                   <span
-                    className={`text-sm font-medium ${isDark ? "text-[#A3A3A3]" : "text-gray-600"
-                      }`}
+                    className="text-sm font-medium"
+                    style={{ color: 'var(--text-secondary)' }}
                   >
                     Hi, I'm
                   </span>
 
                   <span
-                    className={`text-sm font-semibold ${isDark ? "text-[#FAFAFA]" : "text-gray-900"
-                      }`}
+                    className="text-sm font-semibold"
+                    style={{ color: 'var(--text-primary)' }}
                   >
                     Muhamad Fazrin Nugraha
                   </span>
@@ -81,10 +73,11 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <a
                 href="/projects"
-                className={`inline-flex items-center justify-center gap-2 px-5 py-2 font-medium rounded transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5 ${isDark
-                  ? "bg-white text-[#141414] hover:bg-[#FAFAFA]"
-                  : "bg-gray-900 text-white hover:bg-gray-800"
-                  }`}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2 font-medium rounded transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
+                style={{
+                  backgroundColor: 'var(--btn-primary-bg)',
+                  color: 'var(--btn-primary-text)',
+                }}
               >
                 Explore Case Studies
                 <ArrowRight size={16} />
@@ -92,10 +85,12 @@ export default function HeroSection() {
 
               <a
                 href="/blog"
-                className={`inline-flex items-center justify-center gap-2 px-5 py-2 border font-medium rounded transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5 ${isDark
-                  ? "border-[#262626] text-[#FAFAFA] hover:bg-[#1A1A1A]"
-                  : "border-gray-300 text-gray-900 hover:bg-gray-100"
-                  }`}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2 font-medium rounded transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
+                style={{
+                  border: '1px solid var(--btn-secondary-border)',
+                  color: 'var(--btn-secondary-text)',
+                  backgroundColor: 'transparent',
+                }}
               >
                 Latest Posts
                 <ArrowRight size={16} />
@@ -110,22 +105,24 @@ export default function HeroSection() {
 
             {/* Post 1 */}
             <article
-              className={`p-8 border rounded-lg transition-all hover:-translate-y-1 ${isDark
-                ? "bg-[#1A1A1A] border-[#262626] hover:border-gray-500"
-                : "bg-white border-gray-200 hover:border-gray-400 shadow-sm"
-                }`}
+              className="p-8 rounded-lg transition-all hover:-translate-y-1"
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                boxShadow: 'var(--card-shadow)',
+              }}
             >
               <h3
-                className={`text-xl font-bold ${isDark ? "text-[#FAFAFA]" : "text-gray-900"
-                  }`}
+                className="text-xl font-bold"
+                style={{ color: 'var(--text-primary)' }}
               >
                 POSTS COMING SOON
               </h3>
 
               <a
                 href="#article-1"
-                className={`mt-2 inline-flex items-center gap-2 transition-all hover:gap-3 ${isDark ? "text-[#A3A3A3]" : "text-gray-500"
-                  }`}
+                className="mt-2 inline-flex items-center gap-2 transition-all hover:gap-3"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Read article
                 <ArrowRight size={16} />
@@ -135,22 +132,24 @@ export default function HeroSection() {
 
             {/* Post 2 */}
             <article
-              className={`p-8 border rounded-lg transition-all hover:-translate-y-1 ${isDark
-                ? "bg-[#1A1A1A] border-[#262626] hover:border-gray-500"
-                : "bg-white border-gray-200 hover:border-gray-400 shadow-sm"
-                }`}
+              className="p-8 rounded-lg transition-all hover:-translate-y-1"
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                boxShadow: 'var(--card-shadow)',
+              }}
             >
               <h3
-                className={`text-xl font-bold ${isDark ? "text-[#FAFAFA]" : "text-gray-900"
-                  }`}
+                className="text-xl font-bold"
+                style={{ color: 'var(--text-primary)' }}
               >
                 POSTS COMING SOON
               </h3>
 
               <a
                 href="#article-2"
-                className={`mt-2 inline-flex items-center gap-2 transition-all hover:gap-3 ${isDark ? "text-[#A3A3A3]" : "text-gray-500"
-                  }`}
+                className="mt-2 inline-flex items-center gap-2 transition-all hover:gap-3"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Read article
                 <ArrowRight size={16} />

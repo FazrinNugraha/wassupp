@@ -8,7 +8,7 @@ const description =
 ---
 
 <!doctype html>
-<html lang="en" class="theme-loading">
+<html lang="en" class="no-transition">
   <head>
     <!-- 
       CRITICAL: Theme initialization script MUST be first in <head>
@@ -20,9 +20,7 @@ const description =
         var savedTheme = localStorage.getItem("theme");
         var root = document.documentElement;
 
-        // Remove the loading class and apply correct theme
-        root.classList.remove("theme-loading");
-
+        // Apply correct theme class instantly
         if (savedTheme === "light") {
           root.classList.add("light-theme");
           root.classList.remove("dark-theme");
@@ -30,21 +28,24 @@ const description =
           root.classList.add("dark-theme");
           root.classList.remove("light-theme");
         }
+
+        // Re-enable transitions after first paint so toggle still animates
+        // Using double-rAF to wait for the browser to paint once
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            root.classList.remove("no-transition");
+          });
+        });
       })();
     </script>
 
-    <!-- Critical CSS to prevent flash - must be inline and before any external CSS -->
+    <!-- Block all transitions during initial page load to prevent flash -->
     <style is:inline>
-      /* Hide page content until theme is determined - prevents FOIT */
-      .theme-loading {
-        visibility: hidden;
-      }
-
-      /* Fallback: if JS is disabled, show dark theme after 100ms */
-      @media (scripting: none) {
-        .theme-loading {
-          visibility: visible;
-        }
+      .no-transition,
+      .no-transition *,
+      .no-transition *::before,
+      .no-transition *::after {
+        transition: none !important;
       }
     </style>
 
@@ -63,7 +64,9 @@ const description =
 
         // Apply theme to the NEW document before it's swapped in
         var newRoot = event.newDocument.documentElement;
-        newRoot.classList.remove("theme-loading");
+
+        // Block transitions during swap to prevent flash
+        newRoot.classList.add("no-transition");
 
         if (currentTheme === "light") {
           newRoot.classList.add("light-theme");
@@ -72,6 +75,15 @@ const description =
           newRoot.classList.add("dark-theme");
           newRoot.classList.remove("light-theme");
         }
+      });
+
+      // Re-enable transitions after swap completes
+      document.addEventListener("astro:after-swap", function () {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            document.documentElement.classList.remove("no-transition");
+          });
+        });
       });
     </script>
 

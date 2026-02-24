@@ -13,7 +13,7 @@ export default function JourneyPage() {
             dotColor: "bg-emerald-500",
             title: "Bootcamp Revou Fundamental Course",
             description:
-                "Joined an intensive software engineering bootcamp for 2 weeks focused on learning the basics of web development. I practiced building responsive and user-friendly websites using HTML, CSS, and JavaScript. The program also introduced Git for version control and modern development workflows, helping me understand how real-world web applications are built from development to deployment.",
+                "Joined an intensive two-week software engineering bootcamp focused on web development fundamentals. I practiced building responsive, user-friendly websites using HTML, CSS, and JavaScript while gaining hands-on experience with Git for version control and modern development workflows. The program gave me a solid understanding of how real-world web applications are structured, built, and deployed — forming the foundation of my journey as a developer.",
             skills: ["HTML", "CSS", "Java Script", "Git", "Responsive Design"],
             colorSkill: "bg-emerald-500",
         },
@@ -24,7 +24,7 @@ export default function JourneyPage() {
             dotColor: "bg-emerald-500",
             title: "Getting Hands-On with MySQL",
             description:
-                "Started learning MySQL—my first time dive into databases. Learned the basics: CRUD operations, how to structure tables, manage relationships, and write queries that actually make sense. Built a few practice projects to get the hang of it.",
+                "Started learning MySQL — my first real dive into the world of databases. I picked up the basics: CRUD operations, structuring tables, managing relationships, and writing queries that actually make sense. Built a few practice projects along the way to solidify my understanding and get comfortable working with data — an important step toward building more complete, data-driven applications.",
             skills: ["MySQL", "Database Management", "CRUD Operations", "Table Structure"],
             colorSkill: "bg-emerald-500",
         },
@@ -35,7 +35,7 @@ export default function JourneyPage() {
             dotColor: "bg-purple-500",
             title: "Building My First Full-Stack Project with MERN Stack",
             description:
-                "Jumped into full-stack development by building an LMS (Learning Management System) through a MERN course. Learned React , Express, and MongoDB by actually using them—setting up authentication with JWT, building CRUD features, handling file uploads, even integrating a payment gateway MIDTRANS. Didn't understand everything 100%, but building a real project while learning helped things click faster than just watching tutorials.",
+                "Jumped into full-stack development by building a Learning Management System through a MERN stack course. Learned React, Express, and MongoDB by actually using them — setting up authentication with JWT, building CRUD features, handling file uploads, and integrating a payment gateway with Midtrans. Didn't understand everything perfectly, but building a real project while learning helped things click far faster than just watching tutorials ever could.",
             skills: ["MongoDB", "Express", "React", "Node.js"],
             colorSkill: "bg-purple-500",
         },
@@ -86,10 +86,16 @@ export default function JourneyPage() {
         <div className="min-h-screen">
             {/* Journey Timeline */}
             <section className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24">
-                <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <h2
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center"
+                    style={{ color: 'var(--text-primary)' }}
+                >
                     Journey
                 </h2>
-                <p className={`mb-16 max-w-3xl mx-auto text-center text-lg ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+                <p
+                    className="mb-16 max-w-3xl mx-auto text-center text-lg"
+                    style={{ color: 'var(--text-secondary)' }}
+                >
                     A timeline of my professional growth and learning progression. This
                     isn't a resume—it's a story of how I've evolved as an engineer, the
                     pivotal moments that shaped my thinking, and the skills I've developed
@@ -98,7 +104,10 @@ export default function JourneyPage() {
 
                 <div className="relative">
                     {/* Timeline line */}
-                    <div className={`absolute left-1.75 top-0 bottom-0 w-0.5 ${isDark ? 'bg-[#262626]' : 'bg-gray-200'}`}></div>
+                    <div
+                        className="absolute left-1.75 top-0 bottom-0 w-0.5"
+                        style={{ backgroundColor: 'var(--border-color)' }}
+                    ></div>
 
                     <div className="space-y-6">
                         {timeline.map((item, index) => (
@@ -109,13 +118,19 @@ export default function JourneyPage() {
                                 ></div>
 
                                 {/* Card Content */}
-                                <div className={`border rounded-lg p-6 transition-all duration-300 ${isDark
-                                    ? 'border-[#262626] bg-[#1A1A1A] hover:border-[#404040]'
-                                    : 'border-gray-200 bg-white hover:border-gray-400'
-                                    }`}>
+                                <div
+                                    className="rounded-lg p-6 transition-all duration-300"
+                                    style={{
+                                        border: '1px solid var(--border-color)',
+                                        backgroundColor: 'var(--bg-card)',
+                                    }}
+                                >
                                     {/* Date and Type Badge */}
                                     <div className="flex items-center gap-3 mb-3">
-                                        <span className={`text-xs font-medium uppercase tracking-wider ${isDark ? 'text-[#A3A3A3]' : 'text-gray-500'}`}>
+                                        <span
+                                            className="text-xs font-medium uppercase tracking-wider"
+                                            style={{ color: 'var(--text-secondary)' }}
+                                        >
                                             {item.date}
                                         </span>
                                         <span
@@ -126,31 +141,45 @@ export default function JourneyPage() {
                                     </div>
 
                                     {/* Title */}
-                                    <h4 className={`text-xl md:text-2xl font-bold mb-3 transition-colors ${isDark
-                                        ? 'text-white group-hover:text-blue-300'
-                                        : 'text-gray-900 group-hover:text-blue-600'
-                                        }`}>
+                                    <h4
+                                        className={`text-xl md:text-2xl font-bold mb-3 transition-colors ${isDark
+                                            ? 'group-hover:text-blue-300'
+                                            : 'group-hover:text-blue-600'
+                                            }`}
+                                        style={{ color: 'var(--text-primary)' }}
+                                    >
                                         {item.title}
                                     </h4>
 
                                     {/* Description */}
-                                    <p className={`text-justify mb-4 leading-relaxed text-sm md:text-base ${isDark ? 'text-[#A3A3A3]' : 'text-gray-600'}`}>
+                                    <p
+                                        className="text-justify mb-4 leading-relaxed text-sm md:text-base"
+                                        style={{ color: 'var(--text-secondary)' }}
+                                    >
                                         {item.description}
                                     </p>
 
                                     {/* Skills */}
                                     <div className="mb-4">
-                                        <p className={`text-xs font-semibold uppercase tracking-wide mb-3 ${isDark ? 'text-[#A3A3A3]' : 'text-gray-500'}`}>
+                                        <p
+                                            className="text-xs font-semibold uppercase tracking-wide mb-3"
+                                            style={{ color: 'var(--text-secondary)' }}
+                                        >
                                             Skills:
                                         </p>
                                         <div className="flex flex-wrap gap-2">
                                             {item.skills.map((skill, index) => (
                                                 <span
                                                     key={index}
-                                                    className={`text-xs px-3 py-1.5 border rounded transition-all ${isDark
-                                                        ? 'bg-[#1A1A1A] border-[#262626] text-white hover:border-blue-500 hover:text-blue-300'
-                                                        : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-blue-500 hover:text-blue-600'
+                                                    className={`text-xs px-3 py-1.5 rounded transition-all ${isDark
+                                                        ? 'hover:border-blue-500 hover:text-blue-300'
+                                                        : 'hover:border-blue-500 hover:text-blue-600'
                                                         }`}
+                                                    style={{
+                                                        border: '1px solid var(--border-color)',
+                                                        backgroundColor: 'var(--bg-card)',
+                                                        color: 'var(--text-primary)',
+                                                    }}
                                                 >
                                                     {skill}
 

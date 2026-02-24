@@ -22,13 +22,14 @@ function StatusBadge({ status }: { status: Project["status"] }) {
     );
 }
 
-function TechPill({ tech, isDark }: { tech: string; isDark: boolean }) {
+function TechPill({ tech }: { tech: string }) {
     return (
         <span
-            className={`text-xs px-2 py-1 bg-transparent border rounded transition-all duration-300 hover:-translate-y-2 hover:scale-105 ${isDark
-                    ? "border-[#e6e6e6]/13 text-gray-400 hover:bg-white/10 hover:shadow-lg hover:shadow-white/10 hover:border-white/50"
-                    : "border-gray-300 text-gray-600 hover:bg-gray-100 hover:shadow-lg hover:shadow-gray-200 hover:border-gray-400"
-                }`}
+            className="text-xs px-2 py-1 bg-transparent rounded transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+            style={{
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-secondary)',
+            }}
         >
             {tech}
         </span>
@@ -76,7 +77,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="relative">
             {/* Timeline Dot */}
             <div
-                className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4 ${isDark ? "border-[#141414]" : "border-white"}`}
+                className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4`}
+                style={{ borderColor: 'var(--bg-primary)' }}
             />
 
             {/* Content - Compact Layout */}
@@ -105,14 +107,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
                     {/* Title */}
                     <h2
-                        className={`text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 ${isDark ? "text-white" : "text-gray-900"}`}
+                        className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3"
+                        style={{ color: 'var(--text-primary)' }}
                     >
                         {project.title}
                     </h2>
 
                     {/* Description */}
                     <p
-                        className={`text-sm sm:text-base text-justify mb-3 sm:mb-4 leading-relaxed ${isDark ? "text-[#A3A3A3]" : "text-gray-600"}`}
+                        className="text-sm sm:text-base text-justify mb-3 sm:mb-4 leading-relaxed"
+                        style={{ color: 'var(--text-secondary)' }}
                     >
                         {project.description}
                     </p>
@@ -120,7 +124,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     {/* Tech pills + status badge */}
                     <div className="flex flex-wrap gap-2 mb-3 items-center">
                         {project.tech.slice(0, 10).map((tech, idx) => (
-                            <TechPill key={idx} tech={tech} isDark={isDark} />
+                            <TechPill key={idx} tech={tech} />
                         ))}
                         <StatusBadge status={project.status} />
                     </div>

@@ -10,12 +10,14 @@ export default function ProjectsHeader() {
     return (
         <div className="mb-16 text-center">
             <h1
-                className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 ${isDark ? "text-white" : "text-gray-900"}`}
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
+                style={{ color: 'var(--text-primary)' }}
             >
                 Selected Project
             </h1>
             <p
-                className={`text-[#A3A3A3] mb-16 max-w-3xl mx-auto text-center text-lg ${isDark ? "text-[#A3A3A3]" : "text-gray-600"}`}
+                className="mb-16 max-w-3xl mx-auto text-center text-lg"
+                style={{ color: 'var(--text-secondary)' }}
             >
                 Here's a collection of projects I've worked on. Each project tells a
                 story—why I built it, how I approached it, and what came out of it.
@@ -23,7 +25,8 @@ export default function ProjectsHeader() {
                 people can actually use.
             </p>
             <p
-                className={`text-sm text-[#737373] ${isDark ? "text-[#A3A3A3]" : "text-gray-600"}`}
+                className="text-sm"
+                style={{ color: 'var(--text-muted)' }}
             >
                 {projects.length} projects · {featuredCount} featured
             </p>

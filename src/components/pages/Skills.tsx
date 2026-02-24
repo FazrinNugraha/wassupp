@@ -55,7 +55,8 @@ export default function Skills() {
     return (
         <section
             id="skills"
-            className={`relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-5 md:px-6 transition-colors duration-300 ${isDark ? 'text-gray-100' : 'text-gray-900'}`}
+            className="relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-5 md:px-6 transition-colors duration-300"
+            style={{ color: 'var(--text-primary)' }}
         >
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
@@ -63,7 +64,7 @@ export default function Skills() {
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                         Skills & Expertise
                     </h2>
-                    <p className={`max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <p style={{ color: 'var(--text-secondary)' }} className="max-w-2xl mx-auto">
                         Proficient in modern technologies for building scalable web applications
                     </p>
                 </div>
@@ -72,7 +73,10 @@ export default function Skills() {
                 <div className="space-y-12">
                     {techStackCategories.map((category) => (
                         <div key={category.category}>
-                            <h3 className="text-xl font-semibold mb-6 border-l-2 border-gray-700 pl-4">
+                            <h3
+                                className="text-xl font-semibold mb-6 pl-4"
+                                style={{ borderLeft: '2px solid var(--border-hover)' }}
+                            >
                                 {category.category}
                             </h3>
 
@@ -80,15 +84,11 @@ export default function Skills() {
                                 {category.techs.map((tech) => (
                                     <div
                                         key={tech.name}
-                                        className={`
-                      border rounded-xl p-6 flex items-center justify-center
-                      transition-all duration-300
-                      hover:-translate-y-2 hover:scale-105
-                      ${isDark
-                                                ? 'bg-zinc-900 border-gray-800 hover:bg-zinc-800 hover:shadow-white/10 hover:border-white/50'
-                                                : 'bg-white border-gray-200 hover:bg-gray-50 hover:shadow-md hover:border-gray-300'
-                                            }
-                    `}
+                                        className="rounded-xl p-6 flex items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+                                        style={{
+                                            border: '1px solid var(--border-color)',
+                                            backgroundColor: 'var(--bg-card)',
+                                        }}
                                     >
                                         <div className="text-center">
                                             <img
@@ -99,7 +99,10 @@ export default function Skills() {
                                                 className="w-12 h-12 mx-auto mb-3 object-contain"
                                                 onError={(e) => (e.currentTarget.style.display = 'none')}
                                             />
-                                            <p className="text-sm text-supabase-text_muted">
+                                            <p
+                                                className="text-sm"
+                                                style={{ color: 'var(--text-secondary)' }}
+                                            >
                                                 {tech.name}
                                             </p>
                                         </div>
