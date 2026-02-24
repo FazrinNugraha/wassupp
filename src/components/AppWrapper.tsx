@@ -7,10 +7,12 @@ import Footer from './common/Footer';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const Projects = lazy(() => import('./projects'));
 const JourneyPage = lazy(() => import('./pages/JourneyPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage'));
 const Skills = lazy(() => import('./pages/Skills'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-type PageType = 'home' | 'projects' | 'journey' | 'skills' | 'contact';
+type PageType = 'home' | 'projects' | 'journey' | 'skills' | 'contact' | 'blog' | 'blog_detail';
 
 interface AppWrapperProps {
     page: PageType;
@@ -26,6 +28,8 @@ export default function AppWrapper({ page }: AppWrapperProps) {
                     <Suspense fallback={<div className="min-h-screen"></div>}>
                         {page === 'home' && <HomePage />}
                         {page === 'projects' && <Projects />}
+                        {page === 'blog' && <BlogPage />}
+                        {page === 'blog_detail' && <BlogDetailPage />}
                         {page === 'journey' && <JourneyPage />}
                         {page === 'skills' && <Skills />}
                         {page === 'contact' && <Contact />}

@@ -15,6 +15,7 @@ export default function JourneyPage() {
             description:
                 "Joined an intensive software engineering bootcamp for 2 weeks focused on learning the basics of web development. I practiced building responsive and user-friendly websites using HTML, CSS, and JavaScript. The program also introduced Git for version control and modern development workflows, helping me understand how real-world web applications are built from development to deployment.",
             skills: ["HTML", "CSS", "Java Script", "Git", "Responsive Design"],
+            colorSkill: "bg-emerald-500",
         },
         {
             date: "DECEMBER 2024",
@@ -25,6 +26,7 @@ export default function JourneyPage() {
             description:
                 "Started learning MySQL—my first time dive into databases. Learned the basics: CRUD operations, how to structure tables, manage relationships, and write queries that actually make sense. Built a few practice projects to get the hang of it.",
             skills: ["MySQL", "Database Management", "CRUD Operations", "Table Structure"],
+            colorSkill: "bg-emerald-500",
         },
         {
             date: "JULY 2025",
@@ -35,6 +37,7 @@ export default function JourneyPage() {
             description:
                 "Jumped into full-stack development by building an LMS (Learning Management System) through a MERN course. Learned React , Express, and MongoDB by actually using them—setting up authentication with JWT, building CRUD features, handling file uploads, even integrating a payment gateway MIDTRANS. Didn't understand everything 100%, but building a real project while learning helped things click faster than just watching tutorials.",
             skills: ["MongoDB", "Express", "React", "Node.js"],
+            colorSkill: "bg-purple-500",
         },
         {
             date: "OCTOBER 2025",
@@ -53,6 +56,7 @@ export default function JourneyPage() {
                 "Google Gemini",
                 "Google Cloud Vision",
             ],
+            colorSkill: "bg-blue-500",
         },
         {
             date: "DECEMBER 2025",
@@ -63,6 +67,7 @@ export default function JourneyPage() {
             description:
                 "Built GlucoCheck to learn how to integrate AI into web applications. Created a diabetes risk assessment tool where users fill out a health questionnaire, and the AI analyzes their responses to generate personalized risk assessments in Bahasa Indonesia. Learned how to work with AI APIs, prompt engineering to get clear and helpful responses, and present complex AI outputs in a user-friendly way. First real experience wrapping AI capabilities into an actual product.",
             skills: ["AI", "React", "Tailwind CSS"],
+            colorSkill: "bg-purple-500",
         },
         {
             date: "FEBRUARY 2026",
@@ -73,6 +78,7 @@ export default function JourneyPage() {
             description:
                 "Accepted into Coding Camp 2026 by DBS Foundation on the AI Engineer track. A 4-5 month intensive bootcamp covering machine learning, deep learning, and MLOps. Currently learning to build and deploy production-ready AI systems through hands-on projects and working on a capstone.",
             skills: ["Machine Learning", "Deep Learning", "MLOps", "AI Engineering"],
+            colorSkill: "bg-blue-500",
         },
     ];
 
@@ -138,15 +144,16 @@ export default function JourneyPage() {
                                             Skills:
                                         </p>
                                         <div className="flex flex-wrap gap-2">
-                                            {item.skills.map((skill) => (
+                                            {item.skills.map((skill, index) => (
                                                 <span
-                                                    key={skill}
+                                                    key={index}
                                                     className={`text-xs px-3 py-1.5 border rounded transition-all ${isDark
                                                         ? 'bg-[#1A1A1A] border-[#262626] text-white hover:border-blue-500 hover:text-blue-300'
                                                         : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-blue-500 hover:text-blue-600'
                                                         }`}
                                                 >
                                                     {skill}
+
                                                 </span>
                                             ))}
                                         </div>

@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AppWrapper from "../../components/AppWrapper.tsx";
+
+export function getStaticPaths() {
+    return [
+        { params: { slug: "getting-started-with-react" } },
+        { params: { slug: "diving-into-ai" } },
+        { params: { slug: "building-real-world-projects" } },
+    ];
+}
+---
+
+<Layout>
+    <AppWrapper client:load page="blog_detail" />
+</Layout>

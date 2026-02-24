@@ -27,6 +27,7 @@ export default function Header() {
         { label: 'PROJECTS', href: '/projects' },
         { label: 'JOURNEY', href: '/journey' },
         { label: 'SKILLS', href: '/skills' },
+        { label: 'BLOG', href: '/blog' },
         { label: 'CONTACT', href: '/contact' },
     ];
 
