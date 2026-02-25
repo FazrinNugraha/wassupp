@@ -4,138 +4,170 @@ import type { Project } from "./projectsData";
 import PhotoCarousel from "./PhotoCarousel";
 
 interface ProjectCardProps {
-    project: Project;
+  project: Project;
+}
+
+// Color mapping for status colors to actual hex values
+const colorMap: Record<string, string> = {
+  emerald: "#10B981",
+  purple: "#A855F7",
+  blue: "#3B82F6",
+  orange: "#F97316",
+};
+
+// Extract color name from Tailwind class like "bg-purple-500" → "purple"
+function extractColorName(twClass: string): string {
+  const match = twClass.match(/(?:bg|text|border)-(\w+)-\d+/);
+  return match ? match[1] : "blue";
 }
 
 function StatusBadge({ status }: { status: Project["status"] }) {
-    const statusConfig = {
-        FEATURED: { bg: "bg-purple-500", label: "Featured" },
-        ONGOING: { bg: "bg-orange-500", label: "Ongoing" },
-        COMPLETED: { bg: "bg-emerald-500", label: "Completed" },
-    };
+  const statusConfig = {
+    FEATURED: { bg: "bg-purple-500", label: "Featured" },
+    ONGOING: { bg: "bg-orange-500", label: "Ongoing" },
+    COMPLETED: { bg: "bg-emerald-500", label: "Completed" },
+  };
 
-    const config = statusConfig[status];
-    return (
-        <span className={`text-xs px-2 py-1 ${config.bg} text-white rounded`}>
-            {config.label}
-        </span>
-    );
+  const config = statusConfig[status];
+  return (
+    <span className={`text-xs px-2 py-1 ${config.bg} text-white rounded`}>
+      {config.label}
+    </span>
+  );
 }
 
-function TechPill({ tech }: { tech: string }) {
-    return (
-        <span
-            className="text-xs px-2 py-1 bg-transparent rounded transition-all duration-300 hover:-translate-y-2 hover:scale-105"
-            style={{
-                border: '1px solid var(--border-color)',
-                color: 'var(--text-secondary)',
-            }}
-        >
-            {tech}
-        </span>
-    );
+function TechPill({
+  tech,
+  accentColor,
+}: {
+  tech: string;
+  accentColor: string;
+}) {
+  return (
+    <span
+      className="text-xs px-2 py-1 bg-transparent rounded transition-all duration-300 cursor-default hover:-translate-y-2 hover:scale-105"
+      style={{
+        border: "1px solid var(--border-color)",
+        color: "var(--text-secondary)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = accentColor;
+        e.currentTarget.style.color = accentColor;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "";
+        e.currentTarget.style.color = "";
+      }}
+    >
+      {tech}
+    </span>
+  );
 }
 
 function ProjectLinks({
-    sourceCode,
-    liveDemo,
+  sourceCode,
+  liveDemo,
 }: {
-    sourceCode: string;
-    liveDemo: string;
+  sourceCode: string;
+  liveDemo: string;
 }) {
-    return (
-        <div className="flex gap-6 text-blue-500 text-sm font-medium">
-            {sourceCode !== "#" && (
-                <a
-                    href={sourceCode}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline flex items-center gap-2"
-                >
-                    Source Code <ArrowRight size={14} />
-                </a>
-            )}
-            {liveDemo !== "#" && (
-                <a
-                    href={liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline flex items-center gap-2"
-                >
-                    Live Demo <ArrowRight size={14} />
-                </a>
-            )}
-        </div>
-    );
+  return (
+    <div className="flex gap-6 text-blue-500 text-sm font-medium">
+      {sourceCode !== "#" && (
+        <a
+          href={sourceCode}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline flex items-center gap-2"
+        >
+          Source Code <ArrowRight size={14} />
+        </a>
+      )}
+      {liveDemo !== "#" && (
+        <a
+          href={liveDemo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline flex items-center gap-2"
+        >
+          Live Demo <ArrowRight size={14} />
+        </a>
+      )}
+    </div>
+  );
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-    const { theme } = useTheme();
-    const isDark = theme === "dark";
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
-    return (
-        <div className="relative">
-            {/* Timeline Dot */}
-            <div
-                className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4`}
-                style={{ borderColor: 'var(--bg-primary)' }}
-            />
+  // Get the accent hex color from the project's statusColor class
+  const accentColor =
+    colorMap[extractColorName(project.statusColor)] || "#3B82F6";
 
-            {/* Content - Compact Layout */}
-            <div
-                className={`grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10 items-center max-w-4xl mx-auto`}
-            >
-                {/* Thumbnail */}
-                <div
-                    className={`${project.side === "left" ? "md:order-1" : "md:order-2"}`}
-                >
-                    <PhotoCarousel thumbnails={project.thumbnails} />
-                </div>
+  return (
+    <div className="relative">
+      {/* Timeline Dot */}
+      <div
+        className={`hidden md:block absolute left-1/2 top-24 w-4 h-4 ${project.statusColor} rounded-full -translate-x-1/2 z-10 border-4`}
+        style={{ borderColor: "var(--bg-primary)" }}
+      />
 
-                {/* Project Info */}
-                <div
-                    className={`block min-h-0 sm:min-h-[250px] md:min-h-[320px] flex flex-col justify-center ${project.side === "left" ? "md:order-2" : "md:order-1"}`}
-                >
-                    {/* Phase Label */}
-                    <div className="mb-2">
-                        <span
-                            className={`text-xs font-bold ${project.phaseColor} uppercase tracking-wider`}
-                        >
-                            {project.phase}
-                        </span>
-                    </div>
-
-                    {/* Title */}
-                    <h2
-                        className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3"
-                        style={{ color: 'var(--text-primary)' }}
-                    >
-                        {project.title}
-                    </h2>
-
-                    {/* Description */}
-                    <p
-                        className="text-sm sm:text-base text-justify mb-3 sm:mb-4 leading-relaxed"
-                        style={{ color: 'var(--text-secondary)' }}
-                    >
-                        {project.description}
-                    </p>
-
-                    {/* Tech pills + status badge */}
-                    <div className="flex flex-wrap gap-2 mb-3 items-center">
-                        {project.tech.slice(0, 10).map((tech, idx) => (
-                            <TechPill key={idx} tech={tech} />
-                        ))}
-                        <StatusBadge status={project.status} />
-                    </div>
-
-                    {/* Links */}
-                    <ProjectLinks
-                        sourceCode={project.sourceCode}
-                        liveDemo={project.liveDemo}
-                    />
-                </div>
-            </div>
+      {/* Content - Compact Layout */}
+      <div
+        className={`grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10 items-center max-w-4xl mx-auto`}
+      >
+        {/* Thumbnail */}
+        <div
+          className={`${project.side === "left" ? "md:order-1" : "md:order-2"}`}
+        >
+          <PhotoCarousel thumbnails={project.thumbnails} />
         </div>
-    );
+
+        {/* Project Info */}
+        <div
+          className={`block min-h-0 sm:min-h-[250px] md:min-h-[320px] flex flex-col justify-center ${project.side === "left" ? "md:order-2" : "md:order-1"}`}
+        >
+          {/* Phase Label */}
+          <div className="mb-2">
+            <span
+              className={`text-xs font-bold ${project.phaseColor} uppercase tracking-wider`}
+            >
+              {project.phase}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2
+            className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {project.title}
+          </h2>
+
+          {/* Description */}
+          <p
+            className="text-sm sm:text-base text-justify mb-3 sm:mb-4 leading-relaxed"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {project.description}
+          </p>
+
+          {/* Tech pills + status badge */}
+          <div className="flex flex-wrap gap-2 mb-3 items-center">
+            {project.tech.slice(0, 10).map((tech, idx) => (
+              <TechPill key={idx} tech={tech} accentColor={accentColor} />
+            ))}
+            <StatusBadge status={project.status} />
+          </div>
+
+          {/* Links */}
+          <ProjectLinks
+            sourceCode={project.sourceCode}
+            liveDemo={project.liveDemo}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

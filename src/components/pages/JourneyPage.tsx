@@ -1,6 +1,20 @@
 import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 
+// Color mapping for dot colors to actual hex values
+const colorMap: Record<string, string> = {
+    emerald: '#10B981',
+    purple: '#A855F7',
+    blue: '#3B82F6',
+    orange: '#F97316',
+};
+
+// Extract color name from Tailwind class like "bg-emerald-500" → "emerald"
+function extractColorName(twClass: string): string {
+    const match = twClass.match(/(?:bg|text|border)-(\w+)-\d+/);
+    return match ? match[1] : 'blue';
+}
+
 export default function JourneyPage() {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
@@ -110,95 +124,122 @@ export default function JourneyPage() {
                     ></div>
 
                     <div className="space-y-6">
-                        {timeline.map((item, index) => (
-                            <div key={item.date} className="relative pl-8 group">
-                                {/* Timeline dot */}
-                                <div
-                                    className={`absolute left-0 top-3 w-4 h-4 ${item.dotColor} rounded-full transition-transform group-hover:scale-125`}
-                                ></div>
+                        {timeline.map((item, index) => {
+                            const accentColor = colorMap[extractColorName(item.dotColor)] || '#3B82F6';
 
-                                {/* Card Content */}
-                                <div
-                                    className="rounded-lg p-6 transition-all duration-300"
-                                    style={{
-                                        border: '1px solid var(--border-color)',
-                                        backgroundColor: 'var(--bg-card)',
-                                    }}
-                                >
-                                    {/* Date and Type Badge */}
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <span
-                                            className="text-xs font-medium uppercase tracking-wider"
-                                            style={{ color: 'var(--text-secondary)' }}
-                                        >
-                                            {item.date}
-                                        </span>
-                                        <span
-                                            className={`text-xs font-semibold border px-2.5 py-1 rounded ${item.typeColor}`}
-                                        >
-                                            {item.type}
-                                        </span>
-                                    </div>
+                            return (
+                                <div key={item.date} className="relative pl-8 group">
+                                    {/* Timeline dot */}
+                                    <div
+                                        className={`absolute left-0 top-3 w-4 h-4 ${item.dotColor} rounded-full transition-transform group-hover:scale-125`}
+                                    ></div>
 
-                                    {/* Title */}
-                                    <h4
-                                        className={`text-xl md:text-2xl font-bold mb-3 transition-colors ${isDark
-                                            ? 'group-hover:text-blue-300'
-                                            : 'group-hover:text-blue-600'
-                                            }`}
-                                        style={{ color: 'var(--text-primary)' }}
+                                    {/* Card Content */}
+                                    <div
+                                        className="rounded-lg p-6 transition-all duration-300"
+                                        style={{
+                                            border: '1px solid var(--border-color)',
+                                            backgroundColor: 'var(--bg-card)',
+                                        }}
                                     >
-                                        {item.title}
-                                    </h4>
-
-                                    {/* Description */}
-                                    <p
-                                        className="text-justify mb-4 leading-relaxed text-sm md:text-base"
-                                        style={{ color: 'var(--text-secondary)' }}
-                                    >
-                                        {item.description}
-                                    </p>
-
-                                    {/* Skills */}
-                                    <div className="mb-4">
-                                        <p
-                                            className="text-xs font-semibold uppercase tracking-wide mb-3"
-                                            style={{ color: 'var(--text-secondary)' }}
-                                        >
-                                            Skills:
-                                        </p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {item.skills.map((skill, index) => (
-                                                <span
-                                                    key={index}
-                                                    className={`text-xs px-3 py-1.5 rounded transition-all ${isDark
-                                                        ? 'hover:border-blue-500 hover:text-blue-300'
-                                                        : 'hover:border-blue-500 hover:text-blue-600'
-                                                        }`}
-                                                    style={{
-                                                        border: '1px solid var(--border-color)',
-                                                        backgroundColor: 'var(--bg-card)',
-                                                        color: 'var(--text-primary)',
-                                                    }}
-                                                >
-                                                    {skill}
-
-                                                </span>
-                                            ))}
+                                        {/* Date and Type Badge */}
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span
+                                                className="text-xs font-medium uppercase tracking-wider"
+                                                style={{ color: 'var(--text-secondary)' }}
+                                            >
+                                                {item.date}
+                                            </span>
+                                            <span
+                                                className={`text-xs font-semibold border px-2.5 py-1 rounded ${item.typeColor}`}
+                                            >
+                                                {item.type}
+                                            </span>
                                         </div>
-                                    </div>
 
-                                    {/* Read More Link */}
-                                    <a
-                                        href="#"
-                                        className="text-blue-500 text-sm font-medium hover:text-blue-400 transition-colors inline-flex items-center gap-1"
-                                    >
-                                        Read more
-                                        <span>→</span>
-                                    </a>
+                                        {/* Title - hover changes to accent color */}
+                                        <h4
+                                            className="text-xl md:text-2xl font-bold mb-3 transition-colors duration-300 group-hover:!important"
+                                            style={{
+                                                color: 'var(--text-primary)',
+                                                ['--accent-color' as string]: accentColor,
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                // Title hover handled by parent group
+                                            }}
+                                        >
+                                            <span className="transition-colors duration-300"
+                                                style={{ color: 'inherit' }}
+                                                ref={(el) => {
+                                                    if (!el) return;
+                                                    const parent = el.closest('.group');
+                                                    if (!parent) return;
+                                                    parent.addEventListener('mouseenter', () => {
+                                                        el.style.color = accentColor;
+                                                    });
+                                                    parent.addEventListener('mouseleave', () => {
+                                                        el.style.color = '';
+                                                    });
+                                                }}
+                                            >
+                                                {item.title}
+                                            </span>
+                                        </h4>
+
+                                        {/* Description */}
+                                        <p
+                                            className="text-justify mb-4 leading-relaxed text-sm md:text-base"
+                                            style={{ color: 'var(--text-secondary)' }}
+                                        >
+                                            {item.description}
+                                        </p>
+
+                                        {/* Skills */}
+                                        <div className="mb-4">
+                                            <p
+                                                className="text-xs font-semibold uppercase tracking-wide mb-3"
+                                                style={{ color: 'var(--text-secondary)' }}
+                                            >
+                                                Skills:
+                                            </p>
+                                            <div className="flex flex-wrap gap-2">
+                                                {item.skills.map((skill, skillIndex) => (
+                                                    <span
+                                                        key={skillIndex}
+                                                        className="text-xs px-3 py-1.5 rounded transition-all duration-300 cursor-default"
+                                                        style={{
+                                                            border: '1px solid var(--border-color)',
+                                                            backgroundColor: 'var(--bg-card)',
+                                                            color: 'var(--text-primary)',
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.borderColor = accentColor;
+                                                            e.currentTarget.style.color = accentColor;
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.borderColor = '';
+                                                            e.currentTarget.style.color = '';
+                                                        }}
+                                                    >
+                                                        {skill}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {/* Read More Link */}
+                                        <a
+                                            href="#"
+                                            className="text-sm font-medium transition-colors inline-flex items-center gap-1"
+                                            style={{ color: accentColor }}
+                                        >
+                                            Read more
+                                            <span>→</span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
