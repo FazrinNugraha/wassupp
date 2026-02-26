@@ -15,10 +15,13 @@ export default function BlogPage() {
                     Blog
                 </h2>
                 <p
-                    className="mb-16 max-w-3xl mx-auto text-center text-lg"
+                    className="mb-4 max-w-3xl mx-auto text-center text-lg"
                     style={{ color: 'var(--text-secondary)' }}
                 >
                     Thoughts on software development, AI, and lessons from building real-world projects.
+                    Just a developer writing about what he builds.
+And the lessons that come with it.
+
                 </p>
             </div>
             <BlogSection />

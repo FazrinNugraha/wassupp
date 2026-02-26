@@ -9,8 +9,10 @@ export function getStaticPaths() {
         { params: { slug: "building-real-world-projects" } },
     ];
 }
+
+const { slug } = Astro.params;
 ---
 
 <Layout>
-    <AppWrapper client:load page="blog_detail" />
+    <AppWrapper client:load page="blog_detail" blogSlug={slug} />
 </Layout>

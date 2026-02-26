@@ -1,8 +1,8 @@
 import React from "react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 
-export default function BlogDetailPage() {
+export default function DivingIntoAI() {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
 
@@ -30,21 +30,21 @@ export default function BlogDetailPage() {
                             }}
                         >
                             <Tag size={12} />
-                            Tutorial
+                            Insight
                         </span>
                         <div
                             className="flex items-center gap-1.5 text-xs"
                             style={{ color: 'var(--text-muted)' }}
                         >
                             <Calendar size={12} />
-                            Feb 21, 2026
+                            Feb 22, 2026
                         </div>
                         <div
                             className="flex items-center gap-1.5 text-xs"
                             style={{ color: 'var(--text-muted)' }}
                         >
                             <Clock size={12} />
-                            5 min read
+                            8 min read
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@ export default function BlogDetailPage() {
                         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight"
                         style={{ color: 'var(--text-primary)' }}
                     >
-                        Getting Started with React: A Comprehensive Guide
+                        Diving into AI & ML: My Journey from Zero to Hero
                     </h1>
 
                     <p
@@ -73,7 +73,7 @@ export default function BlogDetailPage() {
                         className="text-2xl font-bold mt-10 mb-4"
                         style={{ color: 'var(--text-primary)' }}
                     >
-                        Understanding the Basics
+                        Getting Started with Machine Learning
                     </h2>
                     <p style={{ color: 'var(--text-secondary)' }}>
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -90,13 +90,13 @@ export default function BlogDetailPage() {
                             className="text-lg font-bold mb-2"
                             style={{ color: 'var(--text-primary)' }}
                         >
-                            Pro Tip
+                            Key Takeaway
                         </h3>
                         <p
                             className="text-sm"
                             style={{ color: 'var(--text-secondary)' }}
                         >
-                            Always keep your components small and focused on a single task. This makes them easier to test and reuse across your application.
+                            AI and Machine Learning are not as intimidating as they seem. Start with the fundamentals and gradually build your knowledge from there.
                         </p>
                     </div>
 
@@ -104,7 +104,7 @@ export default function BlogDetailPage() {
                         className="text-2xl font-bold mt-10 mb-4"
                         style={{ color: 'var(--text-primary)' }}
                     >
-                        Advanced Concepts
+                        Tools and Resources
                     </h2>
                     <p style={{ color: 'var(--text-secondary)' }}>
                         At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
