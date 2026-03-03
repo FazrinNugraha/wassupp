@@ -26,7 +26,7 @@ export default function PhotoCarousel({ thumbnails }: PhotoCarouselProps) {
     if (!thumbnails || thumbnails.length === 0) {
         return (
             <div
-                className="h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden flex items-center justify-center"
+                className="h-[200px] sm:h-[250px] md:h-[320px] rounded-lg overflow-hidden flex items-center justify-center "
                 style={{
                     border: '1px solid var(--border-color)',
                     backgroundColor: 'var(--bg-card)',

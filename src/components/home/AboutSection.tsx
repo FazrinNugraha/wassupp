@@ -175,7 +175,7 @@ export default function AboutSection() {
           </a>
           <a
             href="/contact"
-            className="px-8 py-3 font-semibold rounded-lg transition-all duration-300 text-center"
+            className="px-8 py-3 font-semibold rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5 text-center"
             style={{
               border: '2px solid var(--text-primary)',
               color: 'var(--text-primary)',

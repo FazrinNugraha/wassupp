@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github, Linkedin } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function HeroSection() {
@@ -12,152 +12,249 @@ export default function HeroSection() {
       className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-16 sm:py-20 md:py-24 pt-24 sm:pt-28 md:pt-32"
     >
       <div className="max-w-7xl mx-auto">
-
         {/* GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-
           {/* ================= LEFT COLUMN ================= */}
           <div className="space-y-8 flex flex-col justify-start">
-
-            {/* Headline */}
-            <div className="space-y-6">
-              <h2
-                className="max-w-3xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight"
-                style={{ color: 'var(--text-primary)' }}
+            {/* Availability Badge */}
+            <div className="flex items-center">
+              <span
+                className="text-xs font-semibold uppercase tracking-widest flex items-center gap-2"
+                style={{ color: "var(--text-secondary)" }}
               >
-                Great work deserves great documentation. I make sure every
-                decision is captured.
-              </h2>
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: "var(--text-secondary)" }}
+                ></span>
+                Available for select projects
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <div className="space-y-4">
+              <h1
+                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight"
+                style={{ color: "var(--text-primary)" }}
+              >
+                I like building things that work
+              </h1>
 
               <p
-                className="text-xl md:text-lg leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
+                className="text-base md:text-lg leading-relaxed max-w-xl"
+                style={{ color: "var(--text-secondary)" }}
               >
-                Process and context, not just pretty pictures.
+                Building practical solutions that blend engineering, design, and
+                innovation. Transforming ideas into products that people
+                actually use.
               </p>
+            </div>
 
-              {/* Avatar */}
-              <div className="flex items-center">
+            {/* Skills Tags */}
+            <div className="flex flex-wrap gap-2">
+              {["FULLSATCK DEVELOPER", "SOFTWARE ENGINEER", "AI & ML"].map(
+                (skill, idx) => (
+                  <span
+                    key={idx}
+                    className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded"
+                    style={{
+                      backgroundColor: "var(--bg-secondary)",
+                      color: "var(--text-primary)",
+                      border: "1px solid var(--border-color)",
+                    }}
+                  >
+                    {skill}
+                  </span>
+                ),
+              )}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex flex-col sm:flex-row gap-3 pt-4">
+              <a
+                href="/projects"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
+                style={{
+                  backgroundColor: "var(--btn-primary-bg)",
+                  color: "var(--btn-primary-text)",
+                }}
+              >
+                View Selected Projects
+                <ArrowRight size={16} />
+              </a>
+
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
+                style={{
+                  border: "1px solid var(--btn-secondary-border)",
+                  color: "var(--btn-secondary-text)",
+                  backgroundColor: "transparent",
+                }}
+              >
+                Get in Touch
+                <ArrowRight size={16} />
+              </a>
+            </div>
+
+            {/* Social Links */}
+            {/* <div className="flex items-center gap-4 pt-4">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg transition-all duration-200 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "var(--bg-secondary)",
+                  border: "1px solid var(--border-color)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg transition-all duration-200 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "var(--bg-secondary)",
+                  border: "1px solid var(--border-color)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                <Linkedin size={18} />
+              </a>
+            </div> */}
+          </div>
+
+          {/* ================= RIGHT COLUMN ================= */}
+          <div className="flex justify-center lg:justify-end items-start mt-4 lg:mt-12 transition-all duration-200 ease-out text-md hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5">
+            <div
+              className="w-full p-8 rounded-2xl"
+              style={{
+                backgroundColor: "var(--bg-card)",
+                border: "1px solid var(--border-color)",
+                boxShadow: "var(--card-shadow)",
+              }}
+            >
+              {/* Top Row: Avatar+Name left, Description right */}
+              <div className="flex gap-6 items-start">
+                {/* Left: Avatar + Name */}
                 <div
-                  className="inline-flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-300"
-                  style={{
-                    border: '1px solid var(--border-color)',
-                    backgroundColor: 'var(--bg-card)',
-                    boxShadow: 'var(--card-shadow)',
-                  }}
+                  className="flex flex-col items-center flex-shrink-0 mt-4"
+                  style={{ minWidth: "140px" }}
                 >
                   <img
-                    src="/public/profile/pepe.jpeg"
+                    src="/profile/pepe.jpeg"
                     alt="Fazrin Nugraha"
-                    className="w-8 h-8 rounded-full object-cover ring-2 ring-blue-500/30"
+                    className="w-20 h-20 rounded-full object-cover"
+                    style={{
+                      border: "2px solid var(--border-color)",
+                    }}
                   />
-
-                  <span
-                    className="text-sm font-medium"
-                    style={{ color: 'var(--text-secondary)' }}
+                  <h3
+                    className="text-base font-bold mt-3 whitespace-nowrap"
+                    style={{ color: "var(--text-primary)" }}
                   >
-                    Hi, I'm
-                  </span>
-
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ color: 'var(--text-primary)' }}
+                    Fazrin Nugraha
+                  </h3>
+                  <p
+                    className="text-[11px] uppercase tracking-widest mt-1"
+                    style={{ color: "var(--text-secondary)" }}
                   >
-                    Muhamad Fazrin Nugraha
-                  </span>
+                    Based in Indonesia
+                  </p>
+                </div>
+
+                {/* Right: Description */}
+                <p
+                  className="text-md leading-relaxed pt-10"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  I blend engineering, design, and motion to create interfaces
+                  that feel deliberate, calm, and precise without sacrificing
+                  performance or accessibility.
+                </p>
+              </div>
+
+              {/* Bottom Row: Stats */}
+              <div
+                className="grid grid-cols-3 gap-6 mt-6 pt-5 items-center text-center"
+                style={{ borderTop: "1px solid var(--border-color)" }}
+              >
+                <div>
+                  <p
+                    className="text-[11px] uppercase tracking-widest mb-1.5"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    Experience
+                  </p>
+                  <p
+                    className="text-base font-bold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    3+ Years
+                  </p>
+                </div>
+                <div>
+                  <p
+                    className="text-[11px] uppercase tracking-widest mb-1.5"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    Selected Clients
+                  </p>
+                  <p
+                    className="text-base font-bold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    5+ Projects
+                  </p>
+                </div>
+                <div>
+                  <p
+                    className="text-[11px] uppercase tracking-widest mb-1.5"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    Focus
+                  </p>
+                  <p
+                    className="text-base font-bold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    Web · AI
+                  </p>
                 </div>
               </div>
             </div>
-
-            {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <a
-                href="/projects"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2 font-medium rounded transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
-                style={{
-                  backgroundColor: 'var(--btn-primary-bg)',
-                  color: 'var(--btn-primary-text)',
-                }}
-              >
-                Explore Case Studies
-                <ArrowRight size={16} />
-              </a>
-
-              <a
-                href="/blog"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2 font-medium rounded transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
-                style={{
-                  border: '1px solid var(--btn-secondary-border)',
-                  color: 'var(--btn-secondary-text)',
-                  backgroundColor: 'transparent',
-                }}
-              >
-                Latest Posts
-                <ArrowRight size={16} />
-              </a>
-            </div>
-
           </div>
 
-
-          {/* ================= RIGHT COLUMN ================= */}
-          <div className="space-y-6 m-6">
-
-            {/* Post 1 */}
-            <article
-              className="p-8 rounded-lg transition-all hover:-translate-y-1"
+          {/* CTA Buttons - Mobile Only (below profile card) */}
+          <div className="flex lg:hidden flex-col sm:flex-row gap-3 pt-2">
+            <a
+              href="/projects"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
               style={{
-                backgroundColor: 'var(--bg-card)',
-                border: '1px solid var(--border-color)',
-                boxShadow: 'var(--card-shadow)',
+                backgroundColor: "var(--btn-primary-bg)",
+                color: "var(--btn-primary-text)",
               }}
             >
-              <h3
-                className="text-xl font-bold"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                POSTS COMING SOON
-              </h3>
+              View Selected Projects
+              <ArrowRight size={16} />
+            </a>
 
-              <a
-                href="#article-1"
-                className="mt-2 inline-flex items-center gap-2 transition-all hover:gap-3"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                Read article
-                <ArrowRight size={16} />
-              </a>
-            </article>
-
-
-            {/* Post 2 */}
-            <article
-              className="p-8 rounded-lg transition-all hover:-translate-y-1"
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
               style={{
-                backgroundColor: 'var(--bg-card)',
-                border: '1px solid var(--border-color)',
-                boxShadow: 'var(--card-shadow)',
+                border: "1px solid var(--btn-secondary-border)",
+                color: "var(--btn-secondary-text)",
+                backgroundColor: "transparent",
               }}
             >
-              <h3
-                className="text-xl font-bold"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                POSTS COMING SOON
-              </h3>
-
-              <a
-                href="#article-2"
-                className="mt-2 inline-flex items-center gap-2 transition-all hover:gap-3"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                Read article
-                <ArrowRight size={16} />
-              </a>
-            </article>
-
+              Get in Touch
+              <ArrowRight size={16} />
+            </a>
           </div>
-
         </div>
       </div>
     </section>

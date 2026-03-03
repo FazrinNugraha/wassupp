@@ -115,11 +115,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Content - Compact Layout */}
       <div
-        className={`grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10 items-center max-w-4xl mx-auto`}
+        className={`grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10 items-center max-w-4xl mx-auto `}
       >
         {/* Thumbnail */}
         <div
-          className={`${project.side === "left" ? "md:order-1" : "md:order-2"}`}
+          className={`${project.side === "left" ? "md:order-1 " : "md:order-2"}`}
         >
           <PhotoCarousel thumbnails={project.thumbnails} />
         </div>

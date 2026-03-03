@@ -26,7 +26,7 @@ export default function ProjectsHeader() {
             </p>
             <p
                 className="text-sm"
-                style={{ color: 'var(--text-muted)' }}
+                style={{ color: 'var(--text-primary)' }}
             >
                 {projects.length} projects · {featuredCount} featured
             </p>

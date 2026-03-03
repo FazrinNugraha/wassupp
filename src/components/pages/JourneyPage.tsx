@@ -136,7 +136,7 @@ export default function JourneyPage() {
 
                                     {/* Card Content */}
                                     <div
-                                        className="rounded-lg p-6 transition-all duration-300"
+                                        className="rounded-lg p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
                                         style={{
                                             border: '1px solid var(--border-color)',
                                             backgroundColor: 'var(--bg-card)',
