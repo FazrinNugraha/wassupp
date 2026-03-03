@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* Theme CSS Variables */
 :root {
   --bg-primary: #141414;
-  --bg-secondary: #1A1A1A;
-  --bg-card: #1A1A1A;
-  --text-primary: #FAFAFA;
-  --text-secondary: #A3A3A3;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #1a1a1a;
+  --text-primary: #fafafa;
+  --text-secondary: #a3a3a3;
   --text-muted: #737373;
   --border-color: #262626;
   --border-hover: #404040;
@@ -22,70 +22,70 @@
   --header-border: rgba(31, 41, 55, 0.5);
 
   /* Nav links */
-  --nav-text: #9CA3AF;
-  --nav-text-active: #FFFFFF;
-  --nav-text-hover: #FFFFFF;
+  --nav-text: #9ca3af;
+  --nav-text-active: #ffffff;
+  --nav-text-hover: #ffffff;
 
   /* Buttons */
-  --btn-primary-bg: #FFFFFF;
+  --btn-primary-bg: #ffffff;
   --btn-primary-text: #141414;
-  --btn-primary-hover-bg: #FAFAFA;
+  --btn-primary-hover-bg: #fafafa;
   --btn-secondary-border: #262626;
-  --btn-secondary-text: #FAFAFA;
-  --btn-secondary-hover-bg: #1A1A1A;
+  --btn-secondary-text: #fafafa;
+  --btn-secondary-hover-bg: #1a1a1a;
 
   /* Card */
   --card-shadow: none;
   --card-hover-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 
   /* Link colors */
-  --link-blue: #60A5FA;
-  --link-blue-hover: #93C5FD;
+  --link-blue: #60a5fa;
+  --link-blue-hover: #93c5fd;
 
   /* Toggle icon */
-  --toggle-text: #9CA3AF;
-  --toggle-hover: #FFFFFF;
+  --toggle-text: #9ca3af;
+  --toggle-hover: #ffffff;
 }
 
 .light-theme {
-  --bg-primary: #F9FAFB;
-  --bg-secondary: #FFFFFF;
-  --bg-card: #FFFFFF;
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
   --text-primary: #111827;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  --border-color: #E5E7EB;
-  --border-hover: #D1D5DB;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --border-hover: #d1d5db;
 
   /* Header */
   --header-bg: rgba(249, 250, 251, 0.95);
   --header-scrolled-bg: rgba(255, 255, 255, 0.95);
-  --header-scrolled-border: #E5E7EB;
-  --header-border: #E5E7EB;
+  --header-scrolled-border: #e5e7eb;
+  --header-border: #e5e7eb;
 
   /* Nav links */
-  --nav-text: #6B7280;
+  --nav-text: #6b7280;
   --nav-text-active: #111827;
   --nav-text-hover: #111827;
 
   /* Buttons */
   --btn-primary-bg: #111827;
-  --btn-primary-text: #FFFFFF;
-  --btn-primary-hover-bg: #1F2937;
-  --btn-secondary-border: #D1D5DB;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover-bg: #1f2937;
+  --btn-secondary-border: #d1d5db;
   --btn-secondary-text: #111827;
-  --btn-secondary-hover-bg: #F3F4F6;
+  --btn-secondary-hover-bg: #f3f4f6;
 
   /* Card */
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   --card-hover-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
   /* Link colors */
-  --link-blue: #2563EB;
-  --link-blue-hover: #1D4ED8;
+  --link-blue: #2563eb;
+  --link-blue-hover: #1d4ed8;
 
   /* Toggle icon */
-  --toggle-text: #6B7280;
+  --toggle-text: #6b7280;
   --toggle-hover: #111827;
 }
 
@@ -98,7 +98,9 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Light theme scrollbar */
@@ -210,6 +212,16 @@ body {
 .card-hover:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Social link hover */
+.social-link:hover {
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+.light-theme .social-link:hover {
+  color: #000000 !important;
 }
 
 /* Smooth transitions */

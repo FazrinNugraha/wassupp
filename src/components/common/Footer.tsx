@@ -57,7 +57,7 @@ export default function Footer() {
                     href={social.url}
                     target={social.url.startsWith("/") ? "_self" : "_blank"}
                     rel="noopener noreferrer"
-                    className="transition-all duration-300 pb-px"
+                    className="social-link transition-all duration-200 ease-out text-md hover:shadow-lg"
                     style={{
                       borderBottom: "1px solid var(--border-hover)",
                       color: "var(--text-secondary)",
@@ -83,8 +83,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-              &copy; {currentYear} All rights reserved build with{" "}
-              <strong>Astro.Js</strong>
+              &copy; {currentYear} Fazrin Nugraha. All rights reserved.{" "}
             </p>
 
             {/* Back to Top */}
