@@ -13,7 +13,7 @@ export default function AboutSection() {
       className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 pb-12 sm:pb-16"
     >
       <div
-        className="pt-12"
+        className="pt-12 pb-12"
         style={{ borderTop: "2px solid var(--border-color)" }}
       >
         <p
@@ -33,11 +33,19 @@ export default function AboutSection() {
         </p>
         <a
           href="/journey"
-          className="hover-text inline-flex items-center gap-2 font-medium hover:underline mb-8"
+          className="mt-2 py-1 text-base font-medium inline-flex items-center gap-2 group/link relative overflow-hidden"
           style={{ color: "var(--text-primary)" }}
         >
-          Read my journey
-          <ArrowRight size={18} />
+          <span className="relative">
+            Read my journey
+            <span
+              className="absolute bottom-0 left-0 h-[1.5px] w-0 transition-all duration-300 group-hover/link:w-full"
+              style={{ backgroundColor: "var(--text-primary)" }}
+            />
+          </span>
+          <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1.5">
+            →
+          </span>
         </a>
       </div>
 

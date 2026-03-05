@@ -128,7 +128,7 @@ export default function HeroSection() {
           </div>
 
           {/* ================= RIGHT COLUMN ================= */}
-          <div className="flex justify-center lg:justify-end items-start mt-4 lg:mt-12 transition-all duration-200 ease-out text-md hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5">
+          <div className="flex justify-center lg:justify-end items-start mt-2 lg:mt-12 transition-all duration-200 ease-out text-md hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5">
             <div
               className="w-full p-8 rounded-2xl"
               style={{
@@ -138,10 +138,10 @@ export default function HeroSection() {
               }}
             >
               {/* Top Row: Avatar+Name left, Description right */}
-              <div className="flex gap-6 items-start">
+              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
                 {/* Left: Avatar + Name */}
                 <div
-                  className="flex flex-col items-center flex-shrink-0 mt-4"
+                  className="flex flex-col items-center flex-shrink-0 mt-0 md:mt-4"
                   style={{ minWidth: "140px" }}
                 >
                   <img
@@ -168,7 +168,7 @@ export default function HeroSection() {
 
                 {/* Right: Description */}
                 <p
-                  className="text-md leading-relaxed pt-10"
+                  className="text-md leading-relaxed pt-0 md:pt-10 text-center text-justify md:text-left"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   I blend engineering, design, and motion to create interfaces
@@ -187,13 +187,13 @@ export default function HeroSection() {
                     className="text-[11px] uppercase tracking-widest mb-1.5"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    Experience
+                    Since
                   </p>
                   <p
                     className="text-base font-bold"
                     style={{ color: "var(--text-primary)" }}
                   >
-                    3+ Years
+                    2023
                   </p>
                 </div>
                 <div>
@@ -201,7 +201,7 @@ export default function HeroSection() {
                     className="text-[11px] uppercase tracking-widest mb-1.5"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    Selected Clients
+                    Selected Projects
                   </p>
                   <p
                     className="text-base font-bold"

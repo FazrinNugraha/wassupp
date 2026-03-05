@@ -20,7 +20,7 @@ export default function RecentActivities() {
           className="text-2xl font-bold"
           style={{ color: "var(--text-primary)" }}
         >
-          Recent Activities
+          Latest Highlights
         </h2>
       </div>
 
