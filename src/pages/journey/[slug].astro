@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AppWrapper from "../../components/AppWrapper.tsx";
+
+export function getStaticPaths() {
+    return [
+        { params: { slug: "bootcamp-revou-fundamental" } },
+        { params: { slug: "getting-hands-on-with-mysql" } },
+        { params: { slug: "mern-stack-learning" } },
+        { params: { slug: "hackathon-amaratha-finalist" } },
+        { params: { slug: "building-ai-powered-web-app" } },
+        { params: { slug: "dbs-coding-camp-ai-engineer" } },
+    ];
+}
+
+const { slug } = Astro.params;
+---
+
+<Layout>
+    <AppWrapper client:load page="journey_detail" journeySlug={slug} />
+</Layout>

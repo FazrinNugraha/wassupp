@@ -15,6 +15,19 @@ function extractColorName(twClass: string): string {
   return match ? match[1] : "blue";
 }
 
+// Convert journey title to slug for URL
+function getJourneySlug(title: string): string {
+  const slugMap: Record<string, string> = {
+    "Bootcamp Revou Fundamental Course": "bootcamp-revou-fundamental",
+    "Getting Hands-On with MySQL": "getting-hands-on-with-mysql",
+    "Building My First Full-Stack Project with MERN Stack": "mern-stack-learning",
+    "Finalist Hackaton x Amartha 2025": "hackathon-amaratha-finalist",
+    "Building My First AI-Powered Web App": "building-ai-powered-web-app",
+    "AI Engineer Path: DBS Foundation Coding Camp 2026": "dbs-coding-camp-ai-engineer",
+  };
+  return slugMap[title] || title.toLowerCase().replace(/\s+/g, "-");
+}
+
 export default function JourneyPage() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -27,7 +40,7 @@ export default function JourneyPage() {
       dotColor: "bg-emerald-500",
       title: "Bootcamp Revou Fundamental Course",
       description:
-        "Joined an intensive two-week software engineering bootcamp focused on web development fundamentals. I practiced building responsive, user-friendly websites using HTML, CSS, and JavaScript while gaining hands-on experience with Git for version control and modern development workflows. The program gave me a solid understanding of how real-world web applications are structured, built, and deployed — forming the foundation of my journey as a developer.",
+        "A two-week intensive bootcamp where I built responsive websites using HTML, CSS, and JavaScript. Gained hands-on experience with Git and real-world development workflows.",
       skills: ["HTML", "CSS", "Java Script", "Git", "Responsive Design"],
       colorSkill: "bg-emerald-500",
     },
@@ -38,7 +51,7 @@ export default function JourneyPage() {
       dotColor: "bg-emerald-500",
       title: "Getting Hands-On with MySQL",
       description:
-        "Started learning MySQL — my first real dive into the world of databases. I picked up the basics: CRUD operations, structuring tables, managing relationships, and writing queries that actually make sense. Built a few practice projects along the way to solidify my understanding and get comfortable working with data — an important step toward building more complete, data-driven applications.",
+        "An introduction to MySQL and database fundamentals — CRUD, relationships, and writing meaningful queries. Solidified through hands-on projects as a key step toward data-driven development.",
       skills: [
         "MySQL",
         "Database Management",
@@ -54,7 +67,7 @@ export default function JourneyPage() {
       dotColor: "bg-purple-500",
       title: "Building My First Full-Stack Project with MERN Stack",
       description:
-        "Jumped into full-stack development by building a Learning Management System through a MERN stack course. Learned React, Express, and MongoDB by actually using them — setting up authentication with JWT, building CRUD features, handling file uploads, and integrating a payment gateway with Midtrans. Didn't understand everything perfectly, but building a real project while learning helped things click far faster than just watching tutorials ever could.",
+        "Built a full Learning Management System using the MERN stack — covering auth with JWT, CRUD features, file uploads, and payment integration with Midtrans. Learned by building, which made everything click far faster than tutorials alone.",
       skills: ["MongoDB", "Express", "React", "Node.js"],
       colorSkill: "bg-purple-500",
     },
@@ -65,7 +78,7 @@ export default function JourneyPage() {
       dotColor: "bg-blue-500",
       title: "Finalist Hackaton x Amartha 2025",
       description:
-        "Made it to top 15 out of 200+ teams in my first hackathon. Built SocialCollateral AI with a team of 5 as the frontend developer—a system that helps microfinance lenders assess group trust using AI. We integrated graph analytics to visualize borrower networks, NLP to analyze field reports, and computer vision for asset valuation. All built in 24 hours with React, TypeScript, Tailwind CSS, Chart.js for visualizations, and integrated with FastAPI backend powered by Google Gemini and Google Cloud Vision. Learned how to work under pressure, ship fast, and collaborate with backend, AI, and design teammates.",
+        "Reached top 15 out of 200+ teams in my first hackathon, building SocialCollateral AI in 24 hours as the frontend developer. A microfinance trust assessment system combining graph analytics, NLP, and computer vision — built with React, TypeScript, and integrated with a FastAPI + Gemini backend.",
       skills: [
         "React",
         "TypeScript",
@@ -84,7 +97,7 @@ export default function JourneyPage() {
       dotColor: "bg-purple-500",
       title: "Building My First AI-Powered Web App",
       description:
-        "Built GlucoCheck to learn how to integrate AI into web applications. Created a diabetes risk assessment tool where users fill out a health questionnaire, and the AI analyzes their responses to generate personalized risk assessments in Bahasa Indonesia. Learned how to work with AI APIs, prompt engineering to get clear and helpful responses, and present complex AI outputs in a user-friendly way. First real experience wrapping AI capabilities into an actual product.",
+        "Built GlucoCheck to learn how to integrate AI into a real product — a diabetes risk assessment tool powered by AI that delivers personalized results in Bahasa Indonesia. First hands-on experience with AI APIs and prompt engineering.",
       skills: ["AI", "React", "Tailwind CSS"],
       colorSkill: "bg-purple-500",
     },
@@ -95,7 +108,7 @@ export default function JourneyPage() {
       dotColor: "bg-blue-500",
       title: "AI Engineer Path: DBS Foundation Coding Camp 2026",
       description:
-        "Accepted into Coding Camp 2026 by DBS Foundation on the AI Engineer track. A 4-5 month intensive bootcamp covering machine learning, deep learning, and MLOps. Currently learning to build and deploy production-ready AI systems through hands-on projects and working on a capstone.",
+        "Accepted into Coding Camp 2026 by DBS Foundation on the AI Engineer track — a 4-5 month intensive covering machine learning, deep learning, and MLOps. Currently building toward a production-ready AI capstone.",
       skills: ["Machine Learning", "Deep Learning", "MLOps", "AI Engineering"],
       colorSkill: "bg-blue-500",
     },
@@ -236,12 +249,18 @@ export default function JourneyPage() {
 
                     {/* Read More Link */}
                     <a
-                      href="#"
-                      className="text-sm font-medium transition-colors inline-flex items-center gap-1"
+                      href={`/journey/${getJourneySlug(item.title)}`}
+                      className="text-sm font-medium inline-flex items-center gap-1.5 group/link relative overflow-hidden"
                       style={{ color: accentColor }}
                     >
-                      Read more
-                      <span>→</span>
+                      <span className="relative">
+                        Read more
+                        <span
+                          className="absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-300 group-hover/link:w-full"
+                          style={{ backgroundColor: accentColor }}
+                        />
+                      </span>
+                      <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">→</span>
                     </a>
                   </div>
                 </div>

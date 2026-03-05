@@ -15,6 +15,24 @@ const DivingIntoAI = lazy(() => import("./pages/blog/DivingIntoAI"));
 const BuildingRealWorldProjects = lazy(
   () => import("./pages/blog/BuildingRealWorldProjects"),
 );
+const BootcampRevouFundamental = lazy(
+  () => import("./pages/journey/BootcampRevouFundamental"),
+);
+const GettingHandsOnWithMySQL = lazy(
+  () => import("./pages/journey/GettingHandsOnWithMySQL"),
+);
+const MernStackLearning = lazy(
+  () => import("./pages/journey/MernStackLearning"),
+);
+const HackathonAmarathaFinalist = lazy(
+  () => import("./pages/journey/HackathonAmarathaFinalist"),
+);
+const BuildingAIPoweredWebApp = lazy(
+  () => import("./pages/journey/BuildingAIPoweredWebApp"),
+);
+const DBSCodingCampAIEngineer = lazy(
+  () => import("./pages/journey/DBSCodingCampAIEngineer"),
+);
 const Skills = lazy(() => import("./pages/Skills"));
 const Contact = lazy(() => import("./pages/Contact"));
 
@@ -22,6 +40,7 @@ type PageType =
   | "home"
   | "projects"
   | "journey"
+  | "journey_detail"
   | "skills"
   | "contact"
   | "blog"
@@ -30,9 +49,10 @@ type PageType =
 interface AppWrapperProps {
   page: PageType;
   blogSlug?: string;
+  journeySlug?: string;
 }
 
-export default function AppWrapper({ page, blogSlug }: AppWrapperProps) {
+export default function AppWrapper({ page, blogSlug, journeySlug }: AppWrapperProps) {
   const renderBlogDetail = () => {
     switch (blogSlug) {
       case "getting-started-with-react":
@@ -41,6 +61,25 @@ export default function AppWrapper({ page, blogSlug }: AppWrapperProps) {
         return <DivingIntoAI />;
       case "building-real-world-projects":
         return <BuildingRealWorldProjects />;
+      default:
+        return null;
+    }
+  };
+
+  const renderJourneyDetail = () => {
+    switch (journeySlug) {
+      case "bootcamp-revou-fundamental":
+        return <BootcampRevouFundamental />;
+      case "getting-hands-on-with-mysql":
+        return <GettingHandsOnWithMySQL />;
+      case "mern-stack-learning":
+        return <MernStackLearning />;
+      case "hackathon-amaratha-finalist":
+        return <HackathonAmarathaFinalist />;
+      case "building-ai-powered-web-app":
+        return <BuildingAIPoweredWebApp />;
+      case "dbs-coding-camp-ai-engineer":
+        return <DBSCodingCampAIEngineer />;
       default:
         return null;
     }
@@ -58,6 +97,7 @@ export default function AppWrapper({ page, blogSlug }: AppWrapperProps) {
             {page === "blog" && <BlogPage />}
             {page === "blog_detail" && renderBlogDetail()}
             {page === "journey" && <JourneyPage />}
+            {page === "journey_detail" && renderJourneyDetail()}
             {page === "skills" && <Skills />}
             {page === "contact" && <Contact />}
           </Suspense>
