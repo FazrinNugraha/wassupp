@@ -25,8 +25,9 @@ export default function BuildingRealWorldProjects() {
             <span
               className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded"
               style={{
-                border: "1px solid var(--border-color)",
-                color: "var(--text-secondary)",
+                border: "1px solid #10b98140",
+                backgroundColor: "#10b9811a",
+                color: "#10b981",
               }}
             >
               <Tag size={12} />
@@ -67,7 +68,7 @@ export default function BuildingRealWorldProjects() {
         <article
           className={`prose prose-lg max-w-none ${isDark ? "prose-invert" : ""}`}
         >
-          <p style={{ color: "var(--text-secondary)" }}>
+          <p className="text-lg leading-relaxed mt-8 first-letter:text-6xl first-letter:font-black first-letter:float-left first-letter:mr-4 first-letter:mt-2 first-letter:text-[#10b981]" style={{ color: "var(--text-secondary)" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -88,23 +89,38 @@ export default function BuildingRealWorldProjects() {
           </p>
 
           <div
-            className="my-10 p-6 rounded-lg"
+            className="my-10 p-8 rounded-2xl relative overflow-hidden"
             style={{
               backgroundColor: "var(--bg-card)",
               border: "1px solid var(--border-color)",
             }}
           >
+            <div 
+              className="absolute top-0 right-0 w-20 h-20 rounded-bl-full opacity-10"
+              style={{ backgroundColor: "#10b981" }}
+            ></div>
             <h3
-              className="text-lg font-bold mb-2"
-              style={{ color: "var(--text-primary)" }}
+              className="text-xs font-bold mb-6 uppercase tracking-widest relative z-10"
+              style={{ color: "#10b981" }}
             >
               Lessons Learned
             </h3>
-            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-              Building production-grade applications teaches you lessons that no
-              tutorial can. Start small, iterate often, and don't be afraid to
-              refactor.
-            </p>
+            <ul className="space-y-4 relative z-10">
+              <li className="flex items-start gap-4">
+                 <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#10b981" }}></div>
+                 <p className="text-md leading-relaxed" style={{ color: "var(--text-primary)" }}>
+                  Building production-grade applications teaches you lessons that no
+                  tutorial can.
+                 </p>
+              </li>
+              <li className="flex items-start gap-4">
+                 <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#10b981" }}></div>
+                 <p className="text-md leading-relaxed" style={{ color: "var(--text-primary)" }}>
+                  Start small, iterate often, and don't be afraid to
+                  refactor.
+                 </p>
+              </li>
+            </ul>
           </div>
 
           <h2

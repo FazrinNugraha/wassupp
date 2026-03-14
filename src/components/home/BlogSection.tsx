@@ -14,16 +14,20 @@ export default function BlogSection() {
       description:
         "Exploring the fundamentals of React and how to build efficient user interfaces.",
       tag: "Tutorial",
-      statusColor: "orange",
+      tagColor: "#3b82f6",
+      tagBg: "#3b82f61a",
+      tagBorder: "#3b82f640",
       date: "20/9/2026",
     },
     {
-      slug: "diving-into-ai",
-      title: "Diving into AI & ML",
+      slug: "why-astro-for-portfolio",
+      title: "Astro.JS for my Portfolio",
       description:
-        "My journey into learning Artificial Intelligence and Machine Learning from scratch.",
+        "Why I use Astro.js for my portfolio.",
       tag: "Insight",
-      statusColor: "blue",
+      tagColor: "#a855f7",
+      tagBg: "#a855f71a",
+      tagBorder: "#a855f740",
       date: "8/10/2026",
     },
     {
@@ -32,7 +36,9 @@ export default function BlogSection() {
       description:
         "What I learned while building fullstack applications with MERN stack.",
       tag: "Article",
-      statusColor: "purple",
+      tagColor: "#10b981",
+      tagBg: "#10b9811a",
+      tagBorder: "#10b98140",
       date: "23/1/2026",
     },
   ];
@@ -56,7 +62,12 @@ export default function BlogSection() {
             <div className="flex-1 min-w-0">
               {/* Tag */}
               <span
-                className={`inline-block text-xs font-semibold px-2.5 py-1 rounded border mb-3 border-${post.statusColor}-500 text-${post.statusColor}-500`}
+                className="inline-block text-xs font-semibold px-2.5 py-1 rounded mb-3"
+                style={{
+                  color: post.tagColor,
+                  backgroundColor: post.tagBg,
+                  border: `1px solid ${post.tagBorder}`,
+                }}
               >
                 {post.tag}
               </span>

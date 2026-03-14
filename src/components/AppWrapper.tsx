@@ -8,13 +8,20 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const Projects = lazy(() => import("./projects"));
 const JourneyPage = lazy(() => import("./pages/JourneyPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
+
+//lazy load for blog
+const AstroForPortfolio = lazy(
+  () => import("./pages/blog/AstroForPortfolio"));
+
 const GetStartedWithReact = lazy(
   () => import("./pages/blog/GetStartedWithReact"),
 );
-const DivingIntoAI = lazy(() => import("./pages/blog/DivingIntoAI"));
+
 const BuildingRealWorldProjects = lazy(
   () => import("./pages/blog/BuildingRealWorldProjects"),
 );
+
+//lazy load for journey
 const BootcampRevouFundamental = lazy(
   () => import("./pages/journey/BootcampRevouFundamental"),
 );
@@ -52,15 +59,19 @@ interface AppWrapperProps {
   journeySlug?: string;
 }
 
-export default function AppWrapper({ page, blogSlug, journeySlug }: AppWrapperProps) {
+export default function AppWrapper({
+  page,
+  blogSlug,
+  journeySlug,
+}: AppWrapperProps) {
   const renderBlogDetail = () => {
     switch (blogSlug) {
       case "getting-started-with-react":
         return <GetStartedWithReact />;
-      case "diving-into-ai":
-        return <DivingIntoAI />;
       case "building-real-world-projects":
         return <BuildingRealWorldProjects />;
+      case "why-astro-for-portfolio":
+        return <AstroForPortfolio />;
       default:
         return null;
     }

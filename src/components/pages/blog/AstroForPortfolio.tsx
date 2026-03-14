@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 
-export default function DivingIntoAI() {
+export default function AstroForPortfolio() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -25,8 +25,9 @@ export default function DivingIntoAI() {
             <span
               className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded"
               style={{
-                border: "1px solid var(--border-color)",
-                color: "var(--text-secondary)",
+                border: "1px solid #a855f740",
+                backgroundColor: "#a855f71a",
+                color: "#a855f7",
               }}
             >
               <Tag size={12} />
@@ -51,7 +52,7 @@ export default function DivingIntoAI() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight"
             style={{ color: "var(--text-primary)" }}
           >
-            Diving into AI & ML: My Journey from Zero to Hero
+            Why I use Astro.js for my portfolio
           </h1>
 
           <p
@@ -87,25 +88,22 @@ export default function DivingIntoAI() {
             anim id est laborum.
           </p>
 
-          <div
-            className="my-10 p-6 rounded-lg"
-            style={{
-              backgroundColor: "var(--bg-card)",
-              border: "1px solid var(--border-color)",
-            }}
+          <blockquote
+            className="my-12 pl-6 md:pl-8 py-2 relative"
           >
-            <h3
-              className="text-lg font-bold mb-2"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Key Takeaway
-            </h3>
-            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-              AI and Machine Learning are not as intimidating as they seem.
+            <div 
+              className="absolute left-0 top-0 bottom-0 w-1.5 rounded-full"
+              style={{ background: "linear-gradient(to bottom, #a855f7, transparent)" }}
+            ></div>
+            <p className="text-xl md:text-2xl font-medium italic leading-relaxed mb-6" style={{ color: "var(--text-primary)" }}>
+              "AI and Machine Learning are not as intimidating as they seem.
               Start with the fundamentals and gradually build your knowledge
-              from there.
+              from there."
             </p>
-          </div>
+            <footer className="text-xs font-bold tracking-widest uppercase" style={{ color: "#a855f7" }}>
+              — Key Takeaway
+            </footer>
+          </blockquote>
 
           <h2
             className="text-2xl font-bold mt-10 mb-4"

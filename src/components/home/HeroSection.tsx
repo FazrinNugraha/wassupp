@@ -51,7 +51,7 @@ export default function HeroSection() {
 
             {/* Skills Tags */}
             <div className="flex flex-wrap gap-2">
-              {["FULLSATCK DEVELOPER", "SOFTWARE ENGINEER", "AI & ML"].map(
+              {["FULLSATCK ENGINEER", "AI & ML ENGINEER"].map(
                 (skill, idx) => (
                   <span
                     key={idx}

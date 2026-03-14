@@ -25,8 +25,9 @@ export default function GetStartedWithReact() {
             <span
               className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded"
               style={{
-                border: "1px solid var(--border-color)",
-                color: "var(--text-secondary)",
+                border: "1px solid #3b82f640",
+                backgroundColor: "#3b82f61a",
+                color: "#3b82f6",
               }}
             >
               <Tag size={12} />
@@ -88,19 +89,39 @@ export default function GetStartedWithReact() {
           </p>
 
           <div
-            className="my-10 p-6 rounded-lg"
+            className="my-10 rounded-lg overflow-hidden border"
             style={{
               backgroundColor: "var(--bg-card)",
-              border: "1px solid var(--border-color)",
+              borderColor: "var(--border-color)",
+            }}
+          >
+            <div className="px-4 py-3 border-b flex items-center gap-2" style={{ borderColor: "var(--border-color)", backgroundColor: "#3b82f60a" }}>
+              <div className="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
+              <span className="ml-2 text-xs font-mono" style={{ color: "var(--text-muted)" }}>bash</span>
+            </div>
+            <div className="p-5 font-mono text-sm leading-relaxed overflow-x-auto" style={{ color: "var(--text-primary)" }}>
+              <div className="flex gap-3"><span style={{ color: "#3b82f6" }}>$</span> <span>npx create-react-app my-app</span></div>
+              <div className="flex gap-3"><span style={{ color: "#3b82f6" }}>$</span> <span>cd my-app</span></div>
+              <div className="flex gap-3"><span style={{ color: "#3b82f6" }}>$</span> <span>npm start</span></div>
+            </div>
+          </div>
+
+          <div
+            className="my-10 p-6 rounded-r-lg border-l-4"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              borderLeftColor: "#3b82f6",
             }}
           >
             <h3
-              className="text-lg font-bold mb-2"
+              className="text-lg font-bold mb-2 flex items-center gap-2"
               style={{ color: "var(--text-primary)" }}
             >
-              Pro Tip
+              <span className="text-xl">💡</span> Pro Tip
             </h3>
-            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
               Always keep your components small and focused on a single task.
               This makes them easier to test and reuse across your application.
             </p>
