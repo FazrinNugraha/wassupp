@@ -59,7 +59,7 @@ export default function RecentActivities() {
           >
             <div className="relative z-10">
               {/* Date + Badge Row */}
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <span
                   className="text-sm font-medium uppercase tracking-wider"
                   style={{ color: "var(--text-secondary)" }}
@@ -75,7 +75,7 @@ export default function RecentActivities() {
 
               {/* Highlight Title */}
               <h3
-                className="text-xl font-bold leading-relaxed mb-2"
+                className="text-xl font-bold leading-relaxed mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 {item.title}

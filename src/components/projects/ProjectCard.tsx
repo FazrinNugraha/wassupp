@@ -72,25 +72,38 @@ function ProjectLinks({
   liveDemo: string;
 }) {
   return (
-    <div className="flex gap-6 text-blue-500 text-sm font-medium">
+    <div className="flex gap-6 text-sm font-medium">
       {sourceCode !== "#" && (
         <a
           href={sourceCode}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline flex items-center gap-2"
+          className="text-blue-500 inline-flex items-center gap-2 group/link relative overflow-hidden"
         >
-          Source Code <ArrowRight size={14} />
+          <span className="relative">
+            Source Code
+            <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-blue-500 transition-all duration-300 group-hover/link:w-full" />
+          </span>
+          <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1.5">
+            <ArrowRight size={14} />
+          </span>
         </a>
       )}
+
       {liveDemo !== "#" && (
         <a
           href={liveDemo}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline flex items-center gap-2"
+          className="text-blue-500 inline-flex items-center gap-2 group/link relative overflow-hidden"
         >
-          Live Demo <ArrowRight size={14} />
+          <span className="relative">
+            Live Demo
+            <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-blue-500 transition-all duration-300 group-hover/link:w-full" />
+          </span>
+          <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1.5">
+            <ArrowRight size={14} />
+          </span>
         </a>
       )}
     </div>

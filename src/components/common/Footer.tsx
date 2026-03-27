@@ -39,7 +39,7 @@ export default function Footer() {
             </h2>
 
             <p
-              className="mb-6 text-justify leading-relaxed"
+              className=" text-md mb-6 text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
               If you want to get in touch with me about something or just to say
