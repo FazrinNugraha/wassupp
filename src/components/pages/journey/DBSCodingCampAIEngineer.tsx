@@ -34,7 +34,7 @@ export default function DBSCodingCampAIEngineer() {
               className="text-xs font-semibold border px-2.5 py-1 rounded"
               style={{ borderColor: accentColor, color: accentColor }}
             >
-              ACHIEVEMENT
+              LEARNING
             </span>
           </div>
           <h1

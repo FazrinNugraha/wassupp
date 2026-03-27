@@ -103,9 +103,9 @@ export default function JourneyPage() {
     },
     {
       date: "FEBRUARY 2026",
-      type: "ACHIEVEMENT",
-      typeColor: "border-blue-500 text-blue-500",
-      dotColor: "bg-blue-500",
+      type: "LEARNING",
+      typeColor: "border-emerald-500 text-emerald-500",
+      dotColor: "bg-emerald-500",
       title: "AI Engineer Path: DBS Foundation Coding Camp 2026",
       description:
         "Accepted into Coding Camp 2026 by DBS Foundation on the AI Engineer track — a 4-5 month intensive covering machine learning, deep learning, and MLOps. Currently building toward a production-ready AI capstone.",
