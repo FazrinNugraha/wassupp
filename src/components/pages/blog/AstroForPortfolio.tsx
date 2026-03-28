@@ -52,7 +52,7 @@ export default function AstroForPortfolio() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight"
             style={{ color: "var(--text-primary)" }}
           >
-            Why I use Astro.js for my portfolio
+            Building My Portfolio With Astro.Js
           </h1>
 
           <p

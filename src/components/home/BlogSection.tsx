@@ -21,7 +21,7 @@ export default function BlogSection() {
     },
     {
       slug: "why-astro-for-portfolio",
-      title: "Astro.JS For My Portfolio",
+      title: "Why I Chose Astro.js for My Portfolio",
       description:
         "Why I use Astro.js for my portfolio.",
       tag: "Insight",
