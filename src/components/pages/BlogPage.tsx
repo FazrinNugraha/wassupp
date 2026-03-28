@@ -2,7 +2,11 @@ import React from "react";
 import BlogSection from "../home/BlogSection";
 import { useTheme } from "../../context/ThemeContext";
 
-export default function BlogPage() {
+interface BlogPageProps {
+  blogPosts?: any[];
+}
+
+export default function BlogPage({ blogPosts }: BlogPageProps) {
   const { theme } = useTheme();
 
   return (
@@ -23,7 +27,7 @@ export default function BlogPage() {
           And the lessons that come with it.
         </p>
       </div>
-      <BlogSection />
+      <BlogSection blogPosts={blogPosts} />
     </div>
   );
 }

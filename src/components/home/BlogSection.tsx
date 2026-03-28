@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 
-export default function BlogSection() {
+interface BlogSectionProps {
+  blogPosts?: any[];
+}
+
+export default function BlogSection({ blogPosts }: BlogSectionProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -13,21 +17,14 @@ export default function BlogSection() {
       title: "Integration Payment Gateway Midtrans",
       description:
         "Integrating Midtrans payment gateway into a web application.",
-      tag: "Tutorial",
-      tagColor: "#3b82f6",
-      tagBg: "#3b82f61a",
-      tagBorder: "#3b82f640",
+      category: "Tutorial",
       date: "28/3/2026",
     },
     {
       slug: "why-astro-for-portfolio",
       title: "Why I Chose Astro.js for My Portfolio",
-      description:
-        "Why I use Astro.js for my portfolio.",
-      tag: "Insight",
-      tagColor: "#a855f7",
-      tagBg: "#a855f71a",
-      tagBorder: "#a855f740",
+      description: "Why I use Astro.js for my portfolio.",
+      category: "Insight",
       date: "8/10/2026",
     },
     {
@@ -35,13 +32,24 @@ export default function BlogSection() {
       title: "Building Real-World Projects",
       description:
         "What I learned while building fullstack applications with MERN stack.",
-      tag: "Article",
-      tagColor: "#10b981",
-      tagBg: "#10b9811a",
-      tagBorder: "#10b98140",
+      category: "Article",
       date: "23/1/2026",
     },
   ];
+
+  const posts = blogPosts || placeholderPosts;
+
+  const getCategoryStyles = (category: string) => {
+    switch (category?.toLowerCase()) {
+      case "tutorial":
+        return { color: "#3b82f6", bg: "#3b82f61a", border: "#3b82f640" };
+      case "insight":
+        return { color: "#a855f7", bg: "#a855f71a", border: "#a855f740" };
+      case "article":
+      default:
+        return { color: "#10b981", bg: "#10b9811a", border: "#10b98140" };
+    }
+  };
 
   return (
     <section
@@ -50,77 +58,80 @@ export default function BlogSection() {
     >
       <div className="space-y-6">
         {/* Blog Articles List */}
-        {placeholderPosts.map((post, index) => (
-          <a
-            key={index}
-            href={`/blog/${post.slug}`}
-            className="group flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pb-6 px-4 -mx-4 transition-all duration-300 cursor-pointer hover:pl-2"
-            style={{ borderBottom: "2px solid var(--border-color)" }}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            <div className="flex-1 min-w-0">
-              {/* Tag */}
-              <span
-                className="inline-block text-sm font-semibold px-2.5 py-1 rounded mb-3"
-                style={{
-                  color: post.tagColor,
-                  border: `1px solid ${post.tagBorder}`,
-                }}
-              >
-                {post.tag}
-              </span>
+        {posts.map((post, index) => {
+          const styles = getCategoryStyles(post.category);
+          return (
+            <a
+              key={index}
+              href={`/blog/${post.slug}`}
+              className="group flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pb-6 px-4 -mx-4 transition-all duration-300 cursor-pointer hover:pl-2"
+              style={{ borderBottom: "2px solid var(--border-color)" }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="flex-1 min-w-0">
+                {/* Tag */}
+                <span
+                  className="inline-block text-sm font-semibold px-2.5 py-1 rounded mb-3"
+                  style={{
+                    color: styles.color,
+                    border: `1px solid ${styles.border}`,
+                  }}
+                >
+                  {post.category}
+                </span>
 
-              {/* Title */}
-              <h3
-                className="text-lg sm:text-xl font-bold mb-2 transition-all"
-                style={{
-                  color:
-                    hoveredIndex === index
-                      ? isDark
-                        ? "white"
-                        : "#000"
-                      : "var(--text-primary)",
-                }}
-              >
-                {post.title}
-              </h3>
+                {/* Title */}
+                <h3
+                  className="text-xl sm:text-xl font-bold mb-2 transition-all"
+                  style={{
+                    color:
+                      hoveredIndex === index
+                        ? isDark
+                          ? "white"
+                          : "#000"
+                        : "var(--text-primary)",
+                  }}
+                >
+                  {post.title}
+                </h3>
 
-              {/* Description */}
-              <p
-                className="text-sm leading-relaxed mb-4 transition-all"
-                style={{
-                  color:
-                    hoveredIndex === index
-                      ? isDark
-                        ? "white"
-                        : "#000"
-                      : "var(--text-secondary)",
-                }}
-              >
-                {post.description}
-              </p>
-            </div>
-
-            {/* Date - Stay on the right on larger screens */}
-            <div className="sm:flex-shrink-0 sm:text-right">
-              <div
-                className="text-base flex items-center gap-2 sm:justify-end transition-all group-hover:font-bold"
-                style={{
-                  color:
-                    hoveredIndex === index
-                      ? isDark
-                        ? "white"
-                        : "#000"
-                      : "var(--text-muted)",
-                }}
-              >
-                {post.date}
-                <ArrowUpRight size={14} className="flex-shrink-0" />
+                {/* Description */}
+                <p
+                  className="text-md leading-relaxed mb-4 transition-all"
+                  style={{
+                    color:
+                      hoveredIndex === index
+                        ? isDark
+                          ? "white"
+                          : "#000"
+                        : "var(--text-secondary)",
+                  }}
+                >
+                  {post.description}
+                </p>
               </div>
-            </div>
-          </a>
-        ))}
+
+              {/* Date - Stay on the right on larger screens */}
+              <div className="sm:flex-shrink-0 sm:text-right">
+                <div
+                  className="text-base flex items-center gap-2 sm:justify-end transition-all group-hover:font-bold"
+                  style={{
+                    color:
+                      hoveredIndex === index
+                        ? isDark
+                          ? "white"
+                          : "#000"
+                        : "var(--text-muted)",
+                  }}
+                >
+                  {post.date}
+                  <ArrowUpRight size={14} className="flex-shrink-0" />
+                </div>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </section>
   );

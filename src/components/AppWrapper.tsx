@@ -9,18 +9,6 @@ const Projects = lazy(() => import("./projects"));
 const JourneyPage = lazy(() => import("./pages/JourneyPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 
-//lazy load for blog
-const AstroForPortfolio = lazy(
-  () => import("./pages/blog/AstroForPortfolio"));
-
-const IntegrationPaymentGatewayMidtrans = lazy(
-  () => import("./pages/blog/IntegrationPaymentGatewayMidtrans"),
-);
-
-const BuildingRealWorldProjects = lazy(
-  () => import("./pages/blog/BuildingRealWorldProjects"),
-);
-
 //lazy load for journey
 const BootcampRevouFundamental = lazy(
   () => import("./pages/journey/BootcampRevouFundamental"),
@@ -53,30 +41,26 @@ type PageType =
   | "blog"
   | "blog_detail";
 
+//Lazy load for markdown layouts
+const BlogMarkdownLayout = lazy(() => import("./pages/blog/BlogMarkdownLayout"));
+
 interface AppWrapperProps {
   page: PageType;
   blogSlug?: string;
   journeySlug?: string;
+  children?: React.ReactNode;
+  blogPosts?: any[];
+  blogFrontmatter?: any;
 }
 
 export default function AppWrapper({
   page,
   blogSlug,
   journeySlug,
+  children,
+  blogPosts,
+  blogFrontmatter,
 }: AppWrapperProps) {
-  const renderBlogDetail = () => {
-    switch (blogSlug) {
-      case "integration-payment-gateway-midtrans":
-        return <IntegrationPaymentGatewayMidtrans />;
-      case "building-real-world-projects":
-        return <BuildingRealWorldProjects />;
-      case "why-astro-for-portfolio":
-        return <AstroForPortfolio />;
-      default:
-        return null;
-    }
-  };
-
   const renderJourneyDetail = () => {
     switch (journeySlug) {
       case "bootcamp-revou-fundamental":
@@ -103,12 +87,17 @@ export default function AppWrapper({
         <Header />
         <main className="grow">
           <Suspense fallback={<div className="min-h-screen"></div>}>
-            {page === "home" && <HomePage />}
+            {page === "home" && <HomePage blogPosts={blogPosts} />}
             {page === "projects" && <Projects />}
-            {page === "blog" && <BlogPage />}
-            {page === "blog_detail" && renderBlogDetail()}
+            {page === "blog" && <BlogPage blogPosts={blogPosts} />}
+            {page === "blog_detail" && 
+              (blogFrontmatter ? (
+                <BlogMarkdownLayout frontmatter={blogFrontmatter}>
+                  {children}
+                </BlogMarkdownLayout>
+              ) : null)}
             {page === "journey" && <JourneyPage />}
-            {page === "journey_detail" && renderJourneyDetail()}
+            {page === "journey_detail" && (children || renderJourneyDetail())}
             {page === "skills" && <Skills />}
             {page === "contact" && <Contact />}
           </Suspense>

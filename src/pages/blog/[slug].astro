@@ -2,17 +2,24 @@
 import Layout from "../../layouts/Layout.astro";
 import AppWrapper from "../../components/AppWrapper.tsx";
 
-export function getStaticPaths() {
-    return [
-        { params: { slug: "integration-payment-gateway-midtrans" } },
-        { params: { slug: "why-astro-for-portfolio" } },
-        { params: { slug: "building-real-world-projects" } },
-    ];
+export async function getStaticPaths() {
+    const posts = await Astro.glob('../../content/blog/*.md');
+    
+    return posts.map(post => {
+        const slug = post.file.split('/').pop()?.split('.').shift() || '';
+        return {
+            params: { slug },
+            props: { post }
+        };
+    });
 }
 
-const { slug } = Astro.params;
+const { post } = Astro.props;
+const { Content } = post;
 ---
 
 <Layout>
-    <AppWrapper client:load page="blog_detail" blogSlug={slug} />
+    <AppWrapper client:load page="blog_detail" blogFrontmatter={post.frontmatter}>
+        <Content />
+    </AppWrapper>
 </Layout>

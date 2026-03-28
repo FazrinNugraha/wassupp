@@ -4,7 +4,11 @@ import AboutSection from "../home/AboutSection";
 import RecentActivities from "../home/RecentActivities";
 import { useTheme } from "../../context/ThemeContext";
 
-export default function HomePage() {
+interface HomePageProps {
+  blogPosts?: any[];
+}
+
+export default function HomePage({ blogPosts }: HomePageProps) {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
 
