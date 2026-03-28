@@ -13,8 +13,8 @@ const BlogPage = lazy(() => import("./pages/BlogPage"));
 const AstroForPortfolio = lazy(
   () => import("./pages/blog/AstroForPortfolio"));
 
-const GetStartedWithReact = lazy(
-  () => import("./pages/blog/GetStartedWithReact"),
+const IntegrationPaymentGatewayMidtrans = lazy(
+  () => import("./pages/blog/IntegrationPaymentGatewayMidtrans"),
 );
 
 const BuildingRealWorldProjects = lazy(
@@ -66,8 +66,8 @@ export default function AppWrapper({
 }: AppWrapperProps) {
   const renderBlogDetail = () => {
     switch (blogSlug) {
-      case "getting-started-with-react":
-        return <GetStartedWithReact />;
+      case "integration-payment-gateway-midtrans":
+        return <IntegrationPaymentGatewayMidtrans />;
       case "building-real-world-projects":
         return <BuildingRealWorldProjects />;
       case "why-astro-for-portfolio":

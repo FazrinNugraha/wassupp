@@ -9,19 +9,19 @@ export default function BlogSection() {
 
   const placeholderPosts = [
     {
-      slug: "getting-started-with-react",
-      title: "Getting Started with React",
+      slug: "integration-payment-gateway-midtrans",
+      title: "Integration Payment Gateway Midtrans",
       description:
-        "Exploring the fundamentals of React and how to build efficient user interfaces.",
+        "Integrating Midtrans payment gateway into a web application.",
       tag: "Tutorial",
       tagColor: "#3b82f6",
       tagBg: "#3b82f61a",
       tagBorder: "#3b82f640",
-      date: "20/9/2026",
+      date: "28/3/2026",
     },
     {
       slug: "why-astro-for-portfolio",
-      title: "Astro.JS for my Portfolio",
+      title: "Astro.JS For My Portfolio",
       description:
         "Why I use Astro.js for my portfolio.",
       tag: "Insight",
@@ -62,10 +62,9 @@ export default function BlogSection() {
             <div className="flex-1 min-w-0">
               {/* Tag */}
               <span
-                className="inline-block text-xs font-semibold px-2.5 py-1 rounded mb-3"
+                className="inline-block text-sm font-semibold px-2.5 py-1 rounded mb-3"
                 style={{
                   color: post.tagColor,
-                  backgroundColor: post.tagBg,
                   border: `1px solid ${post.tagBorder}`,
                 }}
               >

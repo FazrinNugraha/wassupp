@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 
-export default function GetStartedWithReact() {
+export default function IntegrationPaymentGatewayMidtrans() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -38,7 +38,7 @@ export default function GetStartedWithReact() {
               style={{ color: "var(--text-muted)" }}
             >
               <Calendar size={12} />
-              Feb 21, 2026
+              Mar 28, 2026
             </div>
             <div
               className="flex items-center gap-1.5 text-xs"
@@ -52,15 +52,14 @@ export default function GetStartedWithReact() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight"
             style={{ color: "var(--text-primary)" }}
           >
-            Getting Started with React: A Comprehensive Guide
+            Integration Payment Gateway Midtrans
           </h1>
 
           <p
             className="text-xl leading-relaxed"
             style={{ color: "var(--text-secondary)" }}
           >
-            This is a dummy article description. You can replace this content
-            with your actual blog post details later.
+            Integrating Midtrans payment gateway into a web application.
           </p>
         </header>
 

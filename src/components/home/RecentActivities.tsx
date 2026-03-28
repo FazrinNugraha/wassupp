@@ -61,13 +61,13 @@ export default function RecentActivities() {
               {/* Date + Badge Row */}
               <div className="flex items-center gap-3 mb-2">
                 <span
-                  className="text-sm font-medium uppercase tracking-wider"
+                  className="text-xs font-medium uppercase tracking-wider"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   {item.phase}
                 </span>
                 <div
-                  className={`inline-flex items-center text-sm font-bold uppercase tracking-widest px-3 py-1.5 rounded-md border ${item.badgeColor}  ${item.badgeBorder}`}
+                  className={`inline-flex items-center text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-md border ${item.badgeColor}  ${item.badgeBorder}`}
                 >
                   {item.role}
                 </div>
@@ -75,7 +75,7 @@ export default function RecentActivities() {
 
               {/* Highlight Title */}
               <h3
-                className="text-xl font-bold leading-relaxed mb-4"
+                className="text-2xl font-bold leading-relaxed mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 {item.title}
@@ -83,7 +83,7 @@ export default function RecentActivities() {
 
               {/* Description */}
               <p
-                className="text-lg text-justify leading-relaxed"
+                className="text-md text-justify leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
                 {item.description}
