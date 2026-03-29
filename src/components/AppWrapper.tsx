@@ -8,28 +8,12 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const Projects = lazy(() => import("./projects"));
 const JourneyPage = lazy(() => import("./pages/JourneyPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
-
-//lazy load for journey
-const BootcampRevouFundamental = lazy(
-  () => import("./pages/journey/BootcampRevouFundamental"),
-);
-const GettingHandsOnWithMySQL = lazy(
-  () => import("./pages/journey/GettingHandsOnWithMySQL"),
-);
-const MernStackLearning = lazy(
-  () => import("./pages/journey/MernStackLearning"),
-);
-const HackathonAmarathaFinalist = lazy(
-  () => import("./pages/journey/HackathonAmarathaFinalist"),
-);
-const BuildingAIPoweredWebApp = lazy(
-  () => import("./pages/journey/BuildingAIPoweredWebApp"),
-);
-const DBSCodingCampAIEngineer = lazy(
-  () => import("./pages/journey/DBSCodingCampAIEngineer"),
-);
 const Skills = lazy(() => import("./pages/Skills"));
 const Contact = lazy(() => import("./pages/Contact"));
+
+//Lazy load for markdown layouts
+const BlogMarkdownLayout = lazy(() => import("./pages/blog/BlogMarkdownLayout"));
+const JourneyMarkdownLayout = lazy(() => import("./pages/journey/JourneyMarkdownLayout"));
 
 type PageType =
   | "home"
@@ -41,9 +25,6 @@ type PageType =
   | "blog"
   | "blog_detail";
 
-//Lazy load for markdown layouts
-const BlogMarkdownLayout = lazy(() => import("./pages/blog/BlogMarkdownLayout"));
-
 interface AppWrapperProps {
   page: PageType;
   blogSlug?: string;
@@ -51,6 +32,8 @@ interface AppWrapperProps {
   children?: React.ReactNode;
   blogPosts?: any[];
   blogFrontmatter?: any;
+  journeyFrontmatter?: any;
+  journeyPosts?: any[];
 }
 
 export default function AppWrapper({
@@ -60,26 +43,9 @@ export default function AppWrapper({
   children,
   blogPosts,
   blogFrontmatter,
+  journeyFrontmatter,
+  journeyPosts,
 }: AppWrapperProps) {
-  const renderJourneyDetail = () => {
-    switch (journeySlug) {
-      case "bootcamp-revou-fundamental":
-        return <BootcampRevouFundamental />;
-      case "getting-hands-on-with-mysql":
-        return <GettingHandsOnWithMySQL />;
-      case "mern-stack-learning":
-        return <MernStackLearning />;
-      case "hackathon-amaratha-finalist":
-        return <HackathonAmarathaFinalist />;
-      case "building-ai-powered-web-app":
-        return <BuildingAIPoweredWebApp />;
-      case "dbs-coding-camp-ai-engineer":
-        return <DBSCodingCampAIEngineer />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <ThemeProvider>
       {/* Background color handled by global.css (body/html) to prevent flash */}
@@ -96,8 +62,13 @@ export default function AppWrapper({
                   {children}
                 </BlogMarkdownLayout>
               ) : null)}
-            {page === "journey" && <JourneyPage />}
-            {page === "journey_detail" && (children || renderJourneyDetail())}
+            {page === "journey" && <JourneyPage journeyPosts={journeyPosts} />}
+            {page === "journey_detail" && 
+              (journeyFrontmatter ? (
+                <JourneyMarkdownLayout frontmatter={journeyFrontmatter}>
+                  {children}
+                </JourneyMarkdownLayout>
+              ) : null)}
             {page === "skills" && <Skills />}
             {page === "contact" && <Contact />}
           </Suspense>

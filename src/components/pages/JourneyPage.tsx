@@ -1,118 +1,78 @@
 import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 
-// Color mapping for dot colors to actual hex values
-const colorMap: Record<string, string> = {
-  emerald: "#10B981",
-  purple: "#A855F7",
-  blue: "#3B82F6",
-  orange: "#F97316",
+// Color mapping for type to accent colors
+const typeColorMap: Record<string, string> = {
+  LEARNING: "#10B981",
+  MILESTONE: "#A855F7",
+  ACHIEVEMENT: "#3B82F6",
 };
 
-// Extract color name from Tailwind class like "bg-emerald-500" → "emerald"
-function extractColorName(twClass: string): string {
-  const match = twClass.match(/(?:bg|text|border)-(\w+)-\d+/);
-  return match ? match[1] : "blue";
+// Determine type color classes for badge styling
+function getTypeClasses(type: string): string {
+  switch (type?.toUpperCase()) {
+    case "LEARNING":
+      return "border-emerald-500 text-emerald-500";
+    case "MILESTONE":
+      return "border-purple-500 text-purple-500";
+    case "ACHIEVEMENT":
+      return "border-blue-500 text-blue-500";
+    default:
+      return "border-blue-500 text-blue-500";
+  }
 }
 
-// Convert journey title to slug for URL
-function getJourneySlug(title: string): string {
-  const slugMap: Record<string, string> = {
-    "Bootcamp Revou Fundamental Course": "bootcamp-revou-fundamental",
-    "Getting Hands-On with MySQL": "getting-hands-on-with-mysql",
-    "Building My First Full-Stack Project with MERN Stack": "mern-stack-learning",
-    "Finalist Hackaton x Amartha 2025": "hackathon-amaratha-finalist",
-    "Building My First AI-Powered Web App": "building-ai-powered-web-app",
-    "AI Engineer Path: DBS Foundation Coding Camp 2026": "dbs-coding-camp-ai-engineer",
-  };
-  return slugMap[title] || title.toLowerCase().replace(/\s+/g, "-");
+// Determine dot color class
+function getDotClass(type: string): string {
+  switch (type?.toUpperCase()) {
+    case "LEARNING":
+      return "bg-emerald-500";
+    case "MILESTONE":
+      return "bg-purple-500";
+    case "ACHIEVEMENT":
+      return "bg-blue-500";
+    default:
+      return "bg-blue-500";
+  }
 }
 
-export default function JourneyPage() {
+interface JourneyPost {
+  slug: string;
+  title: string;
+  description?: string;
+  summary?: string;
+  date: string;
+  type: string;
+  accentColor: string;
+  skills: string[];
+}
+
+interface JourneyPageProps {
+  journeyPosts?: JourneyPost[];
+}
+
+// Define the desired display order by slug
+const slugOrder = [
+  "bootcamp-revou-fundamental",
+  "getting-hands-on-with-mysql",
+  "mern-stack-learning",
+  "hackathon-amaratha-finalist",
+  "building-ai-powered-web-app",
+  "dbs-coding-camp-ai-engineer",
+];
+
+export default function JourneyPage({ journeyPosts }: JourneyPageProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const timeline = [
-    {
-      date: "September 2024",
-      type: "LEARNING",
-      typeColor: "border-emerald-500 text-emerald-500",
-      dotColor: "bg-emerald-500",
-      title: "Bootcamp Revou Fundamental Course",
-      description:
-        "A two-week intensive bootcamp where I built responsive websites using HTML, CSS, and JavaScript. Gained hands-on experience with Git and real-world development workflows.",
-      skills: ["HTML", "CSS", "Java Script", "Git", "Responsive Design"],
-      colorSkill: "bg-emerald-500",
-    },
-    {
-      date: "DECEMBER 2024",
-      type: "LEARNING",
-      typeColor: "border-emerald-500 text-emerald-500",
-      dotColor: "bg-emerald-500",
-      title: "Getting Hands-On with MySQL",
-      description:
-        "An introduction to MySQL and database fundamentals — CRUD, relationships, and writing meaningful queries. Solidified through hands-on projects as a key step toward data-driven development.",
-      skills: [
-        "MySQL",
-        "Database Management",
-        "CRUD Operations",
-        "Table Structure",
-      ],
-      colorSkill: "bg-emerald-500",
-    },
-    {
-      date: "JULY 2025",
-      type: "MILESTONE",
-      typeColor: "border-purple-500 text-purple-500",
-      dotColor: "bg-purple-500",
-      title: "Building My First Full-Stack Project with MERN Stack",
-      description:
-        "Built a full Learning Management System using the MERN stack — covering auth with JWT, CRUD features, file uploads, and payment integration with Midtrans. Learned by building, which made everything click far faster than tutorials alone.",
-      skills: ["MongoDB", "Express", "React", "Node.js"],
-      colorSkill: "bg-purple-500",
-    },
-    {
-      date: "OCTOBER 2025",
-      type: "ACHIEVEMENT",
-      typeColor: "border-blue-500 text-blue-500",
-      dotColor: "bg-blue-500",
-      title: "Finalist Hackaton x Amartha 2025",
-      description:
-        "Reached top 15 out of 200+ teams in my first hackathon, building SocialCollateral AI in 24 hours as the frontend developer. A microfinance trust assessment system combining graph analytics, NLP, and computer vision — built with React, TypeScript, and integrated with a FastAPI + Gemini backend.",
-      skills: [
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "Chart.js",
-        "FastAPI",
-        "Google Gemini",
-        "Google Cloud Vision",
-      ],
-      colorSkill: "bg-blue-500",
-    },
-    {
-      date: "DECEMBER 2025",
-      type: "MILESTONE",
-      typeColor: "border-purple-500 text-purple-500",
-      dotColor: "bg-purple-500",
-      title: "Building My First AI-Powered Web App",
-      description:
-        "Built GlucoCheck to learn how to integrate AI into a real product — a diabetes risk assessment tool powered by AI that delivers personalized results in Bahasa Indonesia. First hands-on experience with AI APIs and prompt engineering.",
-      skills: ["AI", "React", "Tailwind CSS"],
-      colorSkill: "bg-purple-500",
-    },
-    {
-      date: "FEBRUARY 2026",
-      type: "LEARNING",
-      typeColor: "border-emerald-500 text-emerald-500",
-      dotColor: "bg-emerald-500",
-      title: "AI Engineer Path: DBS Foundation Coding Camp 2026",
-      description:
-        "Accepted into Coding Camp 2026 by DBS Foundation on the AI Engineer track — a 4-5 month intensive covering machine learning, deep learning, and MLOps. Currently building toward a production-ready AI capstone.",
-      skills: ["Machine Learning", "Deep Learning", "MLOps", "AI Engineering"],
-      colorSkill: "bg-blue-500",
-    },
-  ];
+  // Sort posts by the predefined order
+  const sortedPosts = journeyPosts
+    ? [...journeyPosts].sort((a, b) => {
+        const indexA = slugOrder.indexOf(a.slug);
+        const indexB = slugOrder.indexOf(b.slug);
+        return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB);
+      })
+    : [];
 
   return (
     <div className="min-h-screen">
@@ -142,15 +102,17 @@ export default function JourneyPage() {
           ></div>
 
           <div className="space-y-6">
-            {timeline.map((item, index) => {
+            {sortedPosts.map((item) => {
               const accentColor =
-                colorMap[extractColorName(item.dotColor)] || "#3B82F6";
+                item.accentColor || typeColorMap[item.type?.toUpperCase()] || "#3B82F6";
+              const dotClass = getDotClass(item.type);
+              const typeClasses = getTypeClasses(item.type);
 
               return (
-                <div key={item.date} className="relative pl-8 group">
+                <div key={item.slug} className="relative pl-8 group">
                   {/* Timeline dot */}
                   <div
-                    className={`absolute left-0 top-3 w-4 h-4 ${item.dotColor} rounded-full transition-transform group-hover:scale-125`}
+                    className={`absolute left-0 top-3 w-4 h-4 ${dotClass} rounded-full transition-transform group-hover:scale-125`}
                   ></div>
 
                   {/* Card Content */}
@@ -170,7 +132,7 @@ export default function JourneyPage() {
                         {item.date}
                       </span>
                       <span
-                        className={`text-xs font-semibold border px-2.5 py-1 rounded ${item.typeColor}`}
+                        className={`text-xs font-semibold border px-2.5 py-1 rounded ${typeClasses}`}
                       >
                         {item.type}
                       </span>
@@ -182,9 +144,6 @@ export default function JourneyPage() {
                       style={{
                         color: "var(--text-primary)",
                         ["--accent-color" as string]: accentColor,
-                      }}
-                      onMouseEnter={(e) => {
-                        // Title hover handled by parent group
                       }}
                     >
                       <span
@@ -207,49 +166,53 @@ export default function JourneyPage() {
                     </h4>
 
                     {/* Description */}
-                    <p
-                      className="text-justify mb-4 leading-relaxed text-sm md:text-base"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      {item.description}
-                    </p>
-
-                    {/* Skills */}
-                    <div className="mb-4">
+                    {(item.summary || item.description) && (
                       <p
-                        className="text-xs font-semibold uppercase tracking-wide mb-3"
+                        className="text-justify mb-4 leading-relaxed text-sm md:text-base"
                         style={{ color: "var(--text-secondary)" }}
                       >
-                        Skills:
+                        {item.summary || item.description}
                       </p>
-                      <div className="flex flex-wrap gap-2">
-                        {item.skills.map((skill, skillIndex) => (
-                          <span
-                            key={skillIndex}
-                            className="text-xs px-3 py-1.5 rounded transition-all duration-300 cursor-default"
-                            style={{
-                              border: "1px solid var(--border-color)",
-                              backgroundColor: "var(--bg-card)",
-                              color: "var(--text-primary)",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.borderColor = accentColor;
-                              e.currentTarget.style.color = accentColor;
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.borderColor = "";
-                              e.currentTarget.style.color = "";
-                            }}
-                          >
-                            {skill}
-                          </span>
-                        ))}
+                    )}
+
+                    {/* Skills */}
+                    {item.skills && item.skills.length > 0 && (
+                      <div className="mb-4">
+                        <p
+                          className="text-xs font-semibold uppercase tracking-wide mb-3"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          Skills:
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {item.skills.map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="text-xs px-3 py-1.5 rounded transition-all duration-300 cursor-default"
+                              style={{
+                                border: "1px solid var(--border-color)",
+                                backgroundColor: "var(--bg-card)",
+                                color: "var(--text-primary)",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor = accentColor;
+                                e.currentTarget.style.color = accentColor;
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor = "";
+                                e.currentTarget.style.color = "";
+                              }}
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Read More Link */}
                     <a
-                      href={`/journey/${getJourneySlug(item.title)}`}
+                      href={`/journey/${item.slug}`}
                       className="text-sm font-medium inline-flex items-center gap-1.5 group/link relative overflow-hidden"
                       style={{ color: accentColor }}
                     >

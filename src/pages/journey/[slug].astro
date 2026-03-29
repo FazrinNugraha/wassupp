@@ -2,20 +2,24 @@
 import Layout from "../../layouts/Layout.astro";
 import AppWrapper from "../../components/AppWrapper.tsx";
 
-export function getStaticPaths() {
-    return [
-        { params: { slug: "bootcamp-revou-fundamental" } },
-        { params: { slug: "getting-hands-on-with-mysql" } },
-        { params: { slug: "mern-stack-learning" } },
-        { params: { slug: "hackathon-amaratha-finalist" } },
-        { params: { slug: "building-ai-powered-web-app" } },
-        { params: { slug: "dbs-coding-camp-ai-engineer" } },
-    ];
+export async function getStaticPaths() {
+    const posts = await Astro.glob('../../content/journey/*.md');
+    
+    return posts.map(post => {
+        const slug = post.file.split('/').pop()?.split('.').shift() || '';
+        return {
+            params: { slug },
+            props: { post }
+        };
+    });
 }
 
-const { slug } = Astro.params;
+const { post } = Astro.props;
+const { Content } = post;
 ---
 
 <Layout>
-    <AppWrapper client:load page="journey_detail" journeySlug={slug} />
+    <AppWrapper client:load page="journey_detail" journeyFrontmatter={post.frontmatter}>
+        <Content />
+    </AppWrapper>
 </Layout>
