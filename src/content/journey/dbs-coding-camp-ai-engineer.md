@@ -4,8 +4,16 @@ description: "Accepted into an intensive 4-5 month machine learning bootcamp"
 summary: "Accepted into Coding Camp 2026 by DBS Foundation on the AI Engineer track — a 4-5 month intensive covering machine learning, deep learning, and MLOps. Currently building toward a production-ready AI capstone."
 date: "February 2026"
 type: "LEARNING"
-accentColor: "#3B82F6"
-skills: ["Machine Learning", "Deep Learning", "MLOps", "AI Engineering", "Neural Networks", "Data Science"]
+accentColor: "#10B981"
+skills:
+  [
+    "Machine Learning",
+    "Deep Learning",
+    "MLOps",
+    "AI Engineering",
+    "Neural Networks",
+    "Data Science",
+  ]
 ---
 
 ## The Opportunity
