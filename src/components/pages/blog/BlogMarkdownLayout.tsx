@@ -88,7 +88,7 @@ export default function BlogMarkdownLayout({
 
           {frontmatter.description && (
             <p
-              className="text-xl leading-relaxed"
+              className="text-xl leading-relaxed text-justify"
               style={{ color: "var(--text-secondary)" }}
             >
               {frontmatter.description}
@@ -98,7 +98,7 @@ export default function BlogMarkdownLayout({
 
         {/* Article Content */}
         <article
-          className={`prose prose-lg max-w-none ${isDark ? "prose-invert" : ""}`}
+          className={`prose prose-lg max-w-none text-justify ${isDark ? "prose-invert" : ""}`}
         >
           {children}
         </article>

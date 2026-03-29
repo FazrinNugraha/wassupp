@@ -126,24 +126,22 @@ export default function JourneyMarkdownLayout({
         const tag = document.createElement("span");
         tag.textContent = skill;
         tag.style.fontSize = "0.875rem";
-        tag.style.padding = "0.5rem 1rem";
-        tag.style.borderRadius = "9999px";
-        tag.style.transition = "all 0.3s ease";
+        tag.style.padding = "0.375rem 0.75rem";
+        tag.style.borderRadius = "4px";
+        tag.style.transition = "all 0.2s ease";
         tag.style.cursor = "default";
         tag.style.border = `1px solid ${accentColor}50`;
         tag.style.color = accentColor;
-        tag.style.backgroundColor = `${accentColor}10`;
+        tag.style.backgroundColor = "transparent";
 
         tag.addEventListener("mouseenter", () => {
-          tag.style.backgroundColor = accentColor;
-          tag.style.color = "white";
           tag.style.borderColor = accentColor;
+          tag.style.backgroundColor = `${accentColor}10`;
         });
 
         tag.addEventListener("mouseleave", () => {
-          tag.style.backgroundColor = `${accentColor}10`;
-          tag.style.color = accentColor;
           tag.style.borderColor = `${accentColor}50`;
+          tag.style.backgroundColor = "transparent";
         });
 
         wrapper.appendChild(tag);
