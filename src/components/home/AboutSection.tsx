@@ -76,96 +76,79 @@ export default function AboutSection() {
               className="text-xl font-bold text-justify leading-relaxed"
               style={{ color: "var(--text-primary)" }}
             >
-              "Hi, I'm Fazrin. I'm an Informatics student focused on building
-              functional web applications.{" "}
+              Hi, I'm Fazrin.{" "}
+              A{" "}
               <strong
                 className="font-bold"
                 style={{ color: "var(--text-primary)" }}
               >
                 Full-Stack Developer
               </strong>{" "}
-              transitioning into AI and Machine Learning."
+              transitioning into{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                AI & Machine Learning
+              </strong>
+              .
             </p>
             <p
               className="text-lg text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              My journey began in{" "}
+              I'm a 6th-semester Informatics student passionate about bridging
+              the gap between functional web interfaces and intelligent systems.
+              From building{" "}
               <strong
                 className="font-bold"
                 style={{ color: "var(--text-primary)" }}
               >
-                Full-Stack Development
-              </strong>
-              , where I focused on building functional applications using the{" "}
-              <strong
-                className="font-bold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                MERN stack
-              </strong>
-              —one of my key projects being a Comprehensive{" "}
-              <strong
-                className="font-bold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Learning Management System (LMS)
-              </strong>
-              . However, as I sought to solve more complex problems, I developed
-              GlucoCheck. Integrating AI into web platform that provides
-              personalized diabetes risk analysis was a turning point; it opened
-              up a new perspective for me, because it wasn't just in building
-              interfaces, but in how a system 'thinks' and processes data.
-            </p>
-            <p
-              className="text-lg text-justify leading-relaxed"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              Since then, I've pivoted toward AI and Machine Learning. I
-              recently applied this focus during a major{" "}
-              <strong
-                className="font-bold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Hackathon
-              </strong>
-              , where I served as the{" "}
-              <strong
-                className="font-bold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Frontend Engineer
+                MERN-stack applications
               </strong>{" "}
-              for SocialCollateral AI, a microfinance platform. Collaborating
-              closely with a Product Manager and data team, we successfully
-              secured a spot in the{" "}
+              to developing AI-driven solutions like{" "}
               <strong
                 className="font-bold"
                 style={{ color: "var(--text-primary)" }}
               >
-                Top 15 out of 150+ teams.
+                GlucoCheck
               </strong>
+              , I focus on how systems process data to solve complex problems.
+              Currently specializing in{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Deep Learning and MLOps
+              </strong>{" "}
+              at the{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                DBS Foundation Coding Camp
+              </strong>{" "}
+              to build scalable, production-ready AI.
             </p>
             <p
               className="text-lg text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Today, as a 6th-semester Informatics student and a participant in
-              the{" "}
+              Today, as part of the{" "}
               <strong
                 className="font-bold"
                 style={{ color: "var(--text-primary)" }}
               >
                 DBS Foundation Coding Camp (AI Engineer Path)
               </strong>
-              , I am leveraging my web development background to specialize in{" "}
+              , I leverage my web development background to specialize in{" "}
               <strong
                 className="font-bold"
                 style={{ color: "var(--text-primary)" }}
               >
                 Deep Learning and MLOps
               </strong>
-              —aiming to build scalable, intelligent systems.
+              , aiming to build systems that are both scalable and smart.
             </p>
           </div>
         ) : (
@@ -174,104 +157,114 @@ export default function AboutSection() {
               className="text-xl font-bold text-justify leading-relaxed"
               style={{ color: "var(--text-primary)" }}
             >
-              My Journey into Tech started with a 2-week bootcamp—and I haven't
-              stopped building since.
+              My Journey into Tech
             </p>
             <p
               className="text-lg text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              My journey into tech began with a leap of faith: a 2-week bootcamp
-              at RevoU. I started with zero knowledge of code, but those two
-              weeks of HTML, CSS, and JavaScript were enough to hook me. I
-              realized then that I didn't just want to use technology—I wanted
-              to build it.
+              My journey into tech started with a leap of faith: a two-week
+              bootcamp at{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                RevoU
+              </strong>
+              . I came in with zero coding experience, but
+              after learning the basics of web development, I was hooked—I
+              didn't just want to consume technology, I wanted to build it. To
+              escape "tutorial hell," I dove straight into{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                full-stack development
+              </strong>
+              . I built a complete{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Learning Management System
+              </strong>{" "}
+              from scratch using the{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                MERN stack
+              </strong>
+              , which taught me that the fastest way
+              to grow is by tackling the "unknowns" head-on.
             </p>
             <p
-              className="text-xl text-justify leading-relaxed"
+              className="text-lg text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              I took a deep dive into Full-Stack Development, teaching myself to
-              understand data structures before mastering the MERN Stack
-              (MongoDB, Express, React, Node.js). Key Achievement: Developed a
-              Comprehensive Learning Management System (LMS) from scratch,
-              integrating JWT authentication, file uploads, and payment
-              gateways. The Lesson: I learned that the best way to make concepts
-              stick isn't just watching tutorials—it's building through the
-              "unknowns."
+              As I got more comfortable with web development, I started
+              wondering how AI could solve real-world problems. This curiosity
+              led me to build{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                GlucoCheck
+              </strong>
+              , an AI-powered web app for
+              personalized diabetes risk assessments in Bahasa Indonesia. This
+              project was a major turning point; it showed me that AI is
+              incredibly powerful, but only when it is wrapped in an intuitive,
+              user-friendly experience.
             </p>
             <p
-              className="text-xl font-bold text-justify leading-relaxed"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Then I got curious about AI.
-            </p>
-            <p
-              className="text-xl text-justify leading-relaxed"
+              className="text-lg text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              I built GlucoCheck—a web app where users answer health questions
-              and AI generates personalized diabetes risk assessments in Bahasa
-              Indonesia. It was my first real experience integrating AI into a
-              product: working with APIs, tuning prompts to get useful
-              responses, and designing user flows around AI-powered features.
-              That project taught me something important: AI is powerful, but
-              only when wrapped in the right experience.
+              To push my limits, I joined a{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                24-hour national hackathon
+              </strong>
+              , where my team built{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                SocialCollateral AI
+              </strong>{" "}
+              and proudly made it to the{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Top 15 out of 150+ teams
+              </strong>
+              . Translating complex AI data into simple
+              dashboards under extreme pressure completely changed my
+              trajectory. I realized my true passion lies in building
+              intelligent systems, which led me to the AI path at{" "}
+              <strong
+                className="font-bold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Coding Camp 2026 by DBS Foundation
+              </strong>
+              , where I'm now learning to train and
+              deploy production-ready AI models.
             </p>
             <p
-              className="text-xl font-bold text-justify leading-relaxed"
-              style={{ color: "var(--text-primary)" }}
-            >
-              I jumped into my first hackathon.
-            </p>
-            <p
-              className="text-xl text-justify leading-relaxed"
+              className="text-lg text-justify leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              I recently put my skills to the test at a 24-hour national
-              hackathon. As the Frontend Engineer for SocialCollateral AI, I
-              collaborated with a data team to build a platform for microfinance
-              trust-scoring. The Result: Out of 150+ teams, we secured a spot in
-              the Finalist Top 15. The Takeaway: Beyond the tech stack (Graph
-              Analytics, NLP, Computer Vision), I learned how to ship fast and
-              translate complex AI outputs into intuitive real-time dashboards.
-            </p>
-            <p
-              className="text-xl font-bold text-justify leading-relaxed"
-              style={{ color: "var(--text-primary)" }}
-            >
-              My trajectory took a total turn.
-            </p>
-            <p
-              className="text-xl text-justify leading-relaxed"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              I realized I'm excited about building intelligent systems than
-              just web apps. So I applied to Coding Camp 2026 by DBS Foundation
-              and got accepted into the AI path. Right now, I'm learning how to
-              build production-ready AI systems: training models, tuning
-              performance, deploying to cloud infrastructure, and monitoring
-              them in the real world. I'm working toward a capstone project that
-              combines everything I've learned so far.
-            </p>
-
-            <p
-              className="text-xl font-bold text-justify leading-relaxed"
-              style={{ color: "var(--text-primary)" }}
-            >
-              I document my work because context matters.
-            </p>
-            <p
-              className="text-xl text-justify leading-relaxed"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              What you see in my portfolio isn't just pretty interfaces—it's a
-              record of choices, compromises, and hard-earned lessons. I think
-              good engineering requires more than shipping features. It demands
-              clarity for whoever touches the code next, whether that's a
-              teammate or me six months later. I'm early in my career, but I'm
-              focused on creating work that counts and writing down what I learn
-              along the way.
+              Through all of this, I've learned that good engineering is about
+              more than just shipping features—it demands clarity. I carefully
+              document my work because context matters, whether for a teammate
+              or for myself six months down the line. I'm early in my career,
+              but my focus is clear: I want to build things that matter and
+              share the lessons I learn along the way.
             </p>
           </div>
         )}
