@@ -4,7 +4,7 @@ Welcome to my personal space on the web! This repository contains the source cod
 
 This portfolio serves as a professional showcase of my work at the intersection of **AI-Driven Solutions**, **Product Engineering**, and **Fullstack Development**. Developed using a modern web ecosystem, it highlights my commitment to building high-performance applications that are not only scalable but also maintainable through clean and efficient code.
 
-**Status:** Work in progress ⏱️. Articles and projects are updated weekly 🗓️.
+**Status:** Articles and projects will be updated upon new additions
 
 
 ## Tech Stack
