@@ -1,144 +1,21 @@
-# 🚀 Wassupp - Personal Portfolio
+# Portfolio - About
 
-A modern, fast, and beautiful portfolio website built with Astro, TypeScript, and Tailwind CSS.
+Welcome to my personal space on the web! This repository contains the source code for my portfolio website. It serves as a central hub for my professional journey, detailing the projects I've built, the technologies I use, and the articles I write about software engineering and artificial intelligence.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-88.9%25-3178C6?style=flat&logo=typescript&logoColor=white)
-![Astro](https://img.shields.io/badge/Astro-5.4%25-FF5D01?style=flat&logo=astro&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-3.3%25-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-2.4%25-F7DF1E?style=flat&logo=javascript&logoColor=black)
+This portfolio serves as a professional showcase of my work at the intersection of **AI-Driven Solutions**, **Product Engineering**, and **Fullstack Development**. Developed using a modern web ecosystem, it highlights my commitment to building high-performance applications that are not only scalable but also maintainable through clean and efficient code.
 
-## ✨ Features
+**Status:** Work in progress ⏱️. Articles and projects are updated weekly 🗓️.
 
-- ⚡ **Lightning Fast** - Built with Astro for optimal performance
-- 🎨 **Modern Design** - Clean and professional UI with Tailwind CSS
-- 📱 **Fully Responsive** - Works seamlessly on all devices
-- 🔒 **Type Safe** - Written in TypeScript for better code quality
-- 🎯 **SEO Optimized** - Better visibility on search engines
-- 🌙 **Dark Mode** - Eye-friendly dark theme
-- ♿ **Accessible** - WCAG compliant for all users
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Framework**: [Astro](https://astro.build)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Package Manager**: npm
+This project is built using modern and fast web technologies:
+- **Framework:** [Astro](https://astro.build/)
+- **UI Components:** [React](https://react.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
 
-## 📁 Project Structure
+## Local Development
+If you find this repository helpful and want to use it as a starting point or inspiration for your own portfolio, feel free to fork it 
 
-```
-wassupp/
-├── public/              # Static assets
-│   └── favicon.svg
-├── src/
-│   ├── assets/          # Images, fonts, etc.
-│   ├── components/      # Reusable components
-│   ├── layouts/         # Page layouts
-│   └── pages/           # Route pages
-├── .vscode/             # VS Code settings
-├── astro.config.mjs     # Astro configuration
-├── tailwind.config.mjs  # Tailwind configuration
-├── tsconfig.json        # TypeScript configuration
-└── package.json         # Dependencies
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18.x or higher
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/FazrinNugraha/wassupp.git
-   cd wassupp
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:4321`
-
-## 📝 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install all dependencies |
-| `npm run dev` | Start local dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run astro ...` | Run Astro CLI commands |
-| `npm run astro -- --help` | Get help with Astro CLI |
-
-## 🏗️ Build for Production
-
-```bash
-npm run build
-```
-
-The production-ready files will be generated in the `./dist/` directory.
-
-## 🌐 Deployment
-
-This project can be deployed to various platforms:
-
-- **Vercel** - Recommended for Astro projects
-- **Netlify** - Great static hosting option
-- **GitHub Pages** - Free hosting for GitHub repos
-- **Cloudflare Pages** - Fast global CDN
-
-### Deploy to Vercel
-
-```bash
-npm install -g vercel
-vercel
-```
-
-## 🎨 Customization
-
-1. **Update personal info**: Edit files in `src/pages/`
-2. **Change theme colors**: Modify `tailwind.config.mjs`
-3. **Add new sections**: Create components in `src/components/`
-4. **Update metadata**: Edit `src/layouts/Layout.astro`
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👤 Author
-
-**Fazrin Nugraha**
-
-- GitHub: [@FazrinNugraha](https://github.com/FazrinNugraha)
-- Portfolio: [Your Portfolio URL]
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/FazrinNugraha/wassupp/issues).
-
-## ⭐ Show your support
-
-Give a ⭐️ if you like this project!
-
-## 📚 Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs)
-
----
-
-Made with ❤️ by Fazrin Nugraha
+By forking this repository instead of just downloading it, you help me see how this template is being used by the community. A star ⭐ on this repository would also be highly appreciated!
