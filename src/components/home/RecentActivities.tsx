@@ -35,7 +35,7 @@ export default function RecentActivities() {
     >
       {/* Top divider */}
       <div
-        className="pt-12 mb-8 flex flex-col items-start gap-4"
+        className="pt-12 mb-8 flex justify-between items-end"
         style={{ borderTop: "2px solid var(--border-color)" }}
       >
         <h2
@@ -44,6 +44,16 @@ export default function RecentActivities() {
         >
           Latest Highlights
         </h2>
+        <a
+          href="/journey"
+          className="text-sm font-medium hover:text-white transition-colors pb-1"
+          style={{ 
+            color: "var(--text-secondary)", 
+            borderBottom: "1px dashed var(--border-hover)" 
+          }}
+        >
+          See all journey
+        </a>
       </div>
 
       {/* Cards Container */}

@@ -16,37 +16,69 @@ export default function AboutSection() {
         className="pt-12 pb-12"
         style={{ borderTop: "2px solid var(--border-color)" }}
       >
-        <p
-          className="text-xl font-bold leading-relaxed pb-4"
-          style={{ color: "var(--text-primary)" }}
-        >
-          I'm <strong>Fazrin</strong>, a Fullstack Developer working with
-          RaectJs and MongoDB. Currently diving deep into AI and Machine
-          Learning
-        </p>
-        <p
-          className="text-lg leading-relaxed pb-4"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Outside of coding, I enjoy watching movies and exploring new cafes in
-          town.
-        </p>
-        <a
-          href="/journey"
-          className="mt-2 py-1 text-base font-medium inline-flex items-center gap-2 group/link relative overflow-hidden"
-          style={{ color: "var(--text-primary)" }}
-        >
-          <span className="relative">
-            Read my journey
-            <span
-              className="absolute bottom-0 left-0 h-[1.5px] w-0 transition-all duration-300 group-hover/link:w-full"
-              style={{ backgroundColor: "var(--text-primary)" }}
-            />
-          </span>
-          <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1.5">
-            →
-          </span>
-        </a>
+        <div className="flex justify-between items-end mb-6">
+          <h2 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>
+            Latest Posts
+          </h2>
+          <a
+            href="/blog"
+            className="text-sm font-medium hover:text-white transition-colors pb-1"
+            style={{ 
+              color: "var(--text-secondary)", 
+              borderBottom: "1px dashed var(--border-hover)" 
+            }}
+          >
+            See all posts
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Card 1 */}
+          <a
+            href="/blog/building-real-world-projects"
+            className="p-5 rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              border: "1px solid var(--border-color)",
+            }}
+          >
+            <div className="flex justify-between items-start mb-3 gap-4">
+              <h3 className="font-semibold text-lg" style={{ color: "var(--text-primary)" }}>
+                MERN Stack LMS Backend Architecture Breakdown
+              </h3>
+              <div className="flex items-center gap-2 mt-1 flex-shrink-0">
+                <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Feb 23, 2026</span>
+                <ArrowRight size={16} style={{ color: "var(--text-muted)" }} className="transform -rotate-45" />
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              What I learned while building fullstack applications with MERN stack.
+            </p>
+          </a>
+
+          {/* Card 2 */}
+          <a
+            href="/blog/integration-payment-gateway-midtrans"
+            className="p-5 rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              border: "1px solid var(--border-color)",
+            }}
+          >
+            <div className="flex justify-between items-start mb-3 gap-4">
+              <h3 className="font-semibold text-lg" style={{ color: "var(--text-primary)" }}>
+                Integration Payment Gateway Midtrans
+              </h3>
+              <div className="flex items-center gap-2 mt-1 flex-shrink-0">
+                <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Mar 28, 2026</span>
+                <ArrowRight size={16} style={{ color: "var(--text-muted)" }} className="transform -rotate-45" />
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              A simple guide to integrating Midtrans payment gateway into your web application.
+            </p>
+          </a>
+        </div>
       </div>
 
       {/* Bio Section */}

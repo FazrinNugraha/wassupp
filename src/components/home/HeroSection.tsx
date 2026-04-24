@@ -49,23 +49,57 @@ export default function HeroSection() {
               </p>
             </div>
 
-            {/* Skills Tags */}
-            <div className="flex flex-wrap gap-2">
-              {["FULLSATCK ENGINEER", "AI & ML ENGINEER"].map(
-                (skill, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded"
+            {/* Skills Tags & Mobile Profile Pill */}
+            <div className="flex flex-col gap-4 mt-4 lg:mt-0">
+              {/* Mobile Profile Pill */}
+              <div className="flex lg:hidden items-center">
+                <a
+                  href="#about"
+                  className="flex items-center rounded-full transition-colors duration-200"
+                  style={{
+                    backgroundColor: "var(--bg-card)",
+                    border: "1px solid var(--border-color)",
+                    padding: "6px 18px 6px 6px",
+                    gap: "10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    src="/profile/pepe.jpeg"
+                    alt="Fazrin Nugraha"
+                    className="rounded-full object-cover flex-shrink-0"
                     style={{
-                      backgroundColor: "var(--bg-secondary)",
-                      color: "var(--text-primary)",
-                      border: "1px solid var(--border-color)",
+                      width: "32px",
+                      height: "32px",
+                      border: "2px solid var(--border-color)",
                     }}
+                  />
+                  <span 
+                    className="text-sm font-medium whitespace-nowrap"
+                    style={{ color: "var(--text-primary)" }}
                   >
-                    {skill}
+                    About – Fazrin Nugraha
                   </span>
-                ),
-              )}
+                </a>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {["FULLSATCK ENGINEER", "AI & ML ENGINEER"].map(
+                  (skill, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded"
+                      style={{
+                        backgroundColor: "var(--bg-secondary)",
+                        color: "var(--text-primary)",
+                        border: "1px solid var(--border-color)",
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ),
+                )}
+              </div>
             </div>
 
             {/* CTA Buttons */}
@@ -128,7 +162,7 @@ export default function HeroSection() {
           </div>
 
           {/* ================= RIGHT COLUMN ================= */}
-          <div className="flex justify-center lg:justify-end items-start mt-2 lg:mt-12 transition-all duration-200 ease-out text-md hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5">
+          <div className="hidden lg:flex justify-end items-start mt-12 transition-all duration-200 ease-out text-md hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5">
             <div
               className="w-full p-8 rounded-2xl"
               style={{
