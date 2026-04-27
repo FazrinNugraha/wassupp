@@ -18,7 +18,7 @@ export default function AboutSection() {
       >
         <div className="flex justify-between items-end mb-6">
           <h2 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>
-            Latest Posts
+            Posts Writting
           </h2>
           <a
             href="/blog"
