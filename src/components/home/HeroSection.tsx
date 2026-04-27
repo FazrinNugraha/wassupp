@@ -50,9 +50,9 @@ export default function HeroSection() {
             </div>
 
             {/* Mobile: Opsi B — badge profil atas, role tags sejajar bawah */}
-            <div className="flex lg:hidden flex-col gap-2 mt-4">
+            <div className="flex lg:hidden flex-col gap-2 mt-6">
               {/* Baris 1: Badge Profil */}
-              <a
+              {/* <a
                 href="#about"
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest transition-colors duration-200 w-fit"
                 style={{
@@ -71,8 +71,8 @@ export default function HeroSection() {
                     height: "18px",
                   }}
                 />
-                Fazrin Nugraha
-              </a>
+                Muhamad Fazrin Nugraha
+              </a> */}
 
               {/* Baris 2: Role Tags sejajar */}
               <div className="flex gap-2">
@@ -110,7 +110,7 @@ export default function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="hidden lg:flex flex-col sm:flex-row gap-3 pt-4">
+            <div className="hidden lg:flex flex-col sm:flex-row gap-3">
               <a
                 href="/projects"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-200 ease-out text-sm hover:-translate-y-1 hover:shadow-lg active:translate-y-0.5"
